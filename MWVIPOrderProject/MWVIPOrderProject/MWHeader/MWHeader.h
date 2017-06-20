@@ -10,8 +10,6 @@
 #define MWHeader_h
 
 
-#import "WKAPIManager.h"
-
 #import <AFNetworking.h>
 #import "Util.h"
 #import <WPAttributedMarkup/WPHotspotLabel.h>
@@ -21,7 +19,6 @@
 #import <LPActionSheet.h>
 #import <SVProgressHUD.h>
 #import <Masonry.h>
-#import "UIViewController+GYDNav.h"
 #import <YYModel.h>
 #import <UIImageView+WebCache.h>
 
@@ -43,7 +40,7 @@
 #define IMG(_File_)                 [UIImage imageNamed:_File_]
 
 
-#define M_CO    [UIColor colorWithRed:65/255.0f green:149/255.0f blue:220/255.0f alpha:1.00]
+#define M_CO    [UIColor colorWithRed:0.0 green:0.6 blue:0.0941176470588235 alpha:1.00]
 
 #define VERSION [[UIDevice currentDevice].systemVersion doubleValue]
 
