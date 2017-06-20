@@ -8,15 +8,20 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
 @implementation ViewController
-
+{
+    UITableView *mLeftTableView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.navigationItem.title = @"今日销售2000份营业额¥30000元";
+    
+    
 }
 
 

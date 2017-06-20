@@ -1,0 +1,93 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - DACircularProgress (2.3.1)
+  - DZNEmptyDataSet (1.8.1)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - HandyFrame (1.1.3)
+  - IQKeyboardManager (4.0.10)
+  - JCore (1.1.3)
+  - JPush (3.0.5):
+    - JCore (~> 1.1.1)
+  - LKDBHelper (2.4.3):
+    - LKDBHelper/standard (= 2.4.3)
+  - LKDBHelper/standard (2.4.3):
+    - FMDB
+  - LPActionSheet (1.0)
+  - Masonry (1.0.2)
+  - MBProgressHUD (1.0.0)
+  - PYPhotoBrowser (1.2.5):
+    - DACircularProgress
+    - MBProgressHUD
+    - SDWebImage
+  - RSKImageCropper (1.6.2)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SKTagView (0.9.2)
+  - SVProgressHUD (2.1.2)
+  - UITableView+FDTemplateLayoutCell (1.6)
+  - WPAttributedMarkup (1.0.0)
+  - YYModel (1.0.4)
+  - ZYCornerRadius (1.0.2)
+
+DEPENDENCIES:
+  - AFNetworking
+  - DZNEmptyDataSet
+  - HandyFrame
+  - IQKeyboardManager
+  - JPush
+  - LKDBHelper
+  - LPActionSheet
+  - Masonry
+  - PYPhotoBrowser (~> 1.2.3)
+  - RSKImageCropper
+  - SDWebImage (~> 3.8.2)
+  - SKTagView
+  - SVProgressHUD
+  - UITableView+FDTemplateLayoutCell
+  - WPAttributedMarkup
+  - YYModel
+  - ZYCornerRadius (~> 1.0.2)
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  HandyFrame: 5fef3c197c383332d7d5c838b3f7a85ce2f8f9cc
+  IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
+  JCore: dff3c50e9a7522a508cd9096ca79165968e1aed3
+  JPush: dd0b776998aa705a6242b947bf72e5a640387cfe
+  LKDBHelper: dc4a629efc8855cc19f61737ee4d9cfdf098ec97
+  LPActionSheet: 49fb9201e73f24f41adeb2a76773307d37ab0416
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  PYPhotoBrowser: 832154ec5e61c2c321d9be0e69af1fda8731e5ac
+  RSKImageCropper: 3e579d0000945a8be1c0efdad728fd9e25c2fd79
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SKTagView: 59cdadcd16e4a09300746ad1811a72371e1327f7
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  WPAttributedMarkup: eb50878af4ec647d8d2090f721a5cfe7d29c27fe
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+  ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
+
+PODFILE CHECKSUM: a930eeea933e3ccff5ee6e6b34305f29e7a71ccb
+
+COCOAPODS: 1.2.1

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E52FEA2C03C92FCFF2D9132 /* libPods-MWVIPOrderProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 711511C1AC82D7DEF1D1EE59 /* libPods-MWVIPOrderProject.a */; };
+		52375A801EF90B43006D9CF0 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 52375A7F1EF90B43006D9CF0 /* Util.m */; };
 		5239D3531EF3B86C00BAB3F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5239D3521EF3B86C00BAB3F3 /* main.m */; };
 		5239D3561EF3B86C00BAB3F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5239D3551EF3B86C00BAB3F3 /* AppDelegate.m */; };
 		5239D3591EF3B86C00BAB3F3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5239D3581EF3B86C00BAB3F3 /* ViewController.m */; };
@@ -35,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		484A4C020C6C0835F71A229A /* Pods-MWVIPOrderProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWVIPOrderProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MWVIPOrderProject/Pods-MWVIPOrderProject.debug.xcconfig"; sourceTree = "<group>"; };
+		52375A7C1EF90A08006D9CF0 /* MWHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHeader.h; sourceTree = "<group>"; };
+		52375A7E1EF90B43006D9CF0 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		52375A7F1EF90B43006D9CF0 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		5239D34E1EF3B86C00BAB3F3 /* MWVIPOrderProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWVIPOrderProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5239D3521EF3B86C00BAB3F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5239D3541EF3B86C00BAB3F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +57,8 @@
 		5239D3721EF3B86C00BAB3F3 /* MWVIPOrderProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MWVIPOrderProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5239D3761EF3B86C00BAB3F3 /* MWVIPOrderProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWVIPOrderProjectUITests.m; sourceTree = "<group>"; };
 		5239D3781EF3B86C00BAB3F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		711511C1AC82D7DEF1D1EE59 /* libPods-MWVIPOrderProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MWVIPOrderProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADA14EA8FF9332B8FD8D035B /* Pods-MWVIPOrderProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWVIPOrderProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-MWVIPOrderProject/Pods-MWVIPOrderProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E52FEA2C03C92FCFF2D9132 /* libPods-MWVIPOrderProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +87,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49B27E2801163C23E4DC1150 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				711511C1AC82D7DEF1D1EE59 /* libPods-MWVIPOrderProject.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52375A7B1EF909F8006D9CF0 /* MWHeader */ = {
+			isa = PBXGroup;
+			children = (
+				52375A7C1EF90A08006D9CF0 /* MWHeader.h */,
+			);
+			path = MWHeader;
+			sourceTree = "<group>";
+		};
+		52375A7D1EF90B43006D9CF0 /* MWTool */ = {
+			isa = PBXGroup;
+			children = (
+				52375A7E1EF90B43006D9CF0 /* Util.h */,
+				52375A7F1EF90B43006D9CF0 /* Util.m */,
+			);
+			path = MWTool;
+			sourceTree = "<group>";
+		};
 		5239D3451EF3B86B00BAB3F3 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +119,8 @@
 				5239D36A1EF3B86C00BAB3F3 /* MWVIPOrderProjectTests */,
 				5239D3751EF3B86C00BAB3F3 /* MWVIPOrderProjectUITests */,
 				5239D34F1EF3B86C00BAB3F3 /* Products */,
+				546F5E7CB87651464E45B9EA /* Pods */,
+				49B27E2801163C23E4DC1150 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +137,8 @@
 		5239D3501EF3B86C00BAB3F3 /* MWVIPOrderProject */ = {
 			isa = PBXGroup;
 			children = (
+				52375A7D1EF90B43006D9CF0 /* MWTool */,
+				52375A7B1EF909F8006D9CF0 /* MWHeader */,
 				5239D3541EF3B86C00BAB3F3 /* AppDelegate.h */,
 				5239D3551EF3B86C00BAB3F3 /* AppDelegate.m */,
 				5239D3571EF3B86C00BAB3F3 /* ViewController.h */,
@@ -140,6 +178,15 @@
 			path = MWVIPOrderProjectUITests;
 			sourceTree = "<group>";
 		};
+		546F5E7CB87651464E45B9EA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				484A4C020C6C0835F71A229A /* Pods-MWVIPOrderProject.debug.xcconfig */,
+				ADA14EA8FF9332B8FD8D035B /* Pods-MWVIPOrderProject.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +194,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5239D37B1EF3B86C00BAB3F3 /* Build configuration list for PBXNativeTarget "MWVIPOrderProject" */;
 			buildPhases = (
+				3B742AEDEDE86649356D85C8 /* [CP] Check Pods Manifest.lock */,
 				5239D34A1EF3B86C00BAB3F3 /* Sources */,
 				5239D34B1EF3B86C00BAB3F3 /* Frameworks */,
 				5239D34C1EF3B86C00BAB3F3 /* Resources */,
+				C6DD4F9C053C833CA98EFDAF /* [CP] Embed Pods Frameworks */,
+				A1FF66B92569BBD4ADEDFD7A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,6 +321,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3B742AEDEDE86649356D85C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A1FF66B92569BBD4ADEDFD7A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MWVIPOrderProject/Pods-MWVIPOrderProject-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6DD4F9C053C833CA98EFDAF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MWVIPOrderProject/Pods-MWVIPOrderProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5239D34A1EF3B86C00BAB3F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -279,6 +377,7 @@
 				5239D3591EF3B86C00BAB3F3 /* ViewController.m in Sources */,
 				5239D3561EF3B86C00BAB3F3 /* AppDelegate.m in Sources */,
 				5239D3531EF3B86C00BAB3F3 /* main.m in Sources */,
+				52375A801EF90B43006D9CF0 /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +526,7 @@
 		};
 		5239D37C1EF3B86C00BAB3F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 484A4C020C6C0835F71A229A /* Pods-MWVIPOrderProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7U7AE55838;
@@ -439,6 +539,7 @@
 		};
 		5239D37D1EF3B86C00BAB3F3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADA14EA8FF9332B8FD8D035B /* Pods-MWVIPOrderProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7U7AE55838;
@@ -518,6 +619,7 @@
 				5239D37D1EF3B86C00BAB3F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5239D37E1EF3B86C00BAB3F3 /* Build configuration list for PBXNativeTarget "MWVIPOrderProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +628,7 @@
 				5239D3801EF3B86C00BAB3F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5239D3811EF3B86C00BAB3F3 /* Build configuration list for PBXNativeTarget "MWVIPOrderProjectUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +637,7 @@
 				5239D3831EF3B86C00BAB3F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

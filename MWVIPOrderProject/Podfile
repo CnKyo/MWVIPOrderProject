@@ -1,0 +1,23 @@
+target 'MWVIPOrderProject' do
+
+pod 'Masonry'
+pod 'AFNetworking'
+pod 'WPAttributedMarkup'
+pod 'UITableView+FDTemplateLayoutCell'
+pod 'SVProgressHUD'
+pod 'IQKeyboardManager'
+pod 'LKDBHelper'
+pod 'SDWebImage','~> 3.8.2'
+pod 'SKTagView'
+pod 'JPush'
+pod 'LPActionSheet'
+pod 'PYPhotoBrowser’,'~> 1.2.3'
+pod 'HandyFrame'
+pod 'ZYCornerRadius', '~> 1.0.2'
+pod 'YYModel'
+pod 'DZNEmptyDataSet'
+pod 'RSKImageCropper'
+
+end
+
+
