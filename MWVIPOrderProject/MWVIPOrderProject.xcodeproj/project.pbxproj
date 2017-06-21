@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E52FEA2C03C92FCFF2D9132 /* libPods-MWVIPOrderProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 711511C1AC82D7DEF1D1EE59 /* libPods-MWVIPOrderProject.a */; };
+		5223A94B1EFA6C9D003AD6B3 /* MWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5223A94A1EFA6C9D003AD6B3 /* MWModel.m */; };
 		52375A801EF90B43006D9CF0 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 52375A7F1EF90B43006D9CF0 /* Util.m */; };
 		52375A861EF91D9C006D9CF0 /* mLeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52375A841EF91D9C006D9CF0 /* mLeftTableViewCell.m */; };
 		52375A871EF91D9C006D9CF0 /* mLeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52375A851EF91D9C006D9CF0 /* mLeftTableViewCell.xib */; };
@@ -49,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		484A4C020C6C0835F71A229A /* Pods-MWVIPOrderProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWVIPOrderProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MWVIPOrderProject/Pods-MWVIPOrderProject.debug.xcconfig"; sourceTree = "<group>"; };
+		5223A9491EFA6C9D003AD6B3 /* MWModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWModel.h; sourceTree = "<group>"; };
+		5223A94A1EFA6C9D003AD6B3 /* MWModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWModel.m; sourceTree = "<group>"; };
 		52375A7C1EF90A08006D9CF0 /* MWHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHeader.h; sourceTree = "<group>"; };
 		52375A7E1EF90B43006D9CF0 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		52375A7F1EF90B43006D9CF0 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
@@ -122,6 +125,15 @@
 				711511C1AC82D7DEF1D1EE59 /* libPods-MWVIPOrderProject.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5223A9481EFA6C8A003AD6B3 /* MWModel */ = {
+			isa = PBXGroup;
+			children = (
+				5223A9491EFA6C9D003AD6B3 /* MWModel.h */,
+				5223A94A1EFA6C9D003AD6B3 /* MWModel.m */,
+			);
+			path = MWModel;
 			sourceTree = "<group>";
 		};
 		52375A7B1EF909F8006D9CF0 /* MWHeader */ = {
@@ -199,6 +211,7 @@
 		5239D3501EF3B86C00BAB3F3 /* MWVIPOrderProject */ = {
 			isa = PBXGroup;
 			children = (
+				5223A9481EFA6C8A003AD6B3 /* MWModel */,
 				52375A7D1EF90B43006D9CF0 /* MWTool */,
 				52375A7B1EF909F8006D9CF0 /* MWHeader */,
 				5239D3541EF3B86C00BAB3F3 /* AppDelegate.h */,
@@ -447,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52375A861EF91D9C006D9CF0 /* mLeftTableViewCell.m in Sources */,
+				5223A94B1EFA6C9D003AD6B3 /* MWModel.m in Sources */,
 				52F60FCA1EFA0DEC00319120 /* mShopCarRightView.m in Sources */,
 				5239D3591EF3B86C00BAB3F3 /* ViewController.m in Sources */,
 				52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */,

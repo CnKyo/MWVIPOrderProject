@@ -30,6 +30,9 @@
                                                          forBarMetrics:UIBarMetricsDefault];
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSArray *centralManagerIdentifiers = launchOptions[UIApplicationLaunchOptionsBluetoothCentralsKey];
+    MLLog(@"%@",centralManagerIdentifiers);
+
     // Override point for customization after application launch.
     [self initLabriary];
     return YES;
