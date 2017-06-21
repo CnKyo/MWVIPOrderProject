@@ -10,6 +10,10 @@
 #import "MWHeader.h"
 #import "mLeftTableViewCell.h"
 #import "mRightCollectionViewCell.h"
+
+#import "MWShopCarViewController.h"
+
+#import "MWLoginViewController.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (assign, nonatomic) NSIndexPath *selIndex;//单选，当前选中的行
@@ -129,6 +133,9 @@
     mLeftTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     cell.mName.textColor = M_CO;
+    
+    MWShopCarViewController *vc = [MWShopCarViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -166,15 +173,20 @@
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+
     
-    NSString *message = [[NSString alloc] initWithFormat:@"你点击了第%ld个section，第%ld个cell",(long)indexPath.section,(long)indexPath.row];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //点击确定后执行的操作；
-    }]];
-    [self presentViewController:alert animated:true completion:^{
-        //显示提示框后执行的事件；
-    }];
+//    NSString *message = [[NSString alloc] initWithFormat:@"你点击了第%ld个section，第%ld个cell",(long)indexPath.section,(long)indexPath.row];
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+//    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        //点击确定后执行的操作；
+//    }]];
+//    [self presentViewController:alert animated:true completion:^{
+//        //显示提示框后执行的事件；
+//    }];
+    
+    MWLoginViewController *vc = [MWLoginViewController new];
+    [self presentViewController:vc animated:YES completion:nil];
+    
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout

@@ -20,6 +20,14 @@
 		5239D3611EF3B86C00BAB3F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5239D35F1EF3B86C00BAB3F3 /* LaunchScreen.storyboard */; };
 		5239D36C1EF3B86C00BAB3F3 /* MWVIPOrderProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5239D36B1EF3B86C00BAB3F3 /* MWVIPOrderProjectTests.m */; };
 		5239D3771EF3B86C00BAB3F3 /* MWVIPOrderProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5239D3761EF3B86C00BAB3F3 /* MWVIPOrderProjectUITests.m */; };
+		52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC11EFA044D00319120 /* MWShopCarViewController.m */; };
+		52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC41EFA057500319120 /* mShopCarTableViewCell.m */; };
+		52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F60FC51EFA057500319120 /* mShopCarTableViewCell.xib */; };
+		52F60FCA1EFA0DEC00319120 /* mShopCarRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC91EFA0DEC00319120 /* mShopCarRightView.m */; };
+		52F60FCC1EFA0EDA00319120 /* mShopCarRightView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F60FCB1EFA0EDA00319120 /* mShopCarRightView.xib */; };
+		52F60FCF1EFA1E6B00319120 /* MWLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FCE1EFA1E6B00319120 /* MWLoginViewController.m */; };
+		52F60FD21EFA1F7500319120 /* mLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FD11EFA1F7500319120 /* mLoginView.m */; };
+		52F60FD41EFA1F8100319120 /* mLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F60FD31EFA1F8100319120 /* mLoginView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +73,19 @@
 		5239D3721EF3B86C00BAB3F3 /* MWVIPOrderProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MWVIPOrderProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5239D3761EF3B86C00BAB3F3 /* MWVIPOrderProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWVIPOrderProjectUITests.m; sourceTree = "<group>"; };
 		5239D3781EF3B86C00BAB3F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52F60FC01EFA044D00319120 /* MWShopCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWShopCarViewController.h; sourceTree = "<group>"; };
+		52F60FC11EFA044D00319120 /* MWShopCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWShopCarViewController.m; sourceTree = "<group>"; };
+		52F60FC31EFA057500319120 /* mShopCarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mShopCarTableViewCell.h; sourceTree = "<group>"; };
+		52F60FC41EFA057500319120 /* mShopCarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mShopCarTableViewCell.m; sourceTree = "<group>"; };
+		52F60FC51EFA057500319120 /* mShopCarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mShopCarTableViewCell.xib; sourceTree = "<group>"; };
+		52F60FC81EFA0DEC00319120 /* mShopCarRightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mShopCarRightView.h; sourceTree = "<group>"; };
+		52F60FC91EFA0DEC00319120 /* mShopCarRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mShopCarRightView.m; sourceTree = "<group>"; };
+		52F60FCB1EFA0EDA00319120 /* mShopCarRightView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mShopCarRightView.xib; sourceTree = "<group>"; };
+		52F60FCD1EFA1E6B00319120 /* MWLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWLoginViewController.h; sourceTree = "<group>"; };
+		52F60FCE1EFA1E6B00319120 /* MWLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWLoginViewController.m; sourceTree = "<group>"; };
+		52F60FD01EFA1F7500319120 /* mLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mLoginView.h; sourceTree = "<group>"; };
+		52F60FD11EFA1F7500319120 /* mLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mLoginView.m; sourceTree = "<group>"; };
+		52F60FD31EFA1F8100319120 /* mLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mLoginView.xib; sourceTree = "<group>"; };
 		711511C1AC82D7DEF1D1EE59 /* libPods-MWVIPOrderProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MWVIPOrderProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADA14EA8FF9332B8FD8D035B /* Pods-MWVIPOrderProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWVIPOrderProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-MWVIPOrderProject/Pods-MWVIPOrderProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +144,10 @@
 		52375A811EF91D7A006D9CF0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				52F60FC01EFA044D00319120 /* MWShopCarViewController.h */,
+				52F60FC11EFA044D00319120 /* MWShopCarViewController.m */,
+				52F60FCD1EFA1E6B00319120 /* MWLoginViewController.h */,
+				52F60FCE1EFA1E6B00319120 /* MWLoginViewController.m */,
 				52375A821EF91D87006D9CF0 /* View */,
 			);
 			path = ViewController;
@@ -136,6 +161,15 @@
 				52375A851EF91D9C006D9CF0 /* mLeftTableViewCell.xib */,
 				52375A881EF922C4006D9CF0 /* mRightCollectionViewCell.h */,
 				52375A891EF922C4006D9CF0 /* mRightCollectionViewCell.m */,
+				52F60FC31EFA057500319120 /* mShopCarTableViewCell.h */,
+				52F60FC41EFA057500319120 /* mShopCarTableViewCell.m */,
+				52F60FC51EFA057500319120 /* mShopCarTableViewCell.xib */,
+				52F60FC81EFA0DEC00319120 /* mShopCarRightView.h */,
+				52F60FC91EFA0DEC00319120 /* mShopCarRightView.m */,
+				52F60FCB1EFA0EDA00319120 /* mShopCarRightView.xib */,
+				52F60FD01EFA1F7500319120 /* mLoginView.h */,
+				52F60FD11EFA1F7500319120 /* mLoginView.m */,
+				52F60FD31EFA1F8100319120 /* mLoginView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,10 +362,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52F60FCC1EFA0EDA00319120 /* mShopCarRightView.xib in Resources */,
+				52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */,
 				5239D3611EF3B86C00BAB3F3 /* LaunchScreen.storyboard in Resources */,
 				5239D35E1EF3B86C00BAB3F3 /* Assets.xcassets in Resources */,
 				52375A871EF91D9C006D9CF0 /* mLeftTableViewCell.xib in Resources */,
 				5239D35C1EF3B86C00BAB3F3 /* Main.storyboard in Resources */,
+				52F60FD41EFA1F8100319120 /* mLoginView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,10 +442,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				52375A861EF91D9C006D9CF0 /* mLeftTableViewCell.m in Sources */,
+				52F60FCA1EFA0DEC00319120 /* mShopCarRightView.m in Sources */,
 				5239D3591EF3B86C00BAB3F3 /* ViewController.m in Sources */,
+				52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */,
+				52F60FD21EFA1F7500319120 /* mLoginView.m in Sources */,
 				5239D3561EF3B86C00BAB3F3 /* AppDelegate.m in Sources */,
 				5239D3531EF3B86C00BAB3F3 /* main.m in Sources */,
+				52F60FCF1EFA1E6B00319120 /* MWLoginViewController.m in Sources */,
 				52375A801EF90B43006D9CF0 /* Util.m in Sources */,
+				52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */,
 				52375A8A1EF922C4006D9CF0 /* mRightCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
