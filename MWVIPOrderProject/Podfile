@@ -17,6 +17,7 @@ pod 'ZYCornerRadius', '~> 1.0.2'
 pod 'YYModel'
 pod 'DZNEmptyDataSet'
 pod 'RSKImageCropper'
+pod 'BabyBluetooth','~> 0.7.0'
 
 end
 

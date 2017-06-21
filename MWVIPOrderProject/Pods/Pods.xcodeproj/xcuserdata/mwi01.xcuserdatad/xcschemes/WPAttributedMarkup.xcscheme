@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1095AFC1CC0AF4E406CB7A2A51EC1C57'
+               BlueprintIdentifier = 'BBF4E7A5E643C5BA2452CE3DA067C358'
                BlueprintName = 'WPAttributedMarkup'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libWPAttributedMarkup.a'>
