@@ -35,7 +35,7 @@
     self.manager.delegate = self;
     [self.manager XYSetDataCodingType:NSUTF8StringEncoding];
     [self.manager XYhorizontalPosition];
-    //    [self.manager XYprintAndFeed];
+//        [self.manager XYprintAndFeed]; 
     [self.manager XYPrintAndBackToNormalModel];
     MLLog(@"viewDidLoad");
     peripheralDataArray = [[NSMutableArray alloc]init];
@@ -170,45 +170,43 @@
 - (void)mShopCarRightViewDelegateWithBtnClicked:(NSInteger)mTag{
     MLLog(@"点击了第%ld个",mTag);
     NSMutableArray *mOrder = [NSMutableArray new];
-    NSString *mShopName = @"重庆漫维文化科技有限公司";
-    NSString *mAddress = @"重庆市九龙坡区杨家坪大洋百货2栋12-2";
-    NSString *mCreateTime = @"2017-06-22  09:37";
-    NSString *line = @"------------------------";
+
+    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
+    NSString *mShopName = @"\n重庆漫维文化科技有限公司";
+    NSString *mAddress = @"\n重庆市九龙坡区杨家坪大洋百货2栋12-2";
+    NSString *mCreateTime = @"\n2017-06-22  09:37";
+    NSString *line = @"\n--------------------------------";
     [mOrder addObject:mShopName];
     [mOrder addObject:mAddress];
     [mOrder addObject:mCreateTime];
     [mOrder addObject:line];
     for (int i = 0; i<7; i++) {
-        NSString *mEat = [NSString stringWithFormat:@"这是菜品---%d",i];
+        NSString *mEat = [NSString stringWithFormat:@"\n这是菜品---%d",i];
         [mOrder addObject:mEat];
     }
-    
-    [mOrder addObject:[NSString stringWithFormat:@"共计:7份"]];
-    [mOrder addObject:[NSString stringWithFormat:@"合计:¥200元"]];
-    [mOrder addObject:[NSString stringWithFormat:@"送达地址:重庆市九龙坡区谢家湾正街18号"]];
-    [mOrder addObject:[NSString stringWithFormat:@"电话:154454654654"]];
-    [mOrder addObject:[NSString stringWithFormat:@"姓名:老师"]];
-    NSMutableArray *mArr = [NSMutableArray new];
+    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n共计:7份"]];
+
+    [mOrder addObject:[NSString stringWithFormat:@"\n合计:200元"]];
+
+    [mOrder addObject:[NSString stringWithFormat:@"\n送达地址:重庆市九龙坡区谢家湾正街18号"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n电话:154454654654"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n姓名:老师"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
+
+    [self.manager setWritePeripheral:self.manager.writePeripheral];
 
     //声明一个gbk编码类型
     unsigned long  gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     for (NSString *mstr in mOrder) {
         MLLog(@"转换前----%@",mstr);
         NSData *mData = [mstr dataUsingEncoding:gbkEncoding];
-        NSString *mBaseStr = [mData base64EncodedStringWithOptions:0];
-        MLLog(@"转换后----%@",mBaseStr);
-
-        [mArr addObject:mBaseStr];
+        [self.manager XYWritePOSCommondWithData:mData callBack:^(CBCharacteristic *datcharacter) {
+            MLLog(@"%@",datcharacter);
+        }];
     }
-    
-
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:mArr];
-
-    [self.manager setWritePeripheral:self.manager.writePeripheral];
-
-    [self.manager XYWritePOSCommondWithData:data callBack:^(CBCharacteristic *datcharacter) {
-        MLLog(@"%@",datcharacter);
-    }];
     
 //    [self.manager XYWriteTSCCommondWithData:data callBack:^(CBCharacteristic *datcharacter) {
 //        MLLog(@"%@",datcharacter);
