@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E52FEA2C03C92FCFF2D9132 /* libPods-MWVIPOrderProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 711511C1AC82D7DEF1D1EE59 /* libPods-MWVIPOrderProject.a */; };
+		5210BB301EFBB9D000B505D9 /* libGSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5210BB2F1EFBB9D000B505D9 /* libGSDK.a */; };
 		5223A94B1EFA6C9D003AD6B3 /* MWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5223A94A1EFA6C9D003AD6B3 /* MWModel.m */; };
 		52375A801EF90B43006D9CF0 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 52375A7F1EF90B43006D9CF0 /* Util.m */; };
 		52375A861EF91D9C006D9CF0 /* mLeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52375A841EF91D9C006D9CF0 /* mLeftTableViewCell.m */; };
@@ -54,6 +55,14 @@
 
 /* Begin PBXFileReference section */
 		484A4C020C6C0835F71A229A /* Pods-MWVIPOrderProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MWVIPOrderProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MWVIPOrderProject/Pods-MWVIPOrderProject.debug.xcconfig"; sourceTree = "<group>"; };
+		5210BB281EFBB9D000B505D9 /* BLKWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLKWrite.h; sourceTree = "<group>"; };
+		5210BB291EFBB9D000B505D9 /* CBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBController.h; sourceTree = "<group>"; };
+		5210BB2A1EFBB9D000B505D9 /* DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfo.h; sourceTree = "<group>"; };
+		5210BB2B1EFBB9D000B505D9 /* EscCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EscCommand.h; sourceTree = "<group>"; };
+		5210BB2C1EFBB9D000B505D9 /* MyPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPeripheral.h; sourceTree = "<group>"; };
+		5210BB2D1EFBB9D000B505D9 /* ReliableBurstData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReliableBurstData.h; sourceTree = "<group>"; };
+		5210BB2E1EFBB9D000B505D9 /* TscCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TscCommand.h; sourceTree = "<group>"; };
+		5210BB2F1EFBB9D000B505D9 /* libGSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGSDK.a; sourceTree = "<group>"; };
 		5223A9491EFA6C9D003AD6B3 /* MWModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWModel.h; sourceTree = "<group>"; };
 		5223A94A1EFA6C9D003AD6B3 /* MWModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWModel.m; sourceTree = "<group>"; };
 		52375A7C1EF90A08006D9CF0 /* MWHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MWHeader.h; sourceTree = "<group>"; };
@@ -112,6 +121,7 @@
 			files = (
 				5263AA181EFA7D50003311D8 /* libXYPrinter.a in Frameworks */,
 				5263AA111EFA7D29003311D8 /* CoreBluetooth.framework in Frameworks */,
+				5210BB301EFBB9D000B505D9 /* libGSDK.a in Frameworks */,
 				5263AA0F1EFA7D22003311D8 /* CFNetwork.framework in Frameworks */,
 				5263AA0D1EFA7D1C003311D8 /* SystemConfiguration.framework in Frameworks */,
 				0E52FEA2C03C92FCFF2D9132 /* libPods-MWVIPOrderProject.a in Frameworks */,
@@ -144,6 +154,29 @@
 				711511C1AC82D7DEF1D1EE59 /* libPods-MWVIPOrderProject.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5210BB261EFBB9D000B505D9 /* GprinterSDK */ = {
+			isa = PBXGroup;
+			children = (
+				5210BB271EFBB9D000B505D9 /* include */,
+				5210BB2F1EFBB9D000B505D9 /* libGSDK.a */,
+			);
+			path = GprinterSDK;
+			sourceTree = "<group>";
+		};
+		5210BB271EFBB9D000B505D9 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				5210BB281EFBB9D000B505D9 /* BLKWrite.h */,
+				5210BB291EFBB9D000B505D9 /* CBController.h */,
+				5210BB2A1EFBB9D000B505D9 /* DeviceInfo.h */,
+				5210BB2B1EFBB9D000B505D9 /* EscCommand.h */,
+				5210BB2C1EFBB9D000B505D9 /* MyPeripheral.h */,
+				5210BB2D1EFBB9D000B505D9 /* ReliableBurstData.h */,
+				5210BB2E1EFBB9D000B505D9 /* TscCommand.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 		5223A9481EFA6C8A003AD6B3 /* MWModel */ = {
@@ -230,6 +263,7 @@
 		5239D3501EF3B86C00BAB3F3 /* MWVIPOrderProject */ = {
 			isa = PBXGroup;
 			children = (
+				5210BB261EFBB9D000B505D9 /* GprinterSDK */,
 				5263AA121EFA7D50003311D8 /* XPrinterSDK */,
 				5223A9481EFA6C8A003AD6B3 /* MWModel */,
 				52375A7D1EF90B43006D9CF0 /* MWTool */,
@@ -654,12 +688,17 @@
 			baseConfigurationReference = 484A4C020C6C0835F71A229A /* Pods-MWVIPOrderProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7U7AE55838;
+				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MWVIPOrderProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MWVIPOrderProject/XPrinterSDK",
+					"$(PROJECT_DIR)/MWVIPOrderProject/GprinterSDK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mw.com.MWVIPOrderProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -671,12 +710,17 @@
 			baseConfigurationReference = ADA14EA8FF9332B8FD8D035B /* Pods-MWVIPOrderProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7U7AE55838;
+				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MWVIPOrderProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MWVIPOrderProject/XPrinterSDK",
+					"$(PROJECT_DIR)/MWVIPOrderProject/GprinterSDK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mw.com.MWVIPOrderProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";

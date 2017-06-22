@@ -11,7 +11,13 @@
 #import "mShopCarTableViewCell.h"
 #import "mShopCarRightView.h"
 
+
+
 #import "XYSDK.h"
+
+#import "TscCommand.h"
+#import "BLKWrite.h"
+#import "EscCommand.h"
 
 @interface MWShopCarViewController ()<UITableViewDelegate,UITableViewDataSource,mShopCarTableViewCellDelegate,mShopCarTableViewCellDelegate,mShopCarRightViewDelegate,XYBLEManagerDelegate>
 
