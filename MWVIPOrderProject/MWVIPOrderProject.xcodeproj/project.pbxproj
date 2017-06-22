@@ -21,6 +21,10 @@
 		5239D3611EF3B86C00BAB3F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5239D35F1EF3B86C00BAB3F3 /* LaunchScreen.storyboard */; };
 		5239D36C1EF3B86C00BAB3F3 /* MWVIPOrderProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5239D36B1EF3B86C00BAB3F3 /* MWVIPOrderProjectTests.m */; };
 		5239D3771EF3B86C00BAB3F3 /* MWVIPOrderProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5239D3761EF3B86C00BAB3F3 /* MWVIPOrderProjectUITests.m */; };
+		5263AA0D1EFA7D1C003311D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA0C1EFA7D1C003311D8 /* SystemConfiguration.framework */; };
+		5263AA0F1EFA7D22003311D8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA0E1EFA7D22003311D8 /* CFNetwork.framework */; };
+		5263AA111EFA7D29003311D8 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA101EFA7D29003311D8 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5263AA181EFA7D50003311D8 /* libXYPrinter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA141EFA7D50003311D8 /* libXYPrinter.a */; };
 		52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC11EFA044D00319120 /* MWShopCarViewController.m */; };
 		52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC41EFA057500319120 /* mShopCarTableViewCell.m */; };
 		52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F60FC51EFA057500319120 /* mShopCarTableViewCell.xib */; };
@@ -76,6 +80,14 @@
 		5239D3721EF3B86C00BAB3F3 /* MWVIPOrderProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MWVIPOrderProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5239D3761EF3B86C00BAB3F3 /* MWVIPOrderProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MWVIPOrderProjectUITests.m; sourceTree = "<group>"; };
 		5239D3781EF3B86C00BAB3F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5263AA0C1EFA7D1C003311D8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5263AA0E1EFA7D22003311D8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5263AA101EFA7D29003311D8 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		5263AA131EFA7D50003311D8 /* BLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEManager.h; sourceTree = "<group>"; };
+		5263AA141EFA7D50003311D8 /* libXYPrinter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libXYPrinter.a; sourceTree = "<group>"; };
+		5263AA151EFA7D50003311D8 /* XYBLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYBLEManager.h; sourceTree = "<group>"; };
+		5263AA161EFA7D50003311D8 /* XYSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSDK.h; sourceTree = "<group>"; };
+		5263AA171EFA7D50003311D8 /* XYWIFIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYWIFIManager.h; sourceTree = "<group>"; };
 		52F60FC01EFA044D00319120 /* MWShopCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWShopCarViewController.h; sourceTree = "<group>"; };
 		52F60FC11EFA044D00319120 /* MWShopCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWShopCarViewController.m; sourceTree = "<group>"; };
 		52F60FC31EFA057500319120 /* mShopCarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mShopCarTableViewCell.h; sourceTree = "<group>"; };
@@ -98,6 +110,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5263AA181EFA7D50003311D8 /* libXYPrinter.a in Frameworks */,
+				5263AA111EFA7D29003311D8 /* CoreBluetooth.framework in Frameworks */,
+				5263AA0F1EFA7D22003311D8 /* CFNetwork.framework in Frameworks */,
+				5263AA0D1EFA7D1C003311D8 /* SystemConfiguration.framework in Frameworks */,
 				0E52FEA2C03C92FCFF2D9132 /* libPods-MWVIPOrderProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,6 +138,9 @@
 		49B27E2801163C23E4DC1150 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5263AA101EFA7D29003311D8 /* CoreBluetooth.framework */,
+				5263AA0E1EFA7D22003311D8 /* CFNetwork.framework */,
+				5263AA0C1EFA7D1C003311D8 /* SystemConfiguration.framework */,
 				711511C1AC82D7DEF1D1EE59 /* libPods-MWVIPOrderProject.a */,
 			);
 			name = Frameworks;
@@ -211,6 +230,7 @@
 		5239D3501EF3B86C00BAB3F3 /* MWVIPOrderProject */ = {
 			isa = PBXGroup;
 			children = (
+				5263AA121EFA7D50003311D8 /* XPrinterSDK */,
 				5223A9481EFA6C8A003AD6B3 /* MWModel */,
 				52375A7D1EF90B43006D9CF0 /* MWTool */,
 				52375A7B1EF909F8006D9CF0 /* MWHeader */,
@@ -252,6 +272,18 @@
 				5239D3781EF3B86C00BAB3F3 /* Info.plist */,
 			);
 			path = MWVIPOrderProjectUITests;
+			sourceTree = "<group>";
+		};
+		5263AA121EFA7D50003311D8 /* XPrinterSDK */ = {
+			isa = PBXGroup;
+			children = (
+				5263AA131EFA7D50003311D8 /* BLEManager.h */,
+				5263AA141EFA7D50003311D8 /* libXYPrinter.a */,
+				5263AA151EFA7D50003311D8 /* XYBLEManager.h */,
+				5263AA161EFA7D50003311D8 /* XYSDK.h */,
+				5263AA171EFA7D50003311D8 /* XYWIFIManager.h */,
+			);
+			path = XPrinterSDK;
 			sourceTree = "<group>";
 		};
 		546F5E7CB87651464E45B9EA /* Pods */ = {
@@ -625,6 +657,10 @@
 				DEVELOPMENT_TEAM = 7U7AE55838;
 				INFOPLIST_FILE = MWVIPOrderProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MWVIPOrderProject/XPrinterSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = mw.com.MWVIPOrderProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -638,6 +674,10 @@
 				DEVELOPMENT_TEAM = 7U7AE55838;
 				INFOPLIST_FILE = MWVIPOrderProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MWVIPOrderProject/XPrinterSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = mw.com.MWVIPOrderProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

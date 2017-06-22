@@ -458,4 +458,12 @@
  *  @return 转换后的字典
  */
 + (NSDictionary*)ObjectToData:(id)obj;
+
+/**
+ 数组转data
+
+ @param mArr 要转换的数组
+ @return 返回转换的data（必须进行NSCoding持久化）
+ */
++ (NSData *)ArrToData:(NSMutableArray *)mArr;
 @end

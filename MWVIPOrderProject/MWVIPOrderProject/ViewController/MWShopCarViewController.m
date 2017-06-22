@@ -10,13 +10,16 @@
 #import "MWHeader.h"
 #import "mShopCarTableViewCell.h"
 #import "mShopCarRightView.h"
-#define channelOnPeropheralView @"peripheralView"
 
-@interface MWShopCarViewController ()<UITableViewDelegate,UITableViewDataSource,mShopCarTableViewCellDelegate,mShopCarTableViewCellDelegate,mShopCarRightViewDelegate>
+#import "XYSDK.h"
+
+@interface MWShopCarViewController ()<UITableViewDelegate,UITableViewDataSource,mShopCarTableViewCellDelegate,mShopCarTableViewCellDelegate,mShopCarRightViewDelegate,XYBLEManagerDelegate>
 
 @property(strong,nonatomic)  UITableView *mLeftTableView;
 
 @property(strong,nonatomic)  mShopCarRightView *mRightView;
+
+@property(strong,nonatomic)  XYBLEManager *manager;
 
 @end
 
@@ -27,23 +30,21 @@
 }
 - (void)initBlueToothe{
 
-    [SVProgressHUD showInfoWithStatus:@"准备打开设备"];
-    NSLog(@"viewDidLoad");
-    peripheralDataArray = [[NSMutableArray alloc]init];
+    self.manager = [XYBLEManager sharedInstance];
     
-    //初始化BabyBluetooth 蓝牙库
-    baby = [BabyBluetooth shareBabyBluetooth];
-    //设置蓝牙委托
-    [self babyDelegate];
+    self.manager.delegate = self;
+    [self.manager XYSetDataCodingType:NSUTF8StringEncoding];
+    [self.manager XYhorizontalPosition];
+    //    [self.manager XYprintAndFeed];
+    [self.manager XYPrintAndBackToNormalModel];
+    MLLog(@"viewDidLoad");
+    peripheralDataArray = [[NSMutableArray alloc]init];
+    [self.manager XYstartScan];
 
 }
 -(void)viewDidAppear:(BOOL)animated{
-    NSLog(@"viewDidAppear");
-    //停止之前的连接
-    [baby cancelAllPeripheralsConnection];
-    //设置委托后直接可以使用，无需等待CBCentralManagerStatePoweredOn状态。
-    baby.scanForPeripherals().begin();
-    //baby.scanForPeripherals().begin().stop(10);
+    MLLog(@"viewDidAppear");
+   
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -68,11 +69,6 @@
     _mRightView.mPopView.hidden = YES;
     [self.view addSubview:_mRightView];
     
-//    [_mLeftTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.top.bottom.equalTo(self.view);
-//        
-//        make.width.offset(DEVICE_Width/2);
-//    }];
     
     [_mLeftTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.bottom.equalTo(self.view);
@@ -173,8 +169,56 @@
  */
 - (void)mShopCarRightViewDelegateWithBtnClicked:(NSInteger)mTag{
     MLLog(@"点击了第%ld个",mTag);
-    _mRightView.mPopView.hidden = NO;
-    [self updateRightView];
+    NSMutableArray *mOrder = [NSMutableArray new];
+    NSString *mShopName = @"重庆漫维文化科技有限公司";
+    NSString *mAddress = @"重庆市九龙坡区杨家坪大洋百货2栋12-2";
+    NSString *mCreateTime = @"2017-06-22  09:37";
+    NSString *line = @"------------------------";
+    [mOrder addObject:mShopName];
+    [mOrder addObject:mAddress];
+    [mOrder addObject:mCreateTime];
+    [mOrder addObject:line];
+    for (int i = 0; i<7; i++) {
+        NSString *mEat = [NSString stringWithFormat:@"这是菜品---%d",i];
+        [mOrder addObject:mEat];
+    }
+    
+    [mOrder addObject:[NSString stringWithFormat:@"共计:7份"]];
+    [mOrder addObject:[NSString stringWithFormat:@"合计:¥200元"]];
+    [mOrder addObject:[NSString stringWithFormat:@"送达地址:重庆市九龙坡区谢家湾正街18号"]];
+    [mOrder addObject:[NSString stringWithFormat:@"电话:154454654654"]];
+    [mOrder addObject:[NSString stringWithFormat:@"姓名:老师"]];
+    NSMutableArray *mArr = [NSMutableArray new];
+
+    //声明一个gbk编码类型
+    unsigned long  gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    for (NSString *mstr in mOrder) {
+        MLLog(@"转换前----%@",mstr);
+        NSData *mData = [mstr dataUsingEncoding:gbkEncoding];
+        NSString *mBaseStr = [mData base64EncodedStringWithOptions:0];
+        MLLog(@"转换后----%@",mBaseStr);
+
+        [mArr addObject:mBaseStr];
+    }
+    
+
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:mArr];
+
+    [self.manager setWritePeripheral:self.manager.writePeripheral];
+
+    [self.manager XYWritePOSCommondWithData:data callBack:^(CBCharacteristic *datcharacter) {
+        MLLog(@"%@",datcharacter);
+    }];
+    
+//    [self.manager XYWriteTSCCommondWithData:data callBack:^(CBCharacteristic *datcharacter) {
+//        MLLog(@"%@",datcharacter);
+//
+//    }];
+    
+    
+    
+//    _mRightView.mPopView.hidden = NO;
+//    [self updateRightView];
     switch (mTag) {
         case 0:
         {
@@ -212,138 +256,42 @@
 }
 
 #pragma mark -蓝牙配置和操作
+- (void)XYdidUpdatePeripheralList:(NSArray *)peripherals RSSIList:(NSArray *)rssiList{
+    MLLog(@"peripherals:%@-------rssiList:%@",peripherals,rssiList);
+    if (peripherals.count>0) {
+        for (CBPeripheral *printer in peripherals) {
+            if ([printer.name isEqualToString:@"Printer001"]) {
+                self.manager.writePeripheral = printer;
+                [self.manager XYconnectDevice:printer];
 
-//蓝牙网关初始化和委托方法设置
--(void)babyDelegate{
-    
-    __weak typeof(self) weakSelf = self;
-    [baby setBlockOnCentralManagerDidUpdateState:^(CBCentralManager *central) {
-        if (central.state == CBCentralManagerStatePoweredOn) {
-            [SVProgressHUD showInfoWithStatus:@"设备打开成功，开始扫描设备"];
+            }
         }
-    }];
-    
-    //设置扫描到设备的委托
-    [baby setBlockOnDiscoverToPeripherals:^(CBCentralManager *central, CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI) {
-        NSLog(@"搜索到了设备:%@",peripheral.name);
-        [weakSelf insertTableView:peripheral advertisementData:advertisementData RSSI:RSSI];
-    }];
-    
-    
-    //设置发现设service的Characteristics的委托
-    [baby setBlockOnDiscoverCharacteristics:^(CBPeripheral *peripheral, CBService *service, NSError *error) {
-        NSLog(@"===service name:%@",service.UUID);
-        for (CBCharacteristic *c in service.characteristics) {
-            NSLog(@"charateristic name is :%@",c.UUID);
-        }
-    }];
-    //设置读取characteristics的委托
-    [baby setBlockOnReadValueForCharacteristic:^(CBPeripheral *peripheral, CBCharacteristic *characteristics, NSError *error) {
-        NSLog(@"characteristic name:%@ value is:%@",characteristics.UUID,characteristics.value);
-    }];
-    //设置发现characteristics的descriptors的委托
-    [baby setBlockOnDiscoverDescriptorsForCharacteristic:^(CBPeripheral *peripheral, CBCharacteristic *characteristic, NSError *error) {
-        NSLog(@"===characteristic name:%@",characteristic.service.UUID);
-        for (CBDescriptor *d in characteristic.descriptors) {
-            NSLog(@"CBDescriptor name is :%@",d.UUID);
-        }
-    }];
-    //设置读取Descriptor的委托
-    [baby setBlockOnReadValueForDescriptors:^(CBPeripheral *peripheral, CBDescriptor *descriptor, NSError *error) {
-        NSLog(@"Descriptor name:%@ value is:%@",descriptor.characteristic.UUID, descriptor.value);
-    }];
-    
-    
-    //设置查找设备的过滤器
-    [baby setFilterOnDiscoverPeripherals:^BOOL(NSString *peripheralName, NSDictionary *advertisementData, NSNumber *RSSI) {
-        
-        //最常用的场景是查找某一个前缀开头的设备
-        //        if ([peripheralName hasPrefix:@"Pxxxx"] ) {
-        //            return YES;
-        //        }
-        //        return NO;
-        
-        //设置查找规则是名称大于0 ， the search rule is peripheral.name length > 0
-        if (peripheralName.length >0) {
-            return YES;
-        }
-        return NO;
-    }];
-    
-    
-    [baby setBlockOnCancelAllPeripheralsConnectionBlock:^(CBCentralManager *centralManager) {
-        NSLog(@"setBlockOnCancelAllPeripheralsConnectionBlock");
-    }];
-    
-    [baby setBlockOnCancelScanBlock:^(CBCentralManager *centralManager) {
-        NSLog(@"setBlockOnCancelScanBlock");
-    }];
-    
-    
-    /*设置babyOptions
-     
-     参数分别使用在下面这几个地方，若不使用参数则传nil
-     - [centralManager scanForPeripheralsWithServices:scanForPeripheralsWithServices options:scanForPeripheralsWithOptions];
-     - [centralManager connectPeripheral:peripheral options:connectPeripheralWithOptions];
-     - [peripheral discoverServices:discoverWithServices];
-     - [peripheral discoverCharacteristics:discoverWithCharacteristics forService:service];
-     
-     该方法支持channel版本:
-     [baby setBabyOptionsAtChannel:<#(NSString *)#> scanForPeripheralsWithOptions:<#(NSDictionary *)#> connectPeripheralWithOptions:<#(NSDictionary *)#> scanForPeripheralsWithServices:<#(NSArray *)#> discoverWithServices:<#(NSArray *)#> discoverWithCharacteristics:<#(NSArray *)#>]
-     */
-    
-    //示例:
-    //扫描选项->CBCentralManagerScanOptionAllowDuplicatesKey:忽略同一个Peripheral端的多个发现事件被聚合成一个发现事件
-    NSDictionary *scanForPeripheralsWithOptions = @{CBCentralManagerScanOptionAllowDuplicatesKey:@YES};
-    //连接设备->
-    [baby setBabyOptionsWithScanForPeripheralsWithOptions:scanForPeripheralsWithOptions connectPeripheralWithOptions:nil scanForPeripheralsWithServices:nil discoverWithServices:nil discoverWithCharacteristics:nil];
-    
-    
-    //设置设备连接成功的委托,同一个baby对象，使用不同的channel切换委托回调
-    [baby setBlockOnConnectedAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral) {
-        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"设备：%@--连接成功",peripheral.name]];
-    }];
-    
-    //设置设备连接失败的委托
-    [baby setBlockOnFailToConnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
-        NSLog(@"设备：%@--连接失败",peripheral.name);
-        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"设备：%@--连接失败",peripheral.name]];
-    }];
-    
-    //设置设备断开连接的委托
-    [baby setBlockOnDisconnectAtChannel:channelOnPeropheralView block:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
-        NSLog(@"设备：%@--断开连接",peripheral.name);
-        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"设备：%@--断开失败",peripheral.name]];
-    }];
-
-}
-
-#pragma mark -UIViewController 方法
-//插入table数据
--(void)insertTableView:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
-    
-    NSArray *peripherals = [peripheralDataArray valueForKey:@"peripheral"];
-    if(![peripherals containsObject:peripheral]) {
-        NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:peripherals.count inSection:0];
-        [indexPaths addObject:indexPath];
-        
-        NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
-        [item setValue:peripheral forKey:@"peripheral"];
-        [item setValue:RSSI forKey:@"RSSI"];
-        [item setValue:advertisementData forKey:@"advertisementData"];
-        [peripheralDataArray addObject:item];
-        
     }
-    NSDictionary *item = [peripheralDataArray objectAtIndex:0];
-    CBPeripheral *mPeripheral = [item objectForKey:@"peripheral"];
-    [self connectDevice:mPeripheral andBaby:baby];
+    
+    
 }
-- (void)connectDevice:(CBPeripheral *)peripheral andBaby:(BabyBluetooth *)mBle{
-    [baby cancelScan];
+- (void)XYdidConnectPeripheral:(CBPeripheral *)peripheral{
+    MLLog(@"链接成功peripherals:%@",peripheral);
+    [SVProgressHUD showSuccessWithStatus:@"打印机连接成功"];
+    [self.manager XYstopScan];
 
-    [SVProgressHUD showInfoWithStatus:@"开始连接设备"];
-    baby.having(peripheral).and.channel(channelOnPeropheralView).then.connectToPeripherals().discoverServices().discoverCharacteristics().readValueForCharacteristic().discoverDescriptorsForCharacteristic().readValueForDescriptors().begin();
+}
+- (void)XYdidFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
+    MLLog(@"链接失败peripherals:%@   失败的：%@",peripheral,error);
+    [SVProgressHUD showSuccessWithStatus:@"打印机连接失败"];
+    [self.manager XYstopScan];
+
+
+}
+- (void)XYdidDisconnectPeripheral:(CBPeripheral *)peripheral isAutoDisconnect:(BOOL)isAutoDisconnect{
+    MLLog(@"链接已断开peripherals:%@   断开的：%d",peripheral,isAutoDisconnect);
+    [SVProgressHUD showSuccessWithStatus:@"打印机已断开连接"];
+    [self.manager XYstopScan];
+
+
+}
+- (void)XYdidWriteValueForCharacteristic:(CBCharacteristic *)character error:(NSError *)error{
+    MLLog(@"写入数据:%@   错误的：%@",character,error);
 
 }
 
