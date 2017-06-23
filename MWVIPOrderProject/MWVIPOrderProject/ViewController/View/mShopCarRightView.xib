@@ -63,36 +63,6 @@
                         <action selector="mBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="xyJ-ap-3Zq"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixr-ln-vJt">
-                    <rect key="frame" x="15" y="210" width="345" height="345"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cb4-Ld-JMH">
-                            <rect key="frame" x="47" y="22" width="250" height="247"/>
-                            <color key="backgroundColor" red="0.0087672332299999992" green="0.7236934304" blue="0.12114854899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入您的手机号码" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hIH-lF-EHP">
-                            <rect key="frame" x="47" y="290" width="251" height="45"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="45" id="p69-df-ned"/>
-                            </constraints>
-                            <color key="textColor" red="0.0087672332299999992" green="0.7236934304" blue="0.12114854899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                        </textField>
-                    </subviews>
-                    <color key="backgroundColor" red="0.9410971999168396" green="0.94122904539108276" blue="0.94105565547943115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="hIH-lF-EHP" secondAttribute="bottom" constant="10" id="BlS-gW-ZfI"/>
-                        <constraint firstAttribute="trailing" secondItem="Cb4-Ld-JMH" secondAttribute="trailing" constant="48" id="C1h-h5-Ygc"/>
-                        <constraint firstAttribute="trailing" secondItem="hIH-lF-EHP" secondAttribute="trailing" constant="47" id="P3S-pR-C0M"/>
-                        <constraint firstItem="hIH-lF-EHP" firstAttribute="leading" secondItem="ixr-ln-vJt" secondAttribute="leading" constant="47" id="aA3-mH-Ls2"/>
-                        <constraint firstAttribute="width" constant="345" id="iOY-B3-ljP"/>
-                        <constraint firstItem="hIH-lF-EHP" firstAttribute="top" secondItem="Cb4-Ld-JMH" secondAttribute="bottom" constant="21" id="uZT-ZA-vl7"/>
-                        <constraint firstItem="Cb4-Ld-JMH" firstAttribute="top" secondItem="ixr-ln-vJt" secondAttribute="top" constant="22" id="v8X-AB-PII"/>
-                        <constraint firstItem="Cb4-Ld-JMH" firstAttribute="leading" secondItem="ixr-ln-vJt" secondAttribute="leading" constant="47" id="vbX-sd-V5M"/>
-                        <constraint firstAttribute="height" constant="345" id="z7H-vY-lFa"/>
-                    </constraints>
-                </view>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3L-hb-62O">
                     <rect key="frame" x="195" y="210" width="165" height="70"/>
                     <color key="backgroundColor" red="0.13544064759999999" green="0.68249452109999997" blue="0.21679496770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -105,6 +75,52 @@
                         <action selector="mBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="CSg-lI-QQC"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixr-ln-vJt">
+                    <rect key="frame" x="15" y="210" width="345" height="400"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cb4-Ld-JMH">
+                            <rect key="frame" x="47" y="22" width="250" height="252"/>
+                            <color key="backgroundColor" red="0.0087672332299999992" green="0.7236934304" blue="0.12114854899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入您的手机号码" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hIH-lF-EHP">
+                            <rect key="frame" x="47" y="295" width="251" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="p69-df-ned"/>
+                            </constraints>
+                            <color key="textColor" red="0.0087672332299999992" green="0.7236934304" blue="0.12114854899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        </textField>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNb-go-39i">
+                            <rect key="frame" x="47" y="350" width="251" height="40"/>
+                            <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="5tM-kF-AjI"/>
+                            </constraints>
+                            <state key="normal" title="提交">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="mBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="yOh-m8-v1i"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.9410971999168396" green="0.94122904539108276" blue="0.94105565547943115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Cb4-Ld-JMH" secondAttribute="trailing" constant="48" id="C1h-h5-Ygc"/>
+                        <constraint firstItem="eNb-go-39i" firstAttribute="top" secondItem="hIH-lF-EHP" secondAttribute="bottom" constant="10" id="CsM-p1-AFt"/>
+                        <constraint firstAttribute="trailing" secondItem="hIH-lF-EHP" secondAttribute="trailing" constant="47" id="P3S-pR-C0M"/>
+                        <constraint firstItem="eNb-go-39i" firstAttribute="leading" secondItem="ixr-ln-vJt" secondAttribute="leading" constant="47" id="ZYj-hy-7Hb"/>
+                        <constraint firstItem="hIH-lF-EHP" firstAttribute="leading" secondItem="ixr-ln-vJt" secondAttribute="leading" constant="47" id="aA3-mH-Ls2"/>
+                        <constraint firstAttribute="trailing" secondItem="eNb-go-39i" secondAttribute="trailing" constant="47" id="bz9-mr-DRn"/>
+                        <constraint firstAttribute="width" constant="345" id="iOY-B3-ljP"/>
+                        <constraint firstAttribute="bottom" secondItem="eNb-go-39i" secondAttribute="bottom" constant="10" id="n3q-by-0Nt"/>
+                        <constraint firstItem="hIH-lF-EHP" firstAttribute="top" secondItem="Cb4-Ld-JMH" secondAttribute="bottom" constant="21" id="uZT-ZA-vl7"/>
+                        <constraint firstItem="Cb4-Ld-JMH" firstAttribute="top" secondItem="ixr-ln-vJt" secondAttribute="top" constant="22" id="v8X-AB-PII"/>
+                        <constraint firstItem="Cb4-Ld-JMH" firstAttribute="leading" secondItem="ixr-ln-vJt" secondAttribute="leading" constant="47" id="vbX-sd-V5M"/>
+                        <constraint firstAttribute="height" constant="400" id="z7H-vY-lFa"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.94109719989999996" green="0.94122904539999996" blue="0.94105565550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -135,6 +151,7 @@
             <connections>
                 <outlet property="mBarCodeImg" destination="Cb4-Ld-JMH" id="qYZ-qh-2x5"/>
                 <outlet property="mCashPay" destination="T3L-hb-62O" id="5Xr-Qy-gr0"/>
+                <outlet property="mComitBtn" destination="eNb-go-39i" id="0tR-cD-xLT"/>
                 <outlet property="mOutPay" destination="b1E-91-gyc" id="nft-YB-tRL"/>
                 <outlet property="mPhoneTx" destination="hIH-lF-EHP" id="2FN-g6-UXB"/>
                 <outlet property="mPopView" destination="ixr-ln-vJt" id="Tdb-Ja-QkY"/>

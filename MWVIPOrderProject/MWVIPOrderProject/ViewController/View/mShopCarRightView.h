@@ -40,6 +40,7 @@
 ///积分支付
 @property (weak, nonatomic) IBOutlet UIButton *mScorePay;
 
+@property (weak, nonatomic) IBOutlet UIButton *mComitBtn;
 @property (weak,nonatomic) id<mShopCarRightViewDelegate>delegate;
 ///弹出view
 @property (weak, nonatomic) IBOutlet UIView *mPopView;

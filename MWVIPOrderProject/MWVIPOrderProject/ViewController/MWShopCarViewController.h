@@ -7,7 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TscCommand.h"
+#import "BLKWrite.h"
+#import "EscCommand.h"
+#import "CBController.h"
+#import "DeviceInfo.h"
 
-@interface MWShopCarViewController : UIViewController
+@interface MWShopCarViewController : CBController
+{
+    NSTimer *refreshDeviceListTimer;
+    
+    //Derek
+    DeviceInfo *deviceInfo;
+    MyPeripheral *controlPeripheral;
+    NSMutableArray *connectedDeviceInfo;//stored for DeviceInfo object
+    NSMutableArray *connectingList;//stored for MyPeripheral object
+    
+
+}
+@property (assign) int connectionStatus;
 
 @end

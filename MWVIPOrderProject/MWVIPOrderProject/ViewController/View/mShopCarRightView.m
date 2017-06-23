@@ -27,6 +27,9 @@
     
     view.mPhoneTx.delegate = view;
     
+    
+    view.mComitBtn.layer.cornerRadius = 5;
+
     return view;
 }
 
