@@ -31,6 +31,9 @@
 {
     NSMutableArray *peripheralDataArray;
     BabyBluetooth *baby;
+    
+    
+    MWPrintType mPtype;
 }
 @synthesize connectionStatus;
 
@@ -46,6 +49,7 @@
     MLLog(@"viewDidLoad");
     peripheralDataArray = [[NSMutableArray alloc]init];
     [self.manager XYstartScan];
+    [SVProgressHUD showWithStatus:@"扫描设备中..."];
 
 }
 //3
@@ -99,7 +103,6 @@
         make.left.equalTo(_mLeftTableView.mas_right);
         make.width.offset(DEVICE_Width/2);
     }];
-    [self initBlueToothe];
 
     
 }
@@ -193,70 +196,43 @@
     switch (mTag) {
         case 0:
         {
-        NSMutableArray *mOrder = [NSMutableArray new];
-        
-        [mOrder addObject:[NSString stringWithFormat:@"\n"]];
-        NSString *mShopName = @"\n重庆漫维文化科技有限公司";
-        NSString *mAddress = @"\n重庆市九龙坡区杨家坪大洋百货2栋12-2";
-        NSString *mCreateTime = @"\n2017-06-22  09:37";
-        NSString *line = @"\n--------------------------------";
-        [mOrder addObject:mShopName];
-        [mOrder addObject:mAddress];
-        [mOrder addObject:mCreateTime];
-        [mOrder addObject:line];
-        for (int i = 0; i<7; i++) {
-            NSString *mEat = [NSString stringWithFormat:@"\n这是菜品---%d",i];
-            [mOrder addObject:mEat];
-        }
-        [mOrder addObject:[NSString stringWithFormat:@"\n"]];
-        [mOrder addObject:[NSString stringWithFormat:@"\n共计:7份"]];
-        
-        [mOrder addObject:[NSString stringWithFormat:@"\n合计:200元"]];
-        
-        [mOrder addObject:[NSString stringWithFormat:@"\n送达地址:重庆市九龙坡区谢家湾正街18号"]];
-        [mOrder addObject:[NSString stringWithFormat:@"\n电话:154454654654"]];
-        [mOrder addObject:[NSString stringWithFormat:@"\n姓名:老师"]];
-        [mOrder addObject:[NSString stringWithFormat:@"\n"]];
-        [mOrder addObject:[NSString stringWithFormat:@"\n"]];
-        [mOrder addObject:[NSString stringWithFormat:@"\n"]];
-        
-        [self.manager setWritePeripheral:self.manager.writePeripheral];
-        
-        //声明一个gbk编码类型
-        unsigned long  gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-        for (NSString *mstr in mOrder) {
-            MLLog(@"转换前----%@",mstr);
-            NSData *mData = [mstr dataUsingEncoding:gbkEncoding];
-            [self.manager XYWritePOSCommondWithData:mData callBack:^(CBCharacteristic *datcharacter) {
-                MLLog(@"%@",datcharacter);
-            }];
-        }
+        mPtype = MWPrintTypeWithWechatPay;
+        [self initBlueToothe];
+
+ 
         }
             break;
         case 1:
         {
-        
+        mPtype = MWPrintTypeWithCashPay;
+        [self initBlueToothe];
         }
             break;
         case 2:
         {
-        
-        }
-            break;
-        case 3:
-        {
+        mPtype = MWPrintTypeWithOutPay;
         [self startScan];
 
         }
             break;
+        case 3:
+        {
+        mPtype = MWPrintTypeWithScorePay;
+        [self initBlueToothe];
+        }
+            break;
         case 4:
         {
-
-        if (controlPeripheral.connectStaus == MYPERIPHERAL_CONNECT_STATUS_CONNECTED) {
-            [self GPrinterTask];
-        }else {
-            [self startScan];
+        if (mPtype == MWPrintTypeWithOutPay) {
+            if (controlPeripheral.connectStaus == MYPERIPHERAL_CONNECT_STATUS_CONNECTED) {
+                [self GPrinterTask];
+            }else {
+                [self startScan];
+            }
+        }else{
+            [self XPrinterTask];
         }
+        
         }
             break;
             
@@ -264,7 +240,49 @@
             break;
     }
 }
+- (void)XPrinterTask{
 
+    NSMutableArray *mOrder = [NSMutableArray new];
+    
+    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
+    NSString *mShopName = @"\n重庆漫维文化科技有限公司";
+    NSString *mAddress = @"\n重庆市九龙坡区杨家坪大洋百货2栋12-2";
+    NSString *mCreateTime = @"\n2017-06-22  09:37";
+    NSString *line = @"\n--------------------------------";
+    [mOrder addObject:mShopName];
+    [mOrder addObject:mAddress];
+    [mOrder addObject:mCreateTime];
+    [mOrder addObject:line];
+    for (int i = 0; i<7; i++) {
+        NSString *mEat = [NSString stringWithFormat:@"\n这是菜品---%d",i];
+        [mOrder addObject:mEat];
+    }
+    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n共计:       7份"]];
+    
+    [mOrder addObject:[NSString stringWithFormat:@"\n合计:       200元"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n本次积分:       20.0"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n实收:       195元"]];
+    
+    [mOrder addObject:[NSString stringWithFormat:@"\n送达地址:重庆市九龙坡区谢家湾正街18号"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n电话:154454654654"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n姓名:老师"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
+    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
+    
+    [self.manager setWritePeripheral:self.manager.writePeripheral];
+    
+    //声明一个gbk编码类型
+    unsigned long  gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    for (NSString *mstr in mOrder) {
+        MLLog(@"转换前----%@",mstr);
+        NSData *mData = [mstr dataUsingEncoding:gbkEncoding];
+        [self.manager XYWritePOSCommondWithData:mData callBack:^(CBCharacteristic *datcharacter) {
+            MLLog(@"%@",datcharacter);
+        }];
+    }
+}
 /**
  输入框代理方法
  
@@ -293,24 +311,29 @@
     MLLog(@"链接成功peripherals:%@",peripheral);
     [SVProgressHUD showSuccessWithStatus:@"打印机连接成功"];
     [self.manager XYstopScan];
-
+    [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:1];
 }
 - (void)XYdidFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
     MLLog(@"链接失败peripherals:%@   失败的：%@",peripheral,error);
     [SVProgressHUD showSuccessWithStatus:@"打印机连接失败"];
     [self.manager XYstopScan];
-
+    [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:1];
 
 }
 - (void)XYdidDisconnectPeripheral:(CBPeripheral *)peripheral isAutoDisconnect:(BOOL)isAutoDisconnect{
     MLLog(@"链接已断开peripherals:%@   断开的：%d",peripheral,isAutoDisconnect);
     [SVProgressHUD showSuccessWithStatus:@"打印机已断开连接"];
     [self.manager XYstopScan];
-
+    [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:1];
 
 }
 - (void)XYdidWriteValueForCharacteristic:(CBCharacteristic *)character error:(NSError *)error{
     MLLog(@"写入数据:%@   错误的：%@",character,error);
+    [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:1];
+
+}
+- (void)XPSVPDissmiss{
+    [SVProgressHUD dismiss];
 
 }
 #pragma mark----****----GPrinter代理方法
@@ -540,8 +563,8 @@
     [tscCmd addCls];
     if (controlPeripheral!=nil) {
         [self disconnectDevice:controlPeripheral];
+
     }
-    
     [SVProgressHUD dismiss];
 }
 @end

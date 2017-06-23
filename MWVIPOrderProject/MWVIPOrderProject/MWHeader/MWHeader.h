@@ -180,6 +180,13 @@ typedef NS_ENUM(NSInteger,WKCustomPopViewType) {
     
 };
 
+typedef NS_ENUM(NSInteger,MWPrintType){
+    MWPrintTypeWithWechatPay = 1,///微信支付
+    MWPrintTypeWithCashPay = 2,///现金支付
+    MWPrintTypeWithOutPay = 3,///外卖支付
+    MWPrintTypeWithScorePay = 4,///积分支付
+
+};
 
 //-----------------------
 //自定义的写在下面，通用的写在上面
