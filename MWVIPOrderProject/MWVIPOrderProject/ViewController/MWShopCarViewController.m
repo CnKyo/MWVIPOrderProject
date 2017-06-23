@@ -60,21 +60,24 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     NSLog(@"viewWillDisappear");
+    if (self.manager!=nil) {
+        [self.manager XYdisconnectRootPeripheral];
+    }
+    TscCommand *tscCmd = [[TscCommand alloc] init];
+    [tscCmd addCls];
+    if (controlPeripheral!=nil) {
+        [self disconnectDevice:controlPeripheral];
+        
+    }
+    controlPeripheral = nil;
+    deviceInfo = nil;
+    [SVProgressHUD dismiss];
 }
 //1
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"今日销售2000份营业额¥30000元";
-    
-    
-    connectedDeviceInfo = [NSMutableArray new];
-    connectingList = [NSMutableArray new];
-    
-    deviceInfo = [[DeviceInfo alloc]init];
-    refreshDeviceListTimer = nil;
-    [self setConnectionStatus:LE_STATUS_IDLE];
-    controlPeripheral = [MyPeripheral new];
     
     _mLeftTableView = [UITableView new];
     _mLeftTableView.backgroundColor = [UIColor whiteColor];
@@ -211,7 +214,7 @@
         case 2:
         {
         mPtype = MWPrintTypeWithOutPay;
-        [self startScan];
+        [self initGPDevice];
 
         }
             break;
@@ -316,14 +319,14 @@
 - (void)XYdidFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
     MLLog(@"链接失败peripherals:%@   失败的：%@",peripheral,error);
     [SVProgressHUD showSuccessWithStatus:@"打印机连接失败"];
-    [self.manager XYstopScan];
+
     [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:1];
 
 }
 - (void)XYdidDisconnectPeripheral:(CBPeripheral *)peripheral isAutoDisconnect:(BOOL)isAutoDisconnect{
     MLLog(@"链接已断开peripherals:%@   断开的：%d",peripheral,isAutoDisconnect);
     [SVProgressHUD showSuccessWithStatus:@"打印机已断开连接"];
-    [self.manager XYstopScan];
+
     [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:1];
 
 }
@@ -332,6 +335,7 @@
     [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:1];
 
 }
+
 - (void)XPSVPDissmiss{
     [SVProgressHUD dismiss];
 
@@ -372,7 +376,18 @@
     }
 }
 
-
+- (void)initGPDevice{
+    
+    connectedDeviceInfo = [NSMutableArray new];
+    connectingList = [NSMutableArray new];
+    
+    deviceInfo = [[DeviceInfo alloc]init];
+    refreshDeviceListTimer = nil;
+    [self setConnectionStatus:LE_STATUS_IDLE];
+    controlPeripheral = [MyPeripheral new];
+    
+    [self startScan];
+}
 //4
 - (void)startScan {
     [super startScan];
@@ -559,12 +574,8 @@
     
 }
 - (void)dealloc{
-    TscCommand *tscCmd = [[TscCommand alloc] init];
-    [tscCmd addCls];
-    if (controlPeripheral!=nil) {
-        [self disconnectDevice:controlPeripheral];
+   
+    [refreshDeviceListTimer invalidate];
 
-    }
-    [SVProgressHUD dismiss];
 }
 @end
