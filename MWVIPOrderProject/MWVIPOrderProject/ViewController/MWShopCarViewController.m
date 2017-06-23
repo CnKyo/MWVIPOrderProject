@@ -60,17 +60,27 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     NSLog(@"viewWillDisappear");
+    
     if (self.manager!=nil) {
         [self.manager XYdisconnectRootPeripheral];
     }
-    TscCommand *tscCmd = [[TscCommand alloc] init];
-    [tscCmd addCls];
-    if (controlPeripheral!=nil) {
-        [self disconnectDevice:controlPeripheral];
-        
+    
+
+    
+//        if (controlPeripheral!=nil) {
+//            controlPeripheral.connectStaus = MYPERIPHERAL_CONNECT_STATUS_IDLE;
+//            [self disconnectDevice:controlPeripheral];
+//    
+//        }
+//    
+//    controlPeripheral = nil;
+//    deviceInfo = nil;
+    
+    
+    if (refreshDeviceListTimer) {
+        [refreshDeviceListTimer invalidate];
+        refreshDeviceListTimer = nil;
     }
-    controlPeripheral = nil;
-    deviceInfo = nil;
     [SVProgressHUD dismiss];
 }
 //1
@@ -341,6 +351,8 @@
 
 }
 #pragma mark----****----GPrinter代理方法
+
+
 - (void) switchToMainFeaturePage {
     NSLog(@"[ConnectViewController] switchToMainFeaturePage");
     
@@ -429,7 +441,7 @@
             [self connectDevice:mDevice];
             [SVProgressHUD showSuccessWithStatus:@"设备已链接"];
             controlPeripheral = mDevice;
-            [SVProgressHUD dismiss];
+            [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:3];
 
         }
     }
@@ -573,9 +585,5 @@
     
     
 }
-- (void)dealloc{
-   
-    [refreshDeviceListTimer invalidate];
 
-}
 @end
