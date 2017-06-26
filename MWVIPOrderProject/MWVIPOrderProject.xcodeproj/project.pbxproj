@@ -26,6 +26,10 @@
 		5263AA0F1EFA7D22003311D8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA0E1EFA7D22003311D8 /* CFNetwork.framework */; };
 		5263AA111EFA7D29003311D8 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA101EFA7D29003311D8 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5263AA181EFA7D50003311D8 /* libXYPrinter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA141EFA7D50003311D8 /* libXYPrinter.a */; };
+		529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25951F00A7AB005B6D75 /* HLPrinter.m */; };
+		529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25981F00A7AB005B6D75 /* SEPrinterManager.m */; };
+		529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F259A1F00A7AB005B6D75 /* UIImage+Bitmap.m */; };
+		529F25A01F00A7AB005B6D75 /* UIWebView+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F259C1F00A7AB005B6D75 /* UIWebView+UIImage.m */; };
 		52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC11EFA044D00319120 /* MWShopCarViewController.m */; };
 		52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC41EFA057500319120 /* mShopCarTableViewCell.m */; };
 		52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F60FC51EFA057500319120 /* mShopCarTableViewCell.xib */; };
@@ -97,6 +101,15 @@
 		5263AA151EFA7D50003311D8 /* XYBLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYBLEManager.h; sourceTree = "<group>"; };
 		5263AA161EFA7D50003311D8 /* XYSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSDK.h; sourceTree = "<group>"; };
 		5263AA171EFA7D50003311D8 /* XYWIFIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYWIFIManager.h; sourceTree = "<group>"; };
+		529F25941F00A7AB005B6D75 /* HLPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPrinter.h; sourceTree = "<group>"; };
+		529F25951F00A7AB005B6D75 /* HLPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPrinter.m; sourceTree = "<group>"; };
+		529F25961F00A7AB005B6D75 /* SEBLEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEBLEConst.h; sourceTree = "<group>"; };
+		529F25971F00A7AB005B6D75 /* SEPrinterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEPrinterManager.h; sourceTree = "<group>"; };
+		529F25981F00A7AB005B6D75 /* SEPrinterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEPrinterManager.m; sourceTree = "<group>"; };
+		529F25991F00A7AB005B6D75 /* UIImage+Bitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Bitmap.h"; sourceTree = "<group>"; };
+		529F259A1F00A7AB005B6D75 /* UIImage+Bitmap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Bitmap.m"; sourceTree = "<group>"; };
+		529F259B1F00A7AB005B6D75 /* UIWebView+UIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+UIImage.h"; sourceTree = "<group>"; };
+		529F259C1F00A7AB005B6D75 /* UIWebView+UIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+UIImage.m"; sourceTree = "<group>"; };
 		52F60FC01EFA044D00319120 /* MWShopCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWShopCarViewController.h; sourceTree = "<group>"; };
 		52F60FC11EFA044D00319120 /* MWShopCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWShopCarViewController.m; sourceTree = "<group>"; };
 		52F60FC31EFA057500319120 /* mShopCarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mShopCarTableViewCell.h; sourceTree = "<group>"; };
@@ -263,6 +276,7 @@
 		5239D3501EF3B86C00BAB3F3 /* MWVIPOrderProject */ = {
 			isa = PBXGroup;
 			children = (
+				529F25931F00A7AB005B6D75 /* BLEPrinter */,
 				5210BB261EFBB9D000B505D9 /* GprinterSDK */,
 				5263AA121EFA7D50003311D8 /* XPrinterSDK */,
 				5223A9481EFA6C8A003AD6B3 /* MWModel */,
@@ -318,6 +332,22 @@
 				5263AA171EFA7D50003311D8 /* XYWIFIManager.h */,
 			);
 			path = XPrinterSDK;
+			sourceTree = "<group>";
+		};
+		529F25931F00A7AB005B6D75 /* BLEPrinter */ = {
+			isa = PBXGroup;
+			children = (
+				529F25941F00A7AB005B6D75 /* HLPrinter.h */,
+				529F25951F00A7AB005B6D75 /* HLPrinter.m */,
+				529F25961F00A7AB005B6D75 /* SEBLEConst.h */,
+				529F25971F00A7AB005B6D75 /* SEPrinterManager.h */,
+				529F25981F00A7AB005B6D75 /* SEPrinterManager.m */,
+				529F25991F00A7AB005B6D75 /* UIImage+Bitmap.h */,
+				529F259A1F00A7AB005B6D75 /* UIImage+Bitmap.m */,
+				529F259B1F00A7AB005B6D75 /* UIWebView+UIImage.h */,
+				529F259C1F00A7AB005B6D75 /* UIWebView+UIImage.m */,
+			);
+			path = BLEPrinter;
 			sourceTree = "<group>";
 		};
 		546F5E7CB87651464E45B9EA /* Pods */ = {
@@ -526,14 +556,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				52375A861EF91D9C006D9CF0 /* mLeftTableViewCell.m in Sources */,
+				529F25A01F00A7AB005B6D75 /* UIWebView+UIImage.m in Sources */,
 				5223A94B1EFA6C9D003AD6B3 /* MWModel.m in Sources */,
 				52F60FCA1EFA0DEC00319120 /* mShopCarRightView.m in Sources */,
 				5239D3591EF3B86C00BAB3F3 /* ViewController.m in Sources */,
 				52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */,
 				52F60FD21EFA1F7500319120 /* mLoginView.m in Sources */,
 				5239D3561EF3B86C00BAB3F3 /* AppDelegate.m in Sources */,
+				529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */,
 				5239D3531EF3B86C00BAB3F3 /* main.m in Sources */,
+				529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */,
 				52F60FCF1EFA1E6B00319120 /* MWLoginViewController.m in Sources */,
+				529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */,
 				52375A801EF90B43006D9CF0 /* Util.m in Sources */,
 				52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */,
 				52375A8A1EF922C4006D9CF0 /* mRightCollectionViewCell.m in Sources */,
@@ -700,6 +734,7 @@
 					"$(PROJECT_DIR)/MWVIPOrderProject/XPrinterSDK",
 					"$(PROJECT_DIR)/MWVIPOrderProject/GprinterSDK",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = mw.com.MWVIPOrderProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -722,6 +757,7 @@
 					"$(PROJECT_DIR)/MWVIPOrderProject/XPrinterSDK",
 					"$(PROJECT_DIR)/MWVIPOrderProject/GprinterSDK",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = mw.com.MWVIPOrderProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
