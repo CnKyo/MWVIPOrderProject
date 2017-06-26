@@ -12,21 +12,17 @@
 #import "mShopCarRightView.h"
 
 
-
-#import "XYSDK.h"
-
-
 #import "SEPrinterManager.h"
 
-@interface MWShopCarViewController ()<UITableViewDelegate,UITableViewDataSource,mShopCarTableViewCellDelegate,mShopCarTableViewCellDelegate,mShopCarRightViewDelegate,XYBLEManagerDelegate>
+@interface MWShopCarViewController ()<UITableViewDelegate,UITableViewDataSource,mShopCarTableViewCellDelegate,mShopCarTableViewCellDelegate,mShopCarRightViewDelegate>
 
 @property(strong,nonatomic)  UITableView *mLeftTableView;
 
 @property(strong,nonatomic)  mShopCarRightView *mRightView;
 
-@property(strong,nonatomic)  XYBLEManager *manager;
 
-@property (strong, nonatomic)   NSArray              *deviceArray;  /**< 蓝牙设备个数 */
+@property (strong, nonatomic)   NSMutableArray              *deviceArray;  /**< 蓝牙设备个数 */
+
 
 
 @end
@@ -38,23 +34,13 @@
     
     
     MWPrintType mPtype;
+    
 }
 @synthesize connectionStatus;
 
 - (void)initBlueToothe{
 
-//    self.manager = [XYBLEManager sharedInstance];
-//    
-//    self.manager.delegate = self;
-//    [self.manager XYSetDataCodingType:NSUTF8StringEncoding];
-//    [self.manager XYhorizontalPosition];
-////        [self.manager XYprintAndFeed]; 
-//    [self.manager XYPrintAndBackToNormalModel];
-//    MLLog(@"viewDidLoad");
-//    peripheralDataArray = [[NSMutableArray alloc]init];
-//    [self.manager XYstartScan];
-//    [SVProgressHUD showWithStatus:@"扫描设备中..."];
-
+    [SVProgressHUD showWithStatus:@"正在链接设备..."];
     
     for (CBPeripheral *peripheral in self.deviceArray) {
         if ([peripheral.name isEqualToString:@"Printer001"]) {
@@ -62,9 +48,10 @@
                 if (error) {
                     [SVProgressHUD showErrorWithStatus:@"连接失败"];
                 } else {
-//                    self.manager.writePeripheral = peripheral;
                     [SVProgressHUD showSuccessWithStatus:@"连接成功"];
+                    
                 }
+                [self performSelector:@selector(XPSVPDissmiss) withObject:self afterDelay:1.0];
             }];
         }
     }
@@ -80,13 +67,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     NSLog(@"viewWillDisappear");
-    
-    if (self.manager!=nil) {
-        [self.manager XYdisconnectRootPeripheral];
-    }
-    
 
-    
 //        if (controlPeripheral!=nil) {
 //            controlPeripheral.connectStaus = MYPERIPHERAL_CONNECT_STATUS_IDLE;
 //            [self disconnectDevice:controlPeripheral];
@@ -102,13 +83,20 @@
         refreshDeviceListTimer = nil;
     }
     [SVProgressHUD dismiss];
+
+    for (CBPeripheral *peripheral in self.deviceArray) {
+        if ([peripheral.name isEqualToString:@"Printer001"]) {
+            [[SEPrinterManager sharedInstance] cancelPeripheral:peripheral];
+        }
+    }
+
+    
 }
 //1
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"今日销售2000份营业额¥30000元";
-    
     _mLeftTableView = [UITableView new];
     _mLeftTableView.backgroundColor = [UIColor whiteColor];
     _mLeftTableView.delegate = self;
@@ -140,7 +128,8 @@
     SEPrinterManager *mManager = [SEPrinterManager sharedInstance];
     [mManager startScanPerpheralTimeout:10 Success:^(NSArray<CBPeripheral *> *perpherals,BOOL isTimeout) {
         MLLog(@"perpherals:%@",perpherals);
-        _deviceArray = perpherals;
+        _deviceArray = [NSMutableArray new];
+        [_deviceArray addObjectsFromArray:perpherals];
     } failure:^(SEScanError error) {
         MLLog(@"error:%ld",(long)error);
     }];
@@ -272,14 +261,12 @@
                 [self startScan];
             }
         }else{
-//            [self XPrinterTask];
-
             //方式一：
             HLPrinter *printer = [self getPrinter];
             
             NSData *mainData = [printer getFinalData];
             [[SEPrinterManager sharedInstance] sendPrintData:mainData completion:^(CBPeripheral *connectPerpheral, BOOL completion, NSString *error) {
-                MLLog(@"写入结：%d---错误:%@",completion,error);
+                MLLog(@"写入结：%d---返回消息:%@",completion,error);
             }];
 
         }
@@ -345,48 +332,7 @@
     
     return printer;
 }
-- (void)XPrinterTask{
-    NSMutableArray *mOrder = [NSMutableArray new];
-    
-    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
-    NSString *mShopName = @"\n重庆漫维文化科技有限公司";
-    NSString *mAddress = @"\n重庆市九龙坡区杨家坪大洋百货2栋12-2";
-    NSString *mCreateTime = @"\n2017-06-22  09:37";
-    NSString *line = @"\n--------------------------------";
-    [mOrder addObject:mShopName];
-    [mOrder addObject:mAddress];
-    [mOrder addObject:mCreateTime];
-    [mOrder addObject:line];
-    for (int i = 0; i<7; i++) {
-        NSString *mEat = [NSString stringWithFormat:@"\n这是菜品---%d",i];
-        [mOrder addObject:mEat];
-    }
-    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
-    [mOrder addObject:[NSString stringWithFormat:@"\n共计:       7份"]];
-    
-    [mOrder addObject:[NSString stringWithFormat:@"\n合计:       200元"]];
-    [mOrder addObject:[NSString stringWithFormat:@"\n本次积分:       20.0"]];
-    [mOrder addObject:[NSString stringWithFormat:@"\n实收:       195元"]];
-    
-    [mOrder addObject:[NSString stringWithFormat:@"\n送达地址:重庆市九龙坡区谢家湾正街18号"]];
-    [mOrder addObject:[NSString stringWithFormat:@"\n电话:154454654654"]];
-    [mOrder addObject:[NSString stringWithFormat:@"\n姓名:老师"]];
-    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
-    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
-    [mOrder addObject:[NSString stringWithFormat:@"\n"]];
-    
-    [self.manager setWritePeripheral:self.manager.writePeripheral];
-    
-    //声明一个gbk编码类型
-    unsigned long  gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-    for (NSString *mstr in mOrder) {
-        MLLog(@"转换前----%@",mstr);
-        NSData *mData = [mstr dataUsingEncoding:gbkEncoding];
-        [self.manager XYWritePOSCommondWithData:mData callBack:^(CBCharacteristic *datcharacter) {
-            MLLog(@"%@",datcharacter);
-        }];
-    }
-}
+
 /**
  输入框代理方法
  
@@ -396,46 +342,6 @@
     MLLog(@"输入的内容是：%@",mText);
 }
 
-#pragma mark -蓝牙配置和操作
-- (void)XYdidUpdatePeripheralList:(NSArray *)peripherals RSSIList:(NSArray *)rssiList{
-    MLLog(@"peripherals:%@-------rssiList:%@",peripherals,rssiList);
-    if (peripherals.count>0) {
-        for (CBPeripheral *printer in peripherals) {
-            if ([printer.name isEqualToString:@"Printer001"]) {
-                self.manager.writePeripheral = printer;
-                [self.manager XYconnectDevice:printer];
-
-            }
-        }
-    }
-    
-    
-}
-- (void)XYdidConnectPeripheral:(CBPeripheral *)peripheral{
-    MLLog(@"链接成功peripherals:%@",peripheral);
-    [SVProgressHUD showSuccessWithStatus:@"打印机连接成功"];
-    [self.manager XYstopScan];
-    [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:1];
-}
-- (void)XYdidFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
-    MLLog(@"链接失败peripherals:%@   失败的：%@",peripheral,error);
-    [SVProgressHUD showSuccessWithStatus:@"打印机连接失败"];
-
-    [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:1];
-
-}
-- (void)XYdidDisconnectPeripheral:(CBPeripheral *)peripheral isAutoDisconnect:(BOOL)isAutoDisconnect{
-    MLLog(@"链接已断开peripherals:%@   断开的：%d",peripheral,isAutoDisconnect);
-    [SVProgressHUD showSuccessWithStatus:@"打印机已断开连接"];
-
-    [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:1];
-
-}
-- (void)XYdidWriteValueForCharacteristic:(CBCharacteristic *)character error:(NSError *)error{
-    MLLog(@"写入数据:%@   错误的：%@",character,error);
-    [self performSelector:@selector(XPSVPDissmiss) withObject:nil afterDelay:1];
-
-}
 
 - (void)XPSVPDissmiss{
     [SVProgressHUD dismiss];
