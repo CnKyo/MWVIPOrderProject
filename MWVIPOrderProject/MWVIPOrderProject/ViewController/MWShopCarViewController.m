@@ -348,8 +348,6 @@
 
 }
 #pragma mark----****----GPrinter代理方法
-
-
 - (void) switchToMainFeaturePage {
     NSLog(@"[ConnectViewController] switchToMainFeaturePage");
     
@@ -444,7 +442,7 @@
     }
 }
 
-///执行打印任务
+#pragma mark----****----gprinter打印任务
 - (void)GPrinterTask{
     TscCommand *tscCmd = [[TscCommand alloc] init];
     [tscCmd setHasResponse:NO];
