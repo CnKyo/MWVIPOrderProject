@@ -8,7 +8,7 @@
 #import "AppDelegate.h"
 #import "ConnectViewController.h"
 #import "BLKWrite.h"
-
+#import "UIViewController+BackButtonHandler.h"
 @interface ConnectViewController ()
 
 @end
@@ -78,9 +78,7 @@
     
 
 }
-//- (void)dealloc{
-//    self.block(mStatus);
-//}
+
 - (void)viewDidUnload
 {
     devicesTableView = nil;
@@ -483,6 +481,27 @@
     }
 }
 
+#pragma mark----****----导航条返回代理
+/**
+ * 协议中的方法，获取返回按钮的点击事件
+ */
+//- (BOOL)navigationShouldPopOnBackButton
+//{
+//    NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"mS",mStatus, nil];
+//    
+//    // 2.创建通知
+//    
+//    NSNotification *notification =[NSNotification notificationWithName:@"InfoNotification" object:nil userInfo:dict];
+//    
+//    // 3.通过 通知中心 发送 通知
+//    
+//    [[NSNotificationCenter defaultCenter] postNotification:notification];
+//    return YES;
+//}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end
 
 

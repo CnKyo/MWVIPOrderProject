@@ -28,6 +28,7 @@
 		5263AA181EFA7D50003311D8 /* libXYPrinter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA141EFA7D50003311D8 /* libXYPrinter.a */; };
 		526F45991F0207F20013CA96 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45971F0207F20013CA96 /* ConnectViewController.m */; };
 		526F459A1F0207F20013CA96 /* ConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526F45981F0207F20013CA96 /* ConnectViewController.xib */; };
+		526F45A11F023F730013CA96 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A01F023F730013CA96 /* UIViewController+BackButtonHandler.m */; };
 		529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25951F00A7AB005B6D75 /* HLPrinter.m */; };
 		529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25981F00A7AB005B6D75 /* SEPrinterManager.m */; };
 		529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F259A1F00A7AB005B6D75 /* UIImage+Bitmap.m */; };
@@ -106,6 +107,8 @@
 		526F45961F0207F20013CA96 /* ConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
 		526F45971F0207F20013CA96 /* ConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectViewController.m; sourceTree = "<group>"; };
 		526F45981F0207F20013CA96 /* ConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectViewController.xib; sourceTree = "<group>"; };
+		526F459F1F023F730013CA96 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
+		526F45A01F023F730013CA96 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		529F25941F00A7AB005B6D75 /* HLPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPrinter.h; sourceTree = "<group>"; };
 		529F25951F00A7AB005B6D75 /* HLPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPrinter.m; sourceTree = "<group>"; };
 		529F25961F00A7AB005B6D75 /* SEBLEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEBLEConst.h; sourceTree = "<group>"; };
@@ -284,6 +287,7 @@
 		5239D3501EF3B86C00BAB3F3 /* MWVIPOrderProject */ = {
 			isa = PBXGroup;
 			children = (
+				526F459E1F023F730013CA96 /* NavigationButtonHandle */,
 				529F25931F00A7AB005B6D75 /* BLEPrinter */,
 				5210BB261EFBB9D000B505D9 /* GprinterSDK */,
 				5263AA121EFA7D50003311D8 /* XPrinterSDK */,
@@ -340,6 +344,15 @@
 				5263AA171EFA7D50003311D8 /* XYWIFIManager.h */,
 			);
 			path = XPrinterSDK;
+			sourceTree = "<group>";
+		};
+		526F459E1F023F730013CA96 /* NavigationButtonHandle */ = {
+			isa = PBXGroup;
+			children = (
+				526F459F1F023F730013CA96 /* UIViewController+BackButtonHandler.h */,
+				526F45A01F023F730013CA96 /* UIViewController+BackButtonHandler.m */,
+			);
+			path = NavigationButtonHandle;
 			sourceTree = "<group>";
 		};
 		529F25931F00A7AB005B6D75 /* BLEPrinter */ = {
@@ -574,6 +587,7 @@
 				5239D3561EF3B86C00BAB3F3 /* AppDelegate.m in Sources */,
 				529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */,
 				5239D3531EF3B86C00BAB3F3 /* main.m in Sources */,
+				526F45A11F023F730013CA96 /* UIViewController+BackButtonHandler.m in Sources */,
 				529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */,
 				52F60FCF1EFA1E6B00319120 /* MWLoginViewController.m in Sources */,
 				529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */,
