@@ -26,6 +26,8 @@
 		5263AA0F1EFA7D22003311D8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA0E1EFA7D22003311D8 /* CFNetwork.framework */; };
 		5263AA111EFA7D29003311D8 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA101EFA7D29003311D8 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5263AA181EFA7D50003311D8 /* libXYPrinter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA141EFA7D50003311D8 /* libXYPrinter.a */; };
+		526F45991F0207F20013CA96 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45971F0207F20013CA96 /* ConnectViewController.m */; };
+		526F459A1F0207F20013CA96 /* ConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526F45981F0207F20013CA96 /* ConnectViewController.xib */; };
 		529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25951F00A7AB005B6D75 /* HLPrinter.m */; };
 		529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25981F00A7AB005B6D75 /* SEPrinterManager.m */; };
 		529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F259A1F00A7AB005B6D75 /* UIImage+Bitmap.m */; };
@@ -101,6 +103,9 @@
 		5263AA151EFA7D50003311D8 /* XYBLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYBLEManager.h; sourceTree = "<group>"; };
 		5263AA161EFA7D50003311D8 /* XYSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSDK.h; sourceTree = "<group>"; };
 		5263AA171EFA7D50003311D8 /* XYWIFIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYWIFIManager.h; sourceTree = "<group>"; };
+		526F45961F0207F20013CA96 /* ConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
+		526F45971F0207F20013CA96 /* ConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectViewController.m; sourceTree = "<group>"; };
+		526F45981F0207F20013CA96 /* ConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectViewController.xib; sourceTree = "<group>"; };
 		529F25941F00A7AB005B6D75 /* HLPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPrinter.h; sourceTree = "<group>"; };
 		529F25951F00A7AB005B6D75 /* HLPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPrinter.m; sourceTree = "<group>"; };
 		529F25961F00A7AB005B6D75 /* SEBLEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEBLEConst.h; sourceTree = "<group>"; };
@@ -225,6 +230,9 @@
 				52F60FC11EFA044D00319120 /* MWShopCarViewController.m */,
 				52F60FCD1EFA1E6B00319120 /* MWLoginViewController.h */,
 				52F60FCE1EFA1E6B00319120 /* MWLoginViewController.m */,
+				526F45961F0207F20013CA96 /* ConnectViewController.h */,
+				526F45971F0207F20013CA96 /* ConnectViewController.m */,
+				526F45981F0207F20013CA96 /* ConnectViewController.xib */,
 				52375A821EF91D87006D9CF0 /* View */,
 			);
 			path = ViewController;
@@ -479,6 +487,7 @@
 				52F60FCC1EFA0EDA00319120 /* mShopCarRightView.xib in Resources */,
 				52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */,
 				5239D3611EF3B86C00BAB3F3 /* LaunchScreen.storyboard in Resources */,
+				526F459A1F0207F20013CA96 /* ConnectViewController.xib in Resources */,
 				5239D35E1EF3B86C00BAB3F3 /* Assets.xcassets in Resources */,
 				52375A871EF91D9C006D9CF0 /* mLeftTableViewCell.xib in Resources */,
 				5239D35C1EF3B86C00BAB3F3 /* Main.storyboard in Resources */,
@@ -568,6 +577,7 @@
 				529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */,
 				52F60FCF1EFA1E6B00319120 /* MWLoginViewController.m in Sources */,
 				529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */,
+				526F45991F0207F20013CA96 /* ConnectViewController.m in Sources */,
 				52375A801EF90B43006D9CF0 /* Util.m in Sources */,
 				52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */,
 				52375A8A1EF922C4006D9CF0 /* mRightCollectionViewCell.m in Sources */,
