@@ -236,7 +236,7 @@
         {
         mPtype = MWPrintTypeWithOutPay;
 //        [self initGPDevice];
-        ConnectViewController *vc = [ConnectViewController new];
+//        ConnectViewController *vc = [ConnectViewController new];
 //        vc.block = ^(int mStatus){
 //            if (mStatus == MYPERIPHERAL_CONNECT_STATUS_IDLE) {
 //                [SVProgressHUD showErrorWithStatus:@"设备已断开！"];
@@ -246,7 +246,7 @@
 //                [self hiddenView];
 //            }
 //        };
-        [self.navigationController pushViewController:vc animated:YES];
+//        [self.navigationController pushViewController:vc animated:YES];
 
         }
             break;

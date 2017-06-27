@@ -8,15 +8,13 @@
 #import "AppDelegate.h"
 #import "ConnectViewController.h"
 #import "BLKWrite.h"
-#import "UIViewController+BackButtonHandler.h"
+
 @interface ConnectViewController ()
 
 @end
 
 @implementation ConnectViewController
-{
-    int mStatus;
-}
+
 //@synthesize actionButton;
 @synthesize activityIndicatorView;
 @synthesize statusLabel;
@@ -44,7 +42,7 @@
         [titleLabel setTextAlignment:NSTextAlignmentCenter];//aaa
         self.navigationItem.titleView = titleLabel;
         
-            
+        
         connectedDeviceInfo = [NSMutableArray new];
         connectingList = [NSMutableArray new];
         
@@ -57,7 +55,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"选择设备";
+    self.title = @"链接设备";
     // Do any additional setup after loading the view from its nib.
     [self setConnectionStatus:LE_STATUS_IDLE];
     [versionLabel setText:[NSString stringWithFormat:@"BLETR %@, %s",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], __DATE__]];
@@ -66,17 +64,12 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-   
-
+    
+    
     [self configureDeviceInformationServiceUUID:nil UUID2:nil];
-        
+    
     
     [self startScan];
-}
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:YES];
-    
-
 }
 
 - (void)viewDidUnload
@@ -107,11 +100,6 @@
 - (void) switchToMainFeaturePage {
     NSLog(@"[ConnectViewController] switchToMainFeaturePage");
     
-    //    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //    if ([[[appDelegate navigationController] viewControllers] containsObject:[deviceInfo mainViewController]] == FALSE) {
-    //        [[appDelegate navigationController] pushViewController:[deviceInfo mainViewController] animated:YES];
-    //    }
-    
 }
 
 - (int) connectionStatus {
@@ -119,7 +107,6 @@
 }
 
 - (void) setConnectionStatus:(int)status {
-    mStatus = status;
     if (status == LE_STATUS_IDLE) {
         statusLabel.textColor = [UIColor redColor];
     }
@@ -408,7 +395,6 @@
             [connectingList addObject:tmpPeripheral];
             [self displayDevicesList];
             [self updateButtonType];
-            mStatus = MYPERIPHERAL_CONNECT_STATUS_CONNECTING;
         }
         break;
         }
@@ -433,7 +419,6 @@
     NSInteger idx = [sender tag];
     DeviceInfo *tmpDeviceInfo = [connectedDeviceInfo objectAtIndex:idx];
     [self disconnectDevice:tmpDeviceInfo.myPeripheral];
-    mStatus = MYPERIPHERAL_CONNECT_STATUS_IDLE;
 }
 
 //Derek
@@ -481,27 +466,6 @@
     }
 }
 
-#pragma mark----****----导航条返回代理
-/**
- * 协议中的方法，获取返回按钮的点击事件
- */
-//- (BOOL)navigationShouldPopOnBackButton
-//{
-//    NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"mS",mStatus, nil];
-//    
-//    // 2.创建通知
-//    
-//    NSNotification *notification =[NSNotification notificationWithName:@"InfoNotification" object:nil userInfo:dict];
-//    
-//    // 3.通过 通知中心 发送 通知
-//    
-//    [[NSNotificationCenter defaultCenter] postNotification:notification];
-//    return YES;
-//}
-
--(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 @end
 
 

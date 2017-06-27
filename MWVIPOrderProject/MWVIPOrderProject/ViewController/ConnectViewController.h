@@ -13,7 +13,7 @@
 @interface ConnectViewController : CBController<UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UITableView *devicesTableView;
-
+    
     
     NSTimer *refreshDeviceListTimer;
     
@@ -33,5 +33,5 @@
 @property (nonatomic, retain) IBOutlet UILabel *statusLabel;
 @property (assign) int connectionStatus;
 @property (retain, nonatomic) IBOutlet UILabel *versionLabel;
-@property (nonatomic, copy) void (^block)(int status);
+
 @end
