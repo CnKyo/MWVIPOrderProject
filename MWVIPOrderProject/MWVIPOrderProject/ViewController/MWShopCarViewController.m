@@ -14,7 +14,7 @@
 
 #import "SEPrinterManager.h"
 #import "ConnectViewController.h"
-@interface MWShopCarViewController ()<UITableViewDelegate,UITableViewDataSource,mShopCarTableViewCellDelegate,mShopCarTableViewCellDelegate,mShopCarRightViewDelegate>
+@interface MWShopCarViewController ()<UITableViewDelegate,UITableViewDataSource,mShopCarTableViewCellDelegate,mShopCarTableViewCellDelegate,mShopCarRightViewDelegate,CBControllerDelegate>
 
 @property(strong,nonatomic)  UITableView *mLeftTableView;
 
@@ -33,6 +33,9 @@
     
     MWPrintType mPtype;
     
+    CBController *mGPConnect;
+    
+    MyPeripheral *mGPDevice;
 }
 
 - (void)initBlueToothe{
@@ -54,6 +57,33 @@
     }
     
 
+    
+}
+- (void)initGPrinterBlueToothe{
+    
+    [mGPConnect startScan];
+    [SVProgressHUD showWithStatus:@"正在链接设备..."];
+    [mGPConnect updateDiscoverPeripherals];
+    
+    for (CBPeripheral *peripheral in self.deviceArray) {
+        if ([peripheral.name isEqualToString:@"Gprinter"]) {
+//            mGPDevice.peripheral = peripheral;
+//            [[BLKWrite Instance] setPeripheral:mGPDevice];
+//
+//            [mGPConnect connectDevice:mGPDevice];
+            [[SEPrinterManager sharedInstance] connectPeripheral:peripheral completion:^(CBPeripheral *perpheral, NSError *error) {
+                if (error) {
+                    [SVProgressHUD showErrorWithStatus:@"连接失败"];
+                } else {
+                    [SVProgressHUD showSuccessWithStatus:@"连接成功"];
+                    
+                }
+                [self performSelector:@selector(XPSVPDissmiss) withObject:self afterDelay:1.0];
+            }];
+        }
+    }
+    
+    
     
 }
 //3
@@ -125,7 +155,11 @@
 //        [SVProgressHUD showErrorWithStatus:@"蓝牙设备已断开！"];
 //    }
 
+    mGPConnect = [CBController new];
+    mGPConnect.delegate = self;
+//    [self.view addSubview:mGPConnect.view];
     
+    mGPDevice = [MyPeripheral new];
 }
 - (void)updateRightView{
     _mRightView.mWechatPay.hidden = _mRightView.mCashPay.hidden = _mRightView.mOutPay.hidden = _mRightView.mScorePay.hidden = YES;
@@ -235,8 +269,10 @@
         case 2:
         {
         mPtype = MWPrintTypeWithOutPay;
-//        [self initGPDevice];
-        ConnectViewController *vc = [ConnectViewController new];
+//        [self initGPrinterBlueToothe];
+//        [self hiddenView];
+
+        ConnectViewController *vc = [[ConnectViewController alloc] initWithNibName:@"ConnectViewController" bundle:nil];
 //        vc.block = ^(int mStatus){
 //            if (mStatus == MYPERIPHERAL_CONNECT_STATUS_IDLE) {
 //                [SVProgressHUD showErrorWithStatus:@"设备已断开！"];
@@ -260,7 +296,7 @@
         case 4:
         {
         if (mPtype == MWPrintTypeWithOutPay) {
-            //                [self GPrinterTask];
+            [self GPrinterTask];
     
         }else{
             //方式一：
@@ -353,102 +389,114 @@
 
 
 //#pragma mark----****----gprinter打印任务
-//- (void)GPrinterTask{
-//    TscCommand *tscCmd = [[TscCommand alloc] init];
-//    [tscCmd setHasResponse:NO];
-//    /*
-//     一定会发送的设置项
-//     */
-//    //Size
-//    ///宽高
-//    [tscCmd addSize:100 :50];
-//    
-//    //GAP间隙长度  间隙偏移
-//    
-//    [tscCmd addGapWithM:2   withN:0];
-//    
-//    //REFERENCE纵坐标y。横坐标x
-//    [tscCmd addReference:0
-//                        :0];
-//    
-//    //SPEED打印速度
-//    [tscCmd addSpeed:4];
-//    
-//    //DENSITY打印浓度
-//    [tscCmd addDensity:8];
-//    
-//    //DIRECTION方向
-//    [tscCmd addDirection:0];
-//    
-//    //fixed command发送一些TSC的固定命令，在cls命令之前发送
-//    [tscCmd addComonCommand];
-//    //清除打印缓冲区
-//    [tscCmd addCls];
-//    
-//    /**
-//     * 方法说明:在标签上绘制文字
-//     * @param x 横坐标
-//     * @param y 纵坐标
-//     * @param font  字体类型
-//     * @param rotation  旋转角度
-//     * @param Xscal  横向放大
-//     * @param Yscal  纵向放大
-//     * @param text   文字字符串
-//     * @return void
-//     */
-//    [tscCmd addTextwithX:180
-//                   withY:160
-//                withFont:@"TSS24.BF2"
-//            withRotation:0
-//               withXscal:1
-//               withYscal:1
-//                withText:@"重庆漫维文化传播有限公司"];
-//    
-//    [tscCmd addTextwithX:180
-//                   withY:190
-//                withFont:@"TSS24.BF2"
-//            withRotation:0
-//               withXscal:1
-//               withYscal:1
-//                withText:@"电话：151515151515"];
-//    
-//    [tscCmd addTextwithX:180
-//                   withY:220
-//                withFont:@"TSS24.BF2"
-//            withRotation:0
-//               withXscal:1
-//               withYscal:1
-//                withText:@"杨家坪大洋百货正升百脑汇2栋12-2"];
-//    ///二维码
-//    /**
-//     * 方法说明:在标签上绘制QRCode二维码
-//     * @param x 横坐标
-//     * @param y 纵坐标
-//     * @param ecclever 选择QRCODE纠错等级,L为7%,M为15%,Q为25%,H为30%
-//     * @param cellwidth  二维码宽度1~10，默认为4
-//     * @param mode  默认为A，A为Auto,M为Manual
-//     * @param rotation  旋转角度，QRCode二维旋转角度，顺时钟方向，0不旋转，90顺时钟方向旋转90度，180顺时钟方向旋转180度，270顺时钟方向旋转270度
-//     * @param content   条码内容
-//     * @return void
-//     * QRCODE X,Y ,ECC LEVER ,cell width,mode,rotation, "data string"
-//     * QRCODE 20,24,L,4,A,0,"佳博集团网站www.Gprinter.com.cn"
-//     */
-//    [tscCmd addQRCode:350
-//                     :50
-//                     :@"L"
-//                     :4
-//                     :@"A"
-//                     :0
-//                     :@"佳博集团网站www.Gprinter.com.cn"];
-//    //print将字符串转成十六进制码
-//    [tscCmd addPrint:1 :1];
-//
-//}
+- (void)GPrinterTask{
+    TscCommand *tscCmd = [[TscCommand alloc] init];
+    [tscCmd setHasResponse:NO];
+    /*
+     一定会发送的设置项
+     */
+    //Size
+    ///宽高
+    [tscCmd addSize:100 :50];
+    
+    //GAP间隙长度  间隙偏移
+    
+    [tscCmd addGapWithM:2   withN:0];
+    
+    //REFERENCE纵坐标y。横坐标x
+    [tscCmd addReference:0
+                        :0];
+    
+    //SPEED打印速度
+    [tscCmd addSpeed:4];
+    
+    //DENSITY打印浓度
+    [tscCmd addDensity:8];
+    
+    //DIRECTION方向
+    [tscCmd addDirection:0];
+    
+    //fixed command发送一些TSC的固定命令，在cls命令之前发送
+    [tscCmd addComonCommand];
+    //清除打印缓冲区
+    [tscCmd addCls];
+    
+    /**
+     * 方法说明:在标签上绘制文字
+     * @param x 横坐标
+     * @param y 纵坐标
+     * @param font  字体类型
+     * @param rotation  旋转角度
+     * @param Xscal  横向放大
+     * @param Yscal  纵向放大
+     * @param text   文字字符串
+     * @return void
+     */
+    [tscCmd addTextwithX:180
+                   withY:160
+                withFont:@"TSS24.BF2"
+            withRotation:0
+               withXscal:1
+               withYscal:1
+                withText:@"重庆漫维文化传播有限公司"];
+    
+    [tscCmd addTextwithX:180
+                   withY:190
+                withFont:@"TSS24.BF2"
+            withRotation:0
+               withXscal:1
+               withYscal:1
+                withText:@"电话：151515151515"];
+    
+    [tscCmd addTextwithX:180
+                   withY:220
+                withFont:@"TSS24.BF2"
+            withRotation:0
+               withXscal:1
+               withYscal:1
+                withText:@"杨家坪大洋百货正升百脑汇2栋12-2"];
+    ///二维码
+    /**
+     * 方法说明:在标签上绘制QRCode二维码
+     * @param x 横坐标
+     * @param y 纵坐标
+     * @param ecclever 选择QRCODE纠错等级,L为7%,M为15%,Q为25%,H为30%
+     * @param cellwidth  二维码宽度1~10，默认为4
+     * @param mode  默认为A，A为Auto,M为Manual
+     * @param rotation  旋转角度，QRCode二维旋转角度，顺时钟方向，0不旋转，90顺时钟方向旋转90度，180顺时钟方向旋转180度，270顺时钟方向旋转270度
+     * @param content   条码内容
+     * @return void
+     * QRCODE X,Y ,ECC LEVER ,cell width,mode,rotation, "data string"
+     * QRCODE 20,24,L,4,A,0,"佳博集团网站www.Gprinter.com.cn"
+     */
+    [tscCmd addQRCode:350
+                     :50
+                     :@"L"
+                     :4
+                     :@"A"
+                     :0
+                     :@"佳博集团网站www.Gprinter.com.cn"];
+    //print将字符串转成十六进制码
+    [tscCmd addPrint:1 :1];
 
-- (void)InfoNotificationAction:(NSNotification *)notification{
-    
-    MLLog(@"---接收到通知---%@",notification.userInfo);
-    
-    
 }
+
+- (void)didUpdatePeripheralList:(NSArray *)peripherals{
+    MLLog(@"------设备-:%@",peripherals);
+    for (MyPeripheral *device in peripherals) {
+        if ([device.advName isEqualToString:@"Gprinter"]) {
+            [mGPConnect connectDevice:device];
+        }
+    }
+}
+- (void)didConnectPeripheral:(MyPeripheral *)peripheral{
+    MLLog(@"------设备--:%@",peripheral);
+    [[BLKWrite Instance] setPeripheral:peripheral];
+    [mGPConnect updateMyPeripheralForNewConnected:peripheral];
+
+}
+- (void)didDisconnectPeripheral:(MyPeripheral *)peripheral{
+    MLLog(@"------设备---:%@",peripheral);
+}
+
 @end

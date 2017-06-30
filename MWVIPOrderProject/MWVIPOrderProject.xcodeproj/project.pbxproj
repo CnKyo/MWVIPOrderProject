@@ -32,6 +32,7 @@
 		526F45AC1F0257C90013CA96 /* ISSCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A61F0257C90013CA96 /* ISSCButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		526F45AD1F0257C90013CA96 /* UUIDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A81F0257C90013CA96 /* UUIDSettingViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		526F45AE1F0257C90013CA96 /* UUIDSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526F45A91F0257C90013CA96 /* UUIDSettingViewController.xib */; };
+		52951CD51F049DF300EE5945 /* GPrinterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52951CD41F049DF300EE5945 /* GPrinterController.m */; };
 		529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25951F00A7AB005B6D75 /* HLPrinter.m */; };
 		529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25981F00A7AB005B6D75 /* SEPrinterManager.m */; };
 		529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F259A1F00A7AB005B6D75 /* UIImage+Bitmap.m */; };
@@ -117,6 +118,8 @@
 		526F45A71F0257C90013CA96 /* UUIDSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUIDSettingViewController.h; sourceTree = "<group>"; };
 		526F45A81F0257C90013CA96 /* UUIDSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUIDSettingViewController.m; sourceTree = "<group>"; };
 		526F45A91F0257C90013CA96 /* UUIDSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UUIDSettingViewController.xib; sourceTree = "<group>"; };
+		52951CD31F049DF300EE5945 /* GPrinterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPrinterController.h; sourceTree = "<group>"; };
+		52951CD41F049DF300EE5945 /* GPrinterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPrinterController.m; sourceTree = "<group>"; };
 		529F25941F00A7AB005B6D75 /* HLPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPrinter.h; sourceTree = "<group>"; };
 		529F25951F00A7AB005B6D75 /* HLPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPrinter.m; sourceTree = "<group>"; };
 		529F25961F00A7AB005B6D75 /* SEBLEConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEBLEConst.h; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 		5210BB261EFBB9D000B505D9 /* GprinterSDK */ = {
 			isa = PBXGroup;
 			children = (
+				52951CD31F049DF300EE5945 /* GPrinterController.h */,
+				52951CD41F049DF300EE5945 /* GPrinterController.m */,
 				526F45A21F0257C90013CA96 /* ConnectViewController.h */,
 				526F45A31F0257C90013CA96 /* ConnectViewController.m */,
 				526F45A41F0257C90013CA96 /* ConnectViewController.xib */,
@@ -598,6 +603,7 @@
 				5239D3591EF3B86C00BAB3F3 /* ViewController.m in Sources */,
 				52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */,
 				52F60FD21EFA1F7500319120 /* mLoginView.m in Sources */,
+				52951CD51F049DF300EE5945 /* GPrinterController.m in Sources */,
 				5239D3561EF3B86C00BAB3F3 /* AppDelegate.m in Sources */,
 				529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */,
 				526F45AA1F0257C90013CA96 /* ConnectViewController.m in Sources */,

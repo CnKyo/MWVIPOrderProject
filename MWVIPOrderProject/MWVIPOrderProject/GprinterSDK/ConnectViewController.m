@@ -147,11 +147,18 @@
     [refreshButton release];
     [cancelButton release];
     [scanButton release];
-//    [uuidSettingViewController release];
+    [uuidSettingViewController release];
     [uuidSettingButton release];
-    
+    [connectedDeviceInfo release];
+    [connectingList release];
+    [deviceInfo release];
+    refreshDeviceListTimer = nil;
+    uuidSettingViewController = nil;
+
     [super dealloc];
-//    [SVProgressHUD dealloc];
+    
+
+
 }
 
 - (void) displayDevicesList {
