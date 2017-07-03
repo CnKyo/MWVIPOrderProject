@@ -138,6 +138,9 @@ static int const  kRetCodeNeedLogin        = 3;
 static int const  kRetCodeIllega        = 10001;
 
 
+static NSString * const MyDeviceConnectStatusNotification       = @"MyDeviceConnectStatusNotification";
+
+
 static inline NSString *StringWithInteger(NSInteger _Value_)
 {
     return [NSString stringWithFormat:@"%li",(long)_Value_];

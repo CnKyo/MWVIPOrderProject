@@ -32,6 +32,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSArray *centralManagerIdentifiers = launchOptions[UIApplicationLaunchOptionsBluetoothCentralsKey];
     MLLog(@"%@",centralManagerIdentifiers);
+    self.mConnBLE = [[ConnectViewController alloc] initWithNibName:nil bundle:nil];
 
     // Override point for customization after application launch.
     [self initLabriary];

@@ -27,7 +27,7 @@
 		5263AA111EFA7D29003311D8 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA101EFA7D29003311D8 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5263AA181EFA7D50003311D8 /* libXYPrinter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA141EFA7D50003311D8 /* libXYPrinter.a */; };
 		526F45A11F023F730013CA96 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A01F023F730013CA96 /* UIViewController+BackButtonHandler.m */; };
-		526F45AA1F0257C90013CA96 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A31F0257C90013CA96 /* ConnectViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		526F45AA1F0257C90013CA96 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A31F0257C90013CA96 /* ConnectViewController.m */; };
 		526F45AB1F0257C90013CA96 /* ConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526F45A41F0257C90013CA96 /* ConnectViewController.xib */; };
 		526F45AC1F0257C90013CA96 /* ISSCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A61F0257C90013CA96 /* ISSCButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		526F45AD1F0257C90013CA96 /* UUIDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A81F0257C90013CA96 /* UUIDSettingViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };

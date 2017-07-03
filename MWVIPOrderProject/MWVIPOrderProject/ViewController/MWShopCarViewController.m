@@ -11,7 +11,7 @@
 #import "mShopCarTableViewCell.h"
 #import "mShopCarRightView.h"
 
-
+#import "AppDelegate.h"
 #import "SEPrinterManager.h"
 #import "ConnectViewController.h"
 @interface MWShopCarViewController ()<UITableViewDelegate,UITableViewDataSource,mShopCarTableViewCellDelegate,mShopCarTableViewCellDelegate,mShopCarRightViewDelegate,CBControllerDelegate>
@@ -89,7 +89,22 @@
 //3
 -(void)viewDidAppear:(BOOL)animated{
     MLLog(@"viewDidAppear");
-   
+    if([[BLKWrite Instance] isConnecting]){
+        [SVProgressHUD showSuccessWithStatus:@"蓝牙设备已链接！"];
+        if (mPtype == MWPrintTypeWithOutPay) {
+        [self hiddenView];
+            
+        }else{
+            [self displayPopView];
+        }
+        
+        
+    }
+    else{
+        [SVProgressHUD showErrorWithStatus:@"蓝牙设备已断开！"];
+      
+    }
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -148,12 +163,7 @@
         MLLog(@"error:%ld",(long)error);
     }];
 
-//    if([[BLKWrite Instance] isConnecting]){
-//        [SVProgressHUD showSuccessWithStatus:@"蓝牙设备已链接！"];
-//    }
-//    else{
-//        [SVProgressHUD showErrorWithStatus:@"蓝牙设备已断开！"];
-//    }
+
 
     mGPConnect = [CBController new];
     mGPConnect.delegate = self;
@@ -161,8 +171,8 @@
     
     mGPDevice = [MyPeripheral new];
 }
-- (void)updateRightView{
-    _mRightView.mWechatPay.hidden = _mRightView.mCashPay.hidden = _mRightView.mOutPay.hidden = _mRightView.mScorePay.hidden = YES;
+- (void)updateRightView:(BOOL)mHidden{
+    _mRightView.mWechatPay.hidden = _mRightView.mCashPay.hidden = _mRightView.mOutPay.hidden = _mRightView.mScorePay.hidden = mHidden;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -239,7 +249,15 @@
 
 - (void)hiddenView{
     _mRightView.mPopView.hidden = NO;
-    [self updateRightView];
+    [self updateRightView:YES];
+    [self performSelector:@selector(XPSVPDissmiss) withObject:self afterDelay:1.0];
+
+}
+- (void)displayPopView{
+    _mRightView.mPopView.hidden = YES;
+    [self updateRightView:NO];
+    [self performSelector:@selector(XPSVPDissmiss) withObject:self afterDelay:1.0];
+
 }
 /**
  按钮代理方法
@@ -270,19 +288,18 @@
         {
         mPtype = MWPrintTypeWithOutPay;
 //        [self initGPrinterBlueToothe];
-//        [self hiddenView];
+        if([[BLKWrite Instance] isConnecting]){
+            [SVProgressHUD showSuccessWithStatus:@"蓝牙设备已链接！"];
+            [self hiddenView];
 
-        ConnectViewController *vc = [[ConnectViewController alloc] initWithNibName:@"ConnectViewController" bundle:nil];
-//        vc.block = ^(int mStatus){
-//            if (mStatus == MYPERIPHERAL_CONNECT_STATUS_IDLE) {
-//                [SVProgressHUD showErrorWithStatus:@"设备已断开！"];
-//                
-//            }else{
-//                [SVProgressHUD showSuccessWithStatus:@"设备已链接！"];
-//                [self hiddenView];
-//            }
-//        };
-        [self.navigationController pushViewController:vc animated:YES];
+        }
+        else{
+            [SVProgressHUD showErrorWithStatus:@"蓝牙设备已断开！"];
+            [[BLKWrite Instance] setBWiFiMode:NO];
+            AppDelegate *dele = [UIApplication sharedApplication].delegate;
+            [self.navigationController pushViewController:dele.mConnBLE animated:YES];
+        }
+
 
         }
             break;
@@ -354,13 +371,20 @@
     
     [printer appendText:@"位图方式二维码" alignment:HLTextAlignmentCenter];
     [printer appendQRCodeWithInfo:@"www.baidu.com"];
-    [printer appendSeperatorLine];
-    [printer appendSeperatorLine];
-    
+//    [printer appendSeperatorLine];
+//    [printer appendSeperatorLine];
+//    [printer appendText:@" " alignment:HLTextAlignmentCenter];
+//    [printer appendText:@" " alignment:HLTextAlignmentCenter];
+
     [printer appendFooter:nil];
-    [printer appendSeperatorLine];
-    [printer appendSeperatorLine];
-    [printer appendSeperatorLine];
+//    [printer appendSeperatorLine];
+//    [printer appendSeperatorLine];
+//    [printer appendSeperatorLine];
+
+    [printer appendText:@" " alignment:HLTextAlignmentCenter];
+    [printer appendText:@" " alignment:HLTextAlignmentCenter];
+//    [printer appendText:@" " alignment:HLTextAlignmentCenter];
+//    [printer appendText:@" " alignment:HLTextAlignmentCenter];
     
     //    [printer appendImage:[UIImage imageNamed:@"ico180"] alignment:HLTextAlignmentCenter maxWidth:300];
     
@@ -432,13 +456,13 @@
      * @param text   文字字符串
      * @return void
      */
-    [tscCmd addTextwithX:180
-                   withY:160
-                withFont:@"TSS24.BF2"
-            withRotation:0
-               withXscal:1
-               withYscal:1
-                withText:@"重庆漫维文化传播有限公司"];
+//    [tscCmd addTextwithX:180
+//                   withY:160
+//                withFont:@"TSS24.BF2"
+//            withRotation:0
+//               withXscal:1
+//               withYscal:1
+//                withText:@"重庆漫维文化传播有限公司"];
     
     [tscCmd addTextwithX:180
                    withY:190
@@ -469,10 +493,10 @@
      * QRCODE X,Y ,ECC LEVER ,cell width,mode,rotation, "data string"
      * QRCODE 20,24,L,4,A,0,"佳博集团网站www.Gprinter.com.cn"
      */
-    [tscCmd addQRCode:350
+    [tscCmd addQRCode:325
                      :50
                      :@"L"
-                     :4
+                     :5
                      :@"A"
                      :0
                      :@"佳博集团网站www.Gprinter.com.cn"];

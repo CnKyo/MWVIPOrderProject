@@ -41,7 +41,6 @@
         [titleLabel setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Icon_old"]]];
         [titleLabel setTextAlignment:NSTextAlignmentCenter];//aaa
         self.navigationItem.titleView = titleLabel;
-        [titleLabel release];
         
         ISSCButton *button = [ISSCButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(0.0f, 0.0f, 80.0f, 30.0f);
@@ -122,10 +121,8 @@
 
 - (void)viewDidUnload
 {
-    [devicesTableView release];
-    devicesTableView = nil;
+       devicesTableView = nil;
     [self setVersionLabel:nil];
-    [refreshButton release];
     refreshButton = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -141,25 +138,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (void)dealloc {
-    [devicesTableView release];
-    [versionLabel release];
-    [refreshButton release];
-    [cancelButton release];
-    [scanButton release];
-    [uuidSettingViewController release];
-    [uuidSettingButton release];
-    [connectedDeviceInfo release];
-    [connectingList release];
-    [deviceInfo release];
-    refreshDeviceListTimer = nil;
-    uuidSettingViewController = nil;
-
-    [super dealloc];
-    
-
-
-}
 
 - (void) displayDevicesList {
     [devicesTableView reloadData];
@@ -190,7 +168,7 @@
 
     switch (status) {
         case LE_STATUS_IDLE:
-            statusLabel.text = @"Idle";
+            statusLabel.text = @"设备闲置中";
             [SVProgressHUD showErrorWithStatus:@"设备闲置中"];
             [SVProgressHUD dismiss];
 
@@ -199,13 +177,17 @@
             [devicesTableView reloadData];
 //            statusLabel.text = @"Scanning...";
             [SVProgressHUD showWithStatus:@"扫描设备中..."];
+            [self performSelector:@selector(timeOutDismiss) withObject:nil afterDelay:2.0f];
+            
             break;
         default:
             break;
     }
     [self updateButtonType];
 }
-
+- (void)timeOutDismiss{
+    [SVProgressHUD dismiss];
+}
 - (IBAction)actionButtonCancelScan:(id)sender {
     NSLog(@"[ConnectViewController] actionButtonCancelScan");
     [self stopScan];
@@ -369,20 +351,20 @@
             //NSLog(@"[ConnectViewController] CellForRowAtIndexPath section 0, Row = %d",[indexPath row]);
             cell = [tableView dequeueReusableCellWithIdentifier:@"connectedList"];
             if (cell == nil) {
-                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"connectedList"] autorelease];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"connectedList"];
             }
             DeviceInfo *tmpDeviceInfo = [connectedDeviceInfo objectAtIndex:indexPath.row];
             
             cell.textLabel.text = tmpDeviceInfo.myPeripheral.advName;
-            cell.detailTextLabel.text = @"connected";
+            cell.detailTextLabel.text = @"已链接";
             cell.accessoryView = nil;
             if (cell.textLabel.text == nil)
-                cell.textLabel.text = @"Unknow";
+                cell.textLabel.text = @"未知设备";
             
             UIButton *accessoryButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             [accessoryButton addTarget:self action:@selector(actionButtonDisconnect:)  forControlEvents:UIControlEventTouchUpInside];
             accessoryButton.tag = indexPath.row;
-            [accessoryButton setTitle:@"Disonnect" forState:UIControlStateNormal];
+            [accessoryButton setTitle:@"断开链接" forState:UIControlStateNormal];
             [accessoryButton setFrame:CGRectMake(0,0,100,35)];
             cell.accessoryView  = accessoryButton;           
         }
@@ -394,25 +376,25 @@
             
             cell = [tableView dequeueReusableCellWithIdentifier:@"devicesList"];
             if (cell == nil) {
-                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"devicesList"] autorelease];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"devicesList"];
             }
             MyPeripheral *tmpPeripheral = [devicesList objectAtIndex:indexPath.row];
             cell.textLabel.text = tmpPeripheral.advName;
             cell.detailTextLabel.text = @"";
             cell.accessoryView = nil;
             if (tmpPeripheral.connectStaus == MYPERIPHERAL_CONNECT_STATUS_CONNECTING) {
-                cell.detailTextLabel.text = @"connecting...";
+                cell.detailTextLabel.text = @"链接中...";
                 UIButton *accessoryButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                 [accessoryButton addTarget:self action:@selector(actionButtonCancelConnect:)  forControlEvents:UIControlEventTouchUpInside];
                 accessoryButton.tag = indexPath.row;
-                [accessoryButton setTitle:@"Cancel" forState:UIControlStateNormal];
+                [accessoryButton setTitle:@"取消" forState:UIControlStateNormal];
                 [accessoryButton setFrame:CGRectMake(0,0,100,35)];
                 cell.accessoryView  = accessoryButton;
                 
             }
             
             if (cell.textLabel.text == nil)
-                cell.textLabel.text = @"Unknow";
+                cell.textLabel.text = @"未知设备";
         }
             break;
     }
@@ -425,10 +407,10 @@
 	NSString *title = nil;
 	switch (section) {
         case 0:
-            title = @"Connected Device:";
+            title = @"已链接设备:";
             break;
 		case 1:
-			title = @"Discovered Devices:";
+			title = @"已发现设备:";
 			break;
             
 		default:
@@ -496,10 +478,10 @@
     if (uuidSettingViewController == nil) {
         uuidSettingViewController = [[UUIDSettingViewController alloc] initWithNibName:@"UUIDSettingViewController" bundle:nil];
     }
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if ([[[appDelegate navigationController] viewControllers] containsObject:uuidSettingViewController] == FALSE) {
-        [[appDelegate navigationController] pushViewController:uuidSettingViewController animated:YES];
-    }
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    if ([[[appDelegate navigationController] viewControllers] containsObject:uuidSettingViewController] == FALSE) {
+//        [[appDelegate navigationController] pushViewController:uuidSettingViewController animated:YES];
+//    }
 }
 
 //Derek
@@ -542,7 +524,6 @@
                 toolbarItems = [[NSArray alloc] initWithObjects:scanButton, uuidSettingButton, nil];
             }
             [self setToolbarItems:toolbarItems animated:NO];
-            [toolbarItems release];
             break;
         case LE_STATUS_SCANNING:
             if (([connectedDeviceInfo count] > 0)||([connectingList count] > 0)) {
@@ -552,7 +533,6 @@
                 toolbarItems = [[NSArray alloc] initWithObjects: refreshButton,cancelButton, uuidSettingButton, nil];
             }
             [self setToolbarItems:toolbarItems animated:NO];
-            [toolbarItems release];
             break;
     }
 }
