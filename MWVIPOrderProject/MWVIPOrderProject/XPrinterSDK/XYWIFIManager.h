@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 @class XYWIFIManager;
 typedef void(^XYWIFIBlock)(BOOL isConnect);
 typedef void(^XYWIFICallBackBlock)(NSData *data);
@@ -61,6 +62,12 @@ enum {
 -(void)XYConnectWithHost:(NSString *)hostStr port:(UInt16)port completion:(XYWIFIBlock)block;
 // 断开主机
 - (void)XYDisConnect;
+
+//修改版本的推荐使用发送数据的两个方法
+-(void)XYWriteCommandWithData:(NSData *)data;
+
+-(void)XYWriteCommandWithData:(NSData *)data withResponse:(XYWIFICallBackBlock)block;
+
 // 发送TSC完整指令
 - (void)XYSendMSGWith:(NSString *)str;
 // 发送POS完整指令

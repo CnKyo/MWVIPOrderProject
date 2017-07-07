@@ -14,12 +14,21 @@
 #import "AppDelegate.h"
 #import "SEPrinterManager.h"
 #import "ConnectViewController.h"
-@interface MWShopCarViewController ()<UITableViewDelegate,UITableViewDataSource,mShopCarTableViewCellDelegate,mShopCarTableViewCellDelegate,mShopCarRightViewDelegate,CBControllerDelegate>
+
+#import "XYWIFIManager.h"
+#import "PosCommand.h"
+#import "XPTscCommand.h"
+#import "ImageTranster.h"
+#import "XYSDK.h"
+
+@interface MWShopCarViewController ()<UITableViewDelegate,UITableViewDataSource,mShopCarTableViewCellDelegate,mShopCarTableViewCellDelegate,mShopCarRightViewDelegate,CBControllerDelegate,XYWIFIManagerDelegate>
 
 @property(strong,nonatomic)  UITableView *mLeftTableView;
 
 @property(strong,nonatomic)  mShopCarRightView *mRightView;
 
+/** wifi */
+@property (nonatomic, strong) XYWIFIManager *wifiManager;
 
 @property (strong, nonatomic)   NSMutableArray              *deviceArray;  /**< 蓝牙设备个数 */
 
@@ -37,7 +46,38 @@
     
     MyPeripheral *mGPDevice;
 }
+- (XYWIFIManager *)wifiManager
+{
+    if (!_wifiManager)
+        {
+        _wifiManager = [XYWIFIManager shareWifiManager];
+        _wifiManager.delegate = self;
+        
+        }
+    return _wifiManager;
+}
 
+- (void)initWifi{
+    // 先断开原来的连接
+    [self.wifiManager XYDisConnect];
+    
+
+    
+    // 连接到 wifi
+    [self.wifiManager XYConnectWithHost:@"192.168.1.123"
+                                   port:(UInt16)[@"9100" integerValue]
+                             completion:^(BOOL isConnect) {
+                                 if (isConnect)
+                                     {
+                                     MLLog(@"链接。。。。。。。。。。。");
+                                     }
+                                 else
+                                     {
+                                     MLLog(@"未链接。。。。。。。。。。。");
+                                     }
+                             }];
+
+}
 - (void)initBlueToothe{
 
     [SVProgressHUD showWithStatus:@"正在链接设备..."];
@@ -59,51 +99,9 @@
 
     
 }
-- (void)initGPrinterBlueToothe{
-    
-    [mGPConnect startScan];
-    [SVProgressHUD showWithStatus:@"正在链接设备..."];
-    [mGPConnect updateDiscoverPeripherals];
-    
-    for (CBPeripheral *peripheral in self.deviceArray) {
-        if ([peripheral.name isEqualToString:@"Gprinter"]) {
-//            mGPDevice.peripheral = peripheral;
-//            [[BLKWrite Instance] setPeripheral:mGPDevice];
-//
-//            [mGPConnect connectDevice:mGPDevice];
-            [[SEPrinterManager sharedInstance] connectPeripheral:peripheral completion:^(CBPeripheral *perpheral, NSError *error) {
-                if (error) {
-                    [SVProgressHUD showErrorWithStatus:@"连接失败"];
-                } else {
-                    [SVProgressHUD showSuccessWithStatus:@"连接成功"];
-                    
-                }
-                [self performSelector:@selector(XPSVPDissmiss) withObject:self afterDelay:1.0];
-            }];
-        }
-    }
-    
-    
-    
-}
 //3
 -(void)viewDidAppear:(BOOL)animated{
     MLLog(@"viewDidAppear");
-    if([[BLKWrite Instance] isConnecting]){
-        [SVProgressHUD showSuccessWithStatus:@"蓝牙设备已链接！"];
-        if (mPtype == MWPrintTypeWithOutPay) {
-        [self hiddenView];
-            
-        }else{
-            [self displayPopView];
-        }
-        
-        
-    }
-    else{
-        [SVProgressHUD showErrorWithStatus:@"蓝牙设备已断开！"];
-      
-    }
 
 }
 
@@ -170,6 +168,9 @@
 //    [self.view addSubview:mGPConnect.view];
     
     mGPDevice = [MyPeripheral new];
+    
+    [self wifiManager];
+
 }
 - (void)updateRightView:(BOOL)mHidden{
     _mRightView.mWechatPay.hidden = _mRightView.mCashPay.hidden = _mRightView.mOutPay.hidden = _mRightView.mScorePay.hidden = mHidden;
@@ -287,18 +288,19 @@
         case 2:
         {
         mPtype = MWPrintTypeWithOutPay;
+        [self initWifi];
 //        [self initGPrinterBlueToothe];
-        if([[BLKWrite Instance] isConnecting]){
-            [SVProgressHUD showSuccessWithStatus:@"蓝牙设备已链接！"];
-            [self hiddenView];
-
-        }
-        else{
-            [SVProgressHUD showErrorWithStatus:@"蓝牙设备已断开！"];
-            [[BLKWrite Instance] setBWiFiMode:NO];
-            AppDelegate *dele = [UIApplication sharedApplication].delegate;
-            [self.navigationController pushViewController:dele.mConnBLE animated:YES];
-        }
+//        if([[BLKWrite Instance] isConnecting]){
+//            [SVProgressHUD showSuccessWithStatus:@"蓝牙设备已链接！"];
+//            [self hiddenView];
+//
+//        }
+//        else{
+//            [SVProgressHUD showErrorWithStatus:@"蓝牙设备已断开！"];
+//            [[BLKWrite Instance] setBWiFiMode:NO];
+//            AppDelegate *dele = [UIApplication sharedApplication].delegate;
+//            [self.navigationController pushViewController:dele.mConnBLE animated:YES];
+//        }
 
 
         }
@@ -313,7 +315,8 @@
         case 4:
         {
         if (mPtype == MWPrintTypeWithOutPay) {
-            [self GPrinterTask];
+//            [self GPrinterTask];
+            [self XPQ200Printer];
     
         }else{
             //方式一：
@@ -411,116 +414,53 @@
 }
 #pragma mark----****----GPrinter代理方法
 
+- (void)XPQ200Printer{
+    
+    [self getPrinter];
+    ///0 or 48 代表标准；1 or 49 代表压缩字体
+//    data = [data initWithData:[PosCommand selectFont:48]];
+//    data = [data initWithData:[PosCommand selectHRIFont:48]];
 
-//#pragma mark----****----gprinter打印任务
-- (void)GPrinterTask{
-    TscCommand *tscCmd = [[TscCommand alloc] init];
-    [tscCmd setHasResponse:NO];
-    /*
-     一定会发送的设置项
-     */
-    //Size
-    ///宽高
-    [tscCmd addSize:100 :50];
+    [_wifiManager XYSelectFontWith:1 ];
+    [_wifiManager XYSelectHRIFontToUse:1];
     
-    //GAP间隙长度  间隙偏移
-    
-    [tscCmd addGapWithM:2   withN:0];
-    
-    //REFERENCE纵坐标y。横坐标x
-    [tscCmd addReference:0
-                        :0];
-    
-    //SPEED打印速度
-    [tscCmd addSpeed:4];
-    
-    //DENSITY打印浓度
-    [tscCmd addDensity:8];
-    
-    //DIRECTION方向
-    [tscCmd addDirection:0];
-    
-    //fixed command发送一些TSC的固定命令，在cls命令之前发送
-    [tscCmd addComonCommand];
-    //清除打印缓冲区
-    [tscCmd addCls];
-    
-    /**
-     * 方法说明:在标签上绘制文字
-     * @param x 横坐标
-     * @param y 纵坐标
-     * @param font  字体类型
-     * @param rotation  旋转角度
-     * @param Xscal  横向放大
-     * @param Yscal  纵向放大
-     * @param text   文字字符串
-     * @return void
-     */
-//    [tscCmd addTextwithX:180
-//                   withY:160
-//                withFont:@"TSS24.BF2"
-//            withRotation:0
-//               withXscal:1
-//               withYscal:1
-//                withText:@"重庆漫维文化传播有限公司"];
-    
-    [tscCmd addTextwithX:180
-                   withY:190
-                withFont:@"TSS24.BF2"
-            withRotation:0
-               withXscal:1
-               withYscal:1
-                withText:@"电话：151515151515"];
-    
-    [tscCmd addTextwithX:180
-                   withY:220
-                withFont:@"TSS24.BF2"
-            withRotation:0
-               withXscal:1
-               withYscal:1
-                withText:@"杨家坪大洋百货正升百脑汇2栋12-2"];
-    ///二维码
-    /**
-     * 方法说明:在标签上绘制QRCode二维码
-     * @param x 横坐标
-     * @param y 纵坐标
-     * @param ecclever 选择QRCODE纠错等级,L为7%,M为15%,Q为25%,H为30%
-     * @param cellwidth  二维码宽度1~10，默认为4
-     * @param mode  默认为A，A为Auto,M为Manual
-     * @param rotation  旋转角度，QRCode二维旋转角度，顺时钟方向，0不旋转，90顺时钟方向旋转90度，180顺时钟方向旋转180度，270顺时钟方向旋转270度
-     * @param content   条码内容
-     * @return void
-     * QRCODE X,Y ,ECC LEVER ,cell width,mode,rotation, "data string"
-     * QRCODE 20,24,L,4,A,0,"佳博集团网站www.Gprinter.com.cn"
-     */
-    [tscCmd addQRCode:325
-                     :50
-                     :@"L"
-                     :5
-                     :@"A"
-                     :0
-                     :@"佳博集团网站www.Gprinter.com.cn"];
-    //print将字符串转成十六进制码
-    [tscCmd addPrint:1 :1];
+    NSMutableData* dataM=[NSMutableData dataWithData:[PosCommand initializePrinter]];
+
+    NSData* data=[@"梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n" dataUsingEncoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000)];
+
+    [dataM appendData:data];
+
+//    [_wifiManager XYaddText:10 y:10 font:@"TSS24.BF2" rotation:0 x_mul:2 y_mul:2 content:@"梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n"];
+
+    [self.wifiManager XYWriteCommandWithData:dataM];
+
+    [_wifiManager XYSelectCutPaperModelAndCutPaperWith:66 n:255 selectedModel:1];
 
 }
-
-- (void)didUpdatePeripheralList:(NSArray *)peripherals{
-    MLLog(@"------设备-:%@",peripherals);
-    for (MyPeripheral *device in peripherals) {
-        if ([device.advName isEqualToString:@"Gprinter"]) {
-            [mGPConnect connectDevice:device];
-        }
-    }
-}
-- (void)didConnectPeripheral:(MyPeripheral *)peripheral{
-    MLLog(@"------设备--:%@",peripheral);
-    [[BLKWrite Instance] setPeripheral:peripheral];
-    [mGPConnect updateMyPeripheralForNewConnected:peripheral];
+#pragma mark----****----Wifi接入代理
+// 成功连接主机
+- (void)XYWIFIManager:(XYWIFIManager *)manager didConnectedToHost:(NSString *)host port:(UInt16)port{
+    MLLog(@"wifi链接成功");
+    [self hiddenView];
 
 }
-- (void)didDisconnectPeripheral:(MyPeripheral *)peripheral{
-    MLLog(@"------设备---:%@",peripheral);
+// 断开连接
+- (void)XYWIFIManager:(XYWIFIManager *)manager willDisconnectWithError:(NSError *)error{
+    MLLog(@"wifi链接断开");
+}
+// 写入数据成功
+- (void)XYWIFIManager:(XYWIFIManager *)manager didWriteDataWithTag:(long)tag{
+MLLog(@"wifi写入数据成功");
+}
+// 收到回传
+- (void)XYWIFIManager:(XYWIFIManager *)manager didReadData:(NSData *)data tag:(long)tag{
+    MLLog(@"wifi收到回传");
+
+}
+// 断开连接
+- (void)XYWIFIManagerDidDisconnected:(XYWIFIManager *)manager{
+    MLLog(@"wifi链接断开");
+
 }
 
 @end

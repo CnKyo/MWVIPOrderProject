@@ -25,7 +25,14 @@
 		5263AA0D1EFA7D1C003311D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA0C1EFA7D1C003311D8 /* SystemConfiguration.framework */; };
 		5263AA0F1EFA7D22003311D8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA0E1EFA7D22003311D8 /* CFNetwork.framework */; };
 		5263AA111EFA7D29003311D8 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA101EFA7D29003311D8 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		5263AA181EFA7D50003311D8 /* libXYPrinter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA141EFA7D50003311D8 /* libXYPrinter.a */; };
+		5269DB6B1F0F28260060A2FA /* BLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269DB5F1F0F28260060A2FA /* BLEManager.m */; };
+		5269DB6C1F0F28260060A2FA /* ImageTranster.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269DB611F0F28260060A2FA /* ImageTranster.m */; };
+		5269DB6D1F0F28260060A2FA /* PosCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269DB631F0F28260060A2FA /* PosCommand.m */; };
+		5269DB6E1F0F28260060A2FA /* XPTscCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269DB651F0F28260060A2FA /* XPTscCommand.m */; };
+		5269DB6F1F0F28260060A2FA /* XYBLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269DB671F0F28260060A2FA /* XYBLEManager.m */; };
+		5269DB701F0F28260060A2FA /* XYWIFIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269DB6A1F0F28260060A2FA /* XYWIFIManager.m */; };
+		5269DB761F0F28DF0060A2FA /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269DB731F0F28DF0060A2FA /* AsyncSocket.m */; };
+		5269DB771F0F28DF0060A2FA /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269DB751F0F28DF0060A2FA /* AsyncUdpSocket.m */; };
 		526F45A11F023F730013CA96 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A01F023F730013CA96 /* UIViewController+BackButtonHandler.m */; };
 		526F45AA1F0257C90013CA96 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A31F0257C90013CA96 /* ConnectViewController.m */; };
 		526F45AB1F0257C90013CA96 /* ConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526F45A41F0257C90013CA96 /* ConnectViewController.xib */; };
@@ -103,11 +110,23 @@
 		5263AA0C1EFA7D1C003311D8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5263AA0E1EFA7D22003311D8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5263AA101EFA7D29003311D8 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		5263AA131EFA7D50003311D8 /* BLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEManager.h; sourceTree = "<group>"; };
-		5263AA141EFA7D50003311D8 /* libXYPrinter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libXYPrinter.a; sourceTree = "<group>"; };
-		5263AA151EFA7D50003311D8 /* XYBLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYBLEManager.h; sourceTree = "<group>"; };
-		5263AA161EFA7D50003311D8 /* XYSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSDK.h; sourceTree = "<group>"; };
-		5263AA171EFA7D50003311D8 /* XYWIFIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYWIFIManager.h; sourceTree = "<group>"; };
+		5269DB5E1F0F28260060A2FA /* BLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEManager.h; sourceTree = "<group>"; };
+		5269DB5F1F0F28260060A2FA /* BLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEManager.m; sourceTree = "<group>"; };
+		5269DB601F0F28260060A2FA /* ImageTranster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTranster.h; sourceTree = "<group>"; };
+		5269DB611F0F28260060A2FA /* ImageTranster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTranster.m; sourceTree = "<group>"; };
+		5269DB621F0F28260060A2FA /* PosCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PosCommand.h; sourceTree = "<group>"; };
+		5269DB631F0F28260060A2FA /* PosCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PosCommand.m; sourceTree = "<group>"; };
+		5269DB641F0F28260060A2FA /* XPTscCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPTscCommand.h; sourceTree = "<group>"; };
+		5269DB651F0F28260060A2FA /* XPTscCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPTscCommand.m; sourceTree = "<group>"; };
+		5269DB661F0F28260060A2FA /* XYBLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYBLEManager.h; sourceTree = "<group>"; };
+		5269DB671F0F28260060A2FA /* XYBLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYBLEManager.m; sourceTree = "<group>"; };
+		5269DB681F0F28260060A2FA /* XYSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSDK.h; sourceTree = "<group>"; };
+		5269DB691F0F28260060A2FA /* XYWIFIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYWIFIManager.h; sourceTree = "<group>"; };
+		5269DB6A1F0F28260060A2FA /* XYWIFIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYWIFIManager.m; sourceTree = "<group>"; };
+		5269DB721F0F28DF0060A2FA /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		5269DB731F0F28DF0060A2FA /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		5269DB741F0F28DF0060A2FA /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		5269DB751F0F28DF0060A2FA /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
 		526F459F1F023F730013CA96 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		526F45A01F023F730013CA96 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		526F45A21F0257C90013CA96 /* ConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
@@ -151,7 +170,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5263AA181EFA7D50003311D8 /* libXYPrinter.a in Frameworks */,
 				5263AA111EFA7D29003311D8 /* CoreBluetooth.framework in Frameworks */,
 				5210BB301EFBB9D000B505D9 /* libGSDK.a in Frameworks */,
 				5263AA0F1EFA7D22003311D8 /* CFNetwork.framework in Frameworks */,
@@ -305,6 +323,7 @@
 		5239D3501EF3B86C00BAB3F3 /* MWVIPOrderProject */ = {
 			isa = PBXGroup;
 			children = (
+				5269DB711F0F28DF0060A2FA /* AsyncSocket */,
 				526F459E1F023F730013CA96 /* NavigationButtonHandle */,
 				529F25931F00A7AB005B6D75 /* BLEPrinter */,
 				5210BB261EFBB9D000B505D9 /* GprinterSDK */,
@@ -355,13 +374,32 @@
 		5263AA121EFA7D50003311D8 /* XPrinterSDK */ = {
 			isa = PBXGroup;
 			children = (
-				5263AA131EFA7D50003311D8 /* BLEManager.h */,
-				5263AA141EFA7D50003311D8 /* libXYPrinter.a */,
-				5263AA151EFA7D50003311D8 /* XYBLEManager.h */,
-				5263AA161EFA7D50003311D8 /* XYSDK.h */,
-				5263AA171EFA7D50003311D8 /* XYWIFIManager.h */,
+				5269DB5E1F0F28260060A2FA /* BLEManager.h */,
+				5269DB5F1F0F28260060A2FA /* BLEManager.m */,
+				5269DB601F0F28260060A2FA /* ImageTranster.h */,
+				5269DB611F0F28260060A2FA /* ImageTranster.m */,
+				5269DB621F0F28260060A2FA /* PosCommand.h */,
+				5269DB631F0F28260060A2FA /* PosCommand.m */,
+				5269DB641F0F28260060A2FA /* XPTscCommand.h */,
+				5269DB651F0F28260060A2FA /* XPTscCommand.m */,
+				5269DB661F0F28260060A2FA /* XYBLEManager.h */,
+				5269DB671F0F28260060A2FA /* XYBLEManager.m */,
+				5269DB681F0F28260060A2FA /* XYSDK.h */,
+				5269DB691F0F28260060A2FA /* XYWIFIManager.h */,
+				5269DB6A1F0F28260060A2FA /* XYWIFIManager.m */,
 			);
 			path = XPrinterSDK;
+			sourceTree = "<group>";
+		};
+		5269DB711F0F28DF0060A2FA /* AsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				5269DB721F0F28DF0060A2FA /* AsyncSocket.h */,
+				5269DB731F0F28DF0060A2FA /* AsyncSocket.m */,
+				5269DB741F0F28DF0060A2FA /* AsyncUdpSocket.h */,
+				5269DB751F0F28DF0060A2FA /* AsyncUdpSocket.m */,
+			);
+			path = AsyncSocket;
 			sourceTree = "<group>";
 		};
 		526F459E1F023F730013CA96 /* NavigationButtonHandle */ = {
@@ -602,21 +640,29 @@
 				52F60FCA1EFA0DEC00319120 /* mShopCarRightView.m in Sources */,
 				5239D3591EF3B86C00BAB3F3 /* ViewController.m in Sources */,
 				52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */,
+				5269DB6C1F0F28260060A2FA /* ImageTranster.m in Sources */,
 				52F60FD21EFA1F7500319120 /* mLoginView.m in Sources */,
+				5269DB6F1F0F28260060A2FA /* XYBLEManager.m in Sources */,
+				5269DB6D1F0F28260060A2FA /* PosCommand.m in Sources */,
 				52951CD51F049DF300EE5945 /* GPrinterController.m in Sources */,
+				5269DB701F0F28260060A2FA /* XYWIFIManager.m in Sources */,
 				5239D3561EF3B86C00BAB3F3 /* AppDelegate.m in Sources */,
 				529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */,
+				5269DB6E1F0F28260060A2FA /* XPTscCommand.m in Sources */,
 				526F45AA1F0257C90013CA96 /* ConnectViewController.m in Sources */,
 				5239D3531EF3B86C00BAB3F3 /* main.m in Sources */,
 				526F45AD1F0257C90013CA96 /* UUIDSettingViewController.m in Sources */,
 				526F45A11F023F730013CA96 /* UIViewController+BackButtonHandler.m in Sources */,
+				5269DB771F0F28DF0060A2FA /* AsyncUdpSocket.m in Sources */,
 				529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */,
 				52F60FCF1EFA1E6B00319120 /* MWLoginViewController.m in Sources */,
 				529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */,
+				5269DB6B1F0F28260060A2FA /* BLEManager.m in Sources */,
 				52375A801EF90B43006D9CF0 /* Util.m in Sources */,
 				526F45AC1F0257C90013CA96 /* ISSCButton.m in Sources */,
 				52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */,
 				52375A8A1EF922C4006D9CF0 /* mRightCollectionViewCell.m in Sources */,
+				5269DB761F0F28DF0060A2FA /* AsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
