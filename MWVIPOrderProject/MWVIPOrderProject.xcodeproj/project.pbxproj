@@ -44,6 +44,8 @@
 		529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25981F00A7AB005B6D75 /* SEPrinterManager.m */; };
 		529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F259A1F00A7AB005B6D75 /* UIImage+Bitmap.m */; };
 		529F25A01F00A7AB005B6D75 /* UIWebView+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F259C1F00A7AB005B6D75 /* UIWebView+UIImage.m */; };
+		52A120861F1777C600B1037D /* ZLSuperMarketShopCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A120841F1777C600B1037D /* ZLSuperMarketShopCarView.m */; };
+		52A120871F1777C600B1037D /* ZLSuperMarketShopCarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A120851F1777C600B1037D /* ZLSuperMarketShopCarView.xib */; };
 		52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC11EFA044D00319120 /* MWShopCarViewController.m */; };
 		52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC41EFA057500319120 /* mShopCarTableViewCell.m */; };
 		52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F60FC51EFA057500319120 /* mShopCarTableViewCell.xib */; };
@@ -148,6 +150,9 @@
 		529F259A1F00A7AB005B6D75 /* UIImage+Bitmap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Bitmap.m"; sourceTree = "<group>"; };
 		529F259B1F00A7AB005B6D75 /* UIWebView+UIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+UIImage.h"; sourceTree = "<group>"; };
 		529F259C1F00A7AB005B6D75 /* UIWebView+UIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+UIImage.m"; sourceTree = "<group>"; };
+		52A120831F1777C600B1037D /* ZLSuperMarketShopCarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLSuperMarketShopCarView.h; sourceTree = "<group>"; };
+		52A120841F1777C600B1037D /* ZLSuperMarketShopCarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLSuperMarketShopCarView.m; sourceTree = "<group>"; };
+		52A120851F1777C600B1037D /* ZLSuperMarketShopCarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLSuperMarketShopCarView.xib; sourceTree = "<group>"; };
 		52F60FC01EFA044D00319120 /* MWShopCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWShopCarViewController.h; sourceTree = "<group>"; };
 		52F60FC11EFA044D00319120 /* MWShopCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWShopCarViewController.m; sourceTree = "<group>"; };
 		52F60FC31EFA057500319120 /* mShopCarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mShopCarTableViewCell.h; sourceTree = "<group>"; };
@@ -335,6 +340,7 @@
 				5239D3551EF3B86C00BAB3F3 /* AppDelegate.m */,
 				5239D3571EF3B86C00BAB3F3 /* ViewController.h */,
 				5239D3581EF3B86C00BAB3F3 /* ViewController.m */,
+				52A120821F1777C600B1037D /* View */,
 				52375A811EF91D7A006D9CF0 /* ViewController */,
 				5239D35A1EF3B86C00BAB3F3 /* Main.storyboard */,
 				5239D35D1EF3B86C00BAB3F3 /* Assets.xcassets */,
@@ -425,6 +431,16 @@
 				529F259C1F00A7AB005B6D75 /* UIWebView+UIImage.m */,
 			);
 			path = BLEPrinter;
+			sourceTree = "<group>";
+		};
+		52A120821F1777C600B1037D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52A120831F1777C600B1037D /* ZLSuperMarketShopCarView.h */,
+				52A120841F1777C600B1037D /* ZLSuperMarketShopCarView.m */,
+				52A120851F1777C600B1037D /* ZLSuperMarketShopCarView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		546F5E7CB87651464E45B9EA /* Pods */ = {
@@ -558,6 +574,7 @@
 				52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */,
 				5239D3611EF3B86C00BAB3F3 /* LaunchScreen.storyboard in Resources */,
 				5239D35E1EF3B86C00BAB3F3 /* Assets.xcassets in Resources */,
+				52A120871F1777C600B1037D /* ZLSuperMarketShopCarView.xib in Resources */,
 				526F45AE1F0257C90013CA96 /* UUIDSettingViewController.xib in Resources */,
 				52375A871EF91D9C006D9CF0 /* mLeftTableViewCell.xib in Resources */,
 				5239D35C1EF3B86C00BAB3F3 /* Main.storyboard in Resources */,
@@ -663,6 +680,7 @@
 				52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */,
 				52375A8A1EF922C4006D9CF0 /* mRightCollectionViewCell.m in Sources */,
 				5269DB761F0F28DF0060A2FA /* AsyncSocket.m in Sources */,
+				52A120861F1777C600B1037D /* ZLSuperMarketShopCarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
