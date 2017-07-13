@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZLSuperMarketShopCarView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ba6-XA-HLV">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.30391160102739728" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="1sg-QO-HiR"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YzS-gZ-Pfi">
+                    <rect key="frame" x="10" y="-5" width="40" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="Rm8-OR-gk7"/>
+                        <constraint firstAttribute="height" constant="40" id="Z7R-98-O0M"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="MWShopCar">
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="mShopCar:" destination="iN0-l3-epB" eventType="touchUpInside" id="K24-h6-HI6"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bs-cI-JuV">
+                    <rect key="frame" x="40" y="-5" width="20" height="20"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="7hj-9v-kC1"/>
+                        <constraint firstAttribute="width" constant="20" id="eRV-c5-Kya"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共计：¥100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLg-Af-wMj">
+                    <rect key="frame" x="62" y="14.5" width="175" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="PQ1-t5-BGw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZN-Ps-K2J">
+                    <rect key="frame" x="245" y="0.0" width="130" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="130" id="nqc-NQ-Bd3"/>
+                    </constraints>
+                    <state key="normal" title="去结算">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="mGoPay:" destination="iN0-l3-epB" eventType="touchUpInside" id="XTC-3Z-XYK"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="HZN-Ps-K2J" secondAttribute="bottom" id="Bdu-ah-yDh"/>
+                <constraint firstItem="3bs-cI-JuV" firstAttribute="leading" secondItem="YzS-gZ-Pfi" secondAttribute="trailing" constant="-10" id="GI3-LU-7TL"/>
+                <constraint firstItem="eLg-Af-wMj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="GRK-0n-vyd"/>
+                <constraint firstItem="3bs-cI-JuV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-5" id="STp-TL-jVi"/>
+                <constraint firstItem="HZN-Ps-K2J" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="TyV-L1-OcV"/>
+                <constraint firstItem="ba6-XA-HLV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WGT-Jk-xqs"/>
+                <constraint firstItem="YzS-gZ-Pfi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-5" id="XuE-zT-7ZB"/>
+                <constraint firstItem="HZN-Ps-K2J" firstAttribute="leading" secondItem="eLg-Af-wMj" secondAttribute="trailing" constant="8" id="YkW-eO-WYL"/>
+                <constraint firstAttribute="trailing" secondItem="HZN-Ps-K2J" secondAttribute="trailing" id="cit-6k-ODV"/>
+                <constraint firstItem="YzS-gZ-Pfi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="dya-pC-8aU"/>
+                <constraint firstItem="eLg-Af-wMj" firstAttribute="leading" secondItem="3bs-cI-JuV" secondAttribute="trailing" constant="2" id="evr-uR-rN0"/>
+                <constraint firstItem="ba6-XA-HLV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gZQ-Q9-6PF"/>
+                <constraint firstAttribute="trailing" secondItem="ba6-XA-HLV" secondAttribute="trailing" id="iuG-NB-ZfB"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="mGopayBtn" destination="HZN-Ps-K2J" id="uxg-eD-wxV"/>
+                <outlet property="mNum" destination="3bs-cI-JuV" id="lbt-WK-9SM"/>
+                <outlet property="mShopCarBtn" destination="YzS-gZ-Pfi" id="s4c-2o-ThX"/>
+                <outlet property="mTotlePrice" destination="eLg-Af-wMj" id="wlS-NG-Usb"/>
+            </connections>
+            <point key="canvasLocation" x="-49.5" y="-32"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="MWShopCar" width="64" height="64"/>
+    </resources>
+</document>

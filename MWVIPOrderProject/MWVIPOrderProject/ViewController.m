@@ -14,7 +14,8 @@
 #import "MWShopCarViewController.h"
 
 #import "MWLoginViewController.h"
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+#import "ZLSuperMarketShopCarView.h"
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZLSuperMarketShopCarDelegate>
 
 @property (assign, nonatomic) NSIndexPath *selIndex;//单选，当前选中的行
 @property(strong,nonatomic)  UICollectionView *mCollectionView;
@@ -24,7 +25,7 @@
 
 @implementation ViewController
 {
-   
+    ZLSuperMarketShopCarView *mShopCarView;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,7 +41,7 @@
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        self.mCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake((DEVICE_Width/3), 64, DEVICE_Width-(DEVICE_Width/3), DEVICE_Height-64) collectionViewLayout:flowLayout];
+        self.mCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake((DEVICE_Width/3), 64, DEVICE_Width-(DEVICE_Width/3), DEVICE_Height-64-60) collectionViewLayout:flowLayout];
 //    self.mCollectionView = [UICollectionView new];
 //    [self.mCollectionView setCollectionViewLayout:flowLayout];
     //    self.mCollectionView = [[UICollectionView alloc] init];
@@ -54,12 +55,17 @@
     self.mCollectionView.delegate = self;
 
     
+    mShopCarView = [ZLSuperMarketShopCarView shareView];
+//    mShopCarView.mNum.hidden = YES;
+    mShopCarView.mNum.text = @"99";
+    [self.view addSubview:mShopCarView];
+    
     UINib   *nib = [UINib nibWithNibName:@"mLeftTableViewCell" bundle:nil];
     [_mLeftTableView registerNib:nib forCellReuseIdentifier:@"cell"];
     
     [_mLeftTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.bottom.equalTo(self.view);
-        
+        make.left.top.equalTo(self.view);
+        make.bottom.equalTo(mShopCarView.mas_top).offset(0);
         make.width.offset(DEVICE_Width/3);
     }];
     
@@ -69,6 +75,11 @@
 //        make.left.equalTo(_mLeftTableView.mas_right);
 //    }];
     
+    [mShopCarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_mLeftTableView.mas_bottom).offset(0);
+        make.left.right.bottom.equalTo(self.view).offset(0);
+        make.height.offset(60);
+    }];
     
 }
 
@@ -201,5 +212,18 @@
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
 //    return CGSizeMake(300, 20);
 //}
+/**
+ 购物车代理方法
+ */
+- (void)ZLSuperMarketShopCarDidSelected{
+    MLLog(@"购物车代理方法");
+}
 
+/**
+ 去结算代理方法
+ */
+- (void)ZLSuperMarketGoPayDidSelected{
+    MLLog(@" 去结算代理方法");
+
+}
 @end

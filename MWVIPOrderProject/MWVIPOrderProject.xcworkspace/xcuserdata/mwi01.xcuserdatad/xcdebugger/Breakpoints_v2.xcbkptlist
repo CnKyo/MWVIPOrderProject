@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MWVIPOrderProject/ViewController/MWShopCarViewController.m"
-            timestampString = "521518764.999745"
+            timestampString = "521704548.33987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "969"
-            endingLineNumber = "969">
+            startingLineNumber = "986"
+            endingLineNumber = "986">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MWVIPOrderProject/ViewController/MWShopCarViewController.m"
-            timestampString = "521518764.999745"
+            timestampString = "521704548.33987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "977"
-            endingLineNumber = "977">
+            startingLineNumber = "994"
+            endingLineNumber = "994">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -38,11 +38,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MWVIPOrderProject/ViewController/MWShopCarViewController.m"
-            timestampString = "521518764.999745"
+            timestampString = "521704548.33987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "987"
-            endingLineNumber = "987">
+            startingLineNumber = "1004"
+            endingLineNumber = "1004">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
