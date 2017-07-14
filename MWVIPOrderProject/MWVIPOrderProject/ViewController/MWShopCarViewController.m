@@ -426,15 +426,14 @@
     
     NSMutableData* dataM=[NSMutableData dataWithData:[PosCommand initializePrinter]];
 
-    NSData* data=[@"梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n\n梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n\n梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n\n梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n" dataUsingEncoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000)];
+    NSString *mOrder =@"梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n\n梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n\n梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n\n梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n";
+    
+    NSData* data=[mOrder dataUsingEncoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000)];
 
-<<<<<<< HEAD
     ///选择字符大小->15号字体
     [dataM appendData:[PosCommand selectCharacterSize:00001111]];
 //    [dataM appendData:[PosCommand setDefultLineSpace:33]];
 
-=======
->>>>>>> parent of ceb8ca3... 设置字符大小
     [dataM appendData:data];
 
 //    [_wifiManager XYaddText:10 y:10 font:@"TSS24.BF2" rotation:0 x_mul:2 y_mul:2 content:@"梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n"];
