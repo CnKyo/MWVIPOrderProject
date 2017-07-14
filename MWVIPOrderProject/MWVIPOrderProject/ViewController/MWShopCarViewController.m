@@ -316,7 +316,7 @@
         {
         if (mPtype == MWPrintTypeWithOutPay) {
 //            [self GPrinterTask];
-            [self XPQ200Printer];
+            [self XPQ200Printer:@[@"梅菜扣肉",@"红烧兔肉"]];
     
         }else{
             //方式一：
@@ -414,32 +414,35 @@
 }
 #pragma mark----****----GPrinter代理方法
 
-- (void)XPQ200Printer{
+- (void)XPQ200Printer:(NSArray *)mData{
     
-    [self getPrinter];
-    ///0 or 48 代表标准；1 or 49 代表压缩字体
-//    data = [data initWithData:[PosCommand selectFont:48]];
-//    data = [data initWithData:[PosCommand selectHRIFont:48]];
-
-    [_wifiManager XYSelectFontWith:1 ];
-    [_wifiManager XYSelectHRIFontToUse:1];
+//    [self getPrinter];
+    
+    ///打印内容结尾必须加换行符，否则切刀无法工作（ps：我能怎么办，我也很无奈啊。。。😂）
+    NSString *mContent = @"";
+    
+    for (int i =0;i<mData.count;i++) {
+        NSString *mStr =mData[i];
+        
+        if (i==mData.count-1) {
+            mContent = [mContent stringByAppendingString:[NSString stringWithFormat:@"%@\n",mStr]];
+            
+        }else{
+            mContent = [mContent stringByAppendingString:[NSString stringWithFormat:@"%@\n\n",mStr]];
+        }
+    }
+    
     
     NSMutableData* dataM=[NSMutableData dataWithData:[PosCommand initializePrinter]];
-
-    NSString *mOrder =@"梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n\n梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n\n梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n\n梅菜扣肉\n\n红烧兔肉\n\n土豆丝\n\n炒空心菜\n\n干锅鸡\n\n红烧鱼\n";
-    
-    NSData* data=[mOrder dataUsingEncoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000)];
+    NSData* data=[mContent dataUsingEncoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000)];
 
     ///选择字符大小->15号字体
     [dataM appendData:[PosCommand selectCharacterSize:00001111]];
-//    [dataM appendData:[PosCommand setDefultLineSpace:33]];
+
 
     [dataM appendData:data];
 
-//    [_wifiManager XYaddText:10 y:10 font:@"TSS24.BF2" rotation:0 x_mul:2 y_mul:2 content:@"梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n梅菜扣肉\n红烧兔肉\n土豆丝\n炒空心菜\n干锅鸡\n红烧鱼\n"];
-
     [self.wifiManager XYWriteCommandWithData:dataM];
-
     [_wifiManager XYSelectCutPaperModelAndCutPaperWith:66 n:255 selectedModel:1];
 
 }
