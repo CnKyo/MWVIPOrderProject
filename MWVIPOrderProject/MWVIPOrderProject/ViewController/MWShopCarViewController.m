@@ -443,7 +443,7 @@
     [dataM appendData:data];
 
     [self.wifiManager XYWriteCommandWithData:dataM];
-    [_wifiManager XYSelectCutPaperModelAndCutPaperWith:66 n:255 selectedModel:1];
+    [self.wifiManager XYSelectCutPaperModelAndCutPaperWith:66 n:255 selectedModel:1];
 
 }
 #pragma mark----****----Wifi接入代理

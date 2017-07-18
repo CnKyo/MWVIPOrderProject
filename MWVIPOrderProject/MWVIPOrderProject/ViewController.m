@@ -15,6 +15,7 @@
 
 #import "MWLoginViewController.h"
 #import "ZLSuperMarketShopCarView.h"
+#import "MWStaticsViewController.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZLSuperMarketShopCarDelegate>
 
 @property (assign, nonatomic) NSIndexPath *selIndex;//单选，当前选中的行
@@ -32,7 +33,27 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.title = @"今日销售2000份营业额¥30000元";
     
- 
+    
+    UIButton *mLeftBtn = [[UIButton alloc]initWithFrame:CGRectMake(80,15,70,20)];
+    
+    [mLeftBtn setTitle:@"换班" forState:UIControlStateNormal];
+    [mLeftBtn addTarget:self action:@selector(mLeftAction)forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *mBackItem = [[UIBarButtonItem alloc]initWithCustomView:mLeftBtn];
+    self.navigationItem.leftBarButtonItem= mBackItem;
+    
+
+    UIButton *mRightBtn = [[UIButton alloc]initWithFrame:CGRectMake(DEVICE_Width-60,15,25,25)];
+    mRightBtn.titleLabel.textAlignment = NSTextAlignmentRight;
+    CGRect mR = mRightBtn.frame;
+   
+    mR.size.width = 100;
+    mRightBtn.frame = mR;
+    [mRightBtn setTitle:@"收银统计" forState:UIControlStateNormal];
+    [mRightBtn addTarget:self action:@selector(mRightAction:)forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *mRightBartem = [[UIBarButtonItem alloc]initWithCustomView:mRightBtn];
+    self.navigationItem.rightBarButtonItem= mRightBartem;
+    
+    
     _mLeftTableView = [UITableView new];
     _mLeftTableView.backgroundColor = M_CO;
     _mLeftTableView.delegate = self;
@@ -82,7 +103,15 @@
     }];
     
 }
+#pragma mark---****----左边的按钮
+- (void)mLeftAction{
 
+}
+#pragma mark---****----右边的按钮
+- (void)mRightAction:(UIButton *)sender{
+    MWStaticsViewController *vc = [MWStaticsViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

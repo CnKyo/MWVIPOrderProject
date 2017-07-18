@@ -39,6 +39,8 @@
 		526F45AC1F0257C90013CA96 /* ISSCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A61F0257C90013CA96 /* ISSCButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		526F45AD1F0257C90013CA96 /* UUIDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526F45A81F0257C90013CA96 /* UUIDSettingViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		526F45AE1F0257C90013CA96 /* UUIDSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526F45A91F0257C90013CA96 /* UUIDSettingViewController.xib */; };
+		5275ED9B1F1DA9A000A7A137 /* MWStaticsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5275ED991F1DA9A000A7A137 /* MWStaticsTableViewCell.m */; };
+		5275ED9C1F1DA9A100A7A137 /* MWStaticsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5275ED9A1F1DA9A000A7A137 /* MWStaticsTableViewCell.xib */; };
 		52951CD51F049DF300EE5945 /* GPrinterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52951CD41F049DF300EE5945 /* GPrinterController.m */; };
 		529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25951F00A7AB005B6D75 /* HLPrinter.m */; };
 		529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25981F00A7AB005B6D75 /* SEPrinterManager.m */; };
@@ -46,6 +48,7 @@
 		529F25A01F00A7AB005B6D75 /* UIWebView+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F259C1F00A7AB005B6D75 /* UIWebView+UIImage.m */; };
 		52A120861F1777C600B1037D /* ZLSuperMarketShopCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A120841F1777C600B1037D /* ZLSuperMarketShopCarView.m */; };
 		52A120871F1777C600B1037D /* ZLSuperMarketShopCarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A120851F1777C600B1037D /* ZLSuperMarketShopCarView.xib */; };
+		52B29FDD1F1C9F5D009B13FE /* MWStaticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B29FDC1F1C9F5D009B13FE /* MWStaticsViewController.m */; };
 		52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC11EFA044D00319120 /* MWShopCarViewController.m */; };
 		52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC41EFA057500319120 /* mShopCarTableViewCell.m */; };
 		52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F60FC51EFA057500319120 /* mShopCarTableViewCell.xib */; };
@@ -139,6 +142,9 @@
 		526F45A71F0257C90013CA96 /* UUIDSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUIDSettingViewController.h; sourceTree = "<group>"; };
 		526F45A81F0257C90013CA96 /* UUIDSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUIDSettingViewController.m; sourceTree = "<group>"; };
 		526F45A91F0257C90013CA96 /* UUIDSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UUIDSettingViewController.xib; sourceTree = "<group>"; };
+		5275ED981F1DA9A000A7A137 /* MWStaticsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWStaticsTableViewCell.h; sourceTree = "<group>"; };
+		5275ED991F1DA9A000A7A137 /* MWStaticsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWStaticsTableViewCell.m; sourceTree = "<group>"; };
+		5275ED9A1F1DA9A000A7A137 /* MWStaticsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWStaticsTableViewCell.xib; sourceTree = "<group>"; };
 		52951CD31F049DF300EE5945 /* GPrinterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPrinterController.h; sourceTree = "<group>"; };
 		52951CD41F049DF300EE5945 /* GPrinterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPrinterController.m; sourceTree = "<group>"; };
 		529F25941F00A7AB005B6D75 /* HLPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPrinter.h; sourceTree = "<group>"; };
@@ -153,6 +159,8 @@
 		52A120831F1777C600B1037D /* ZLSuperMarketShopCarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLSuperMarketShopCarView.h; sourceTree = "<group>"; };
 		52A120841F1777C600B1037D /* ZLSuperMarketShopCarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLSuperMarketShopCarView.m; sourceTree = "<group>"; };
 		52A120851F1777C600B1037D /* ZLSuperMarketShopCarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLSuperMarketShopCarView.xib; sourceTree = "<group>"; };
+		52B29FDB1F1C9F5D009B13FE /* MWStaticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWStaticsViewController.h; sourceTree = "<group>"; };
+		52B29FDC1F1C9F5D009B13FE /* MWStaticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWStaticsViewController.m; sourceTree = "<group>"; };
 		52F60FC01EFA044D00319120 /* MWShopCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWShopCarViewController.h; sourceTree = "<group>"; };
 		52F60FC11EFA044D00319120 /* MWShopCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWShopCarViewController.m; sourceTree = "<group>"; };
 		52F60FC31EFA057500319120 /* mShopCarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mShopCarTableViewCell.h; sourceTree = "<group>"; };
@@ -277,6 +285,8 @@
 				52F60FC11EFA044D00319120 /* MWShopCarViewController.m */,
 				52F60FCD1EFA1E6B00319120 /* MWLoginViewController.h */,
 				52F60FCE1EFA1E6B00319120 /* MWLoginViewController.m */,
+				52B29FDB1F1C9F5D009B13FE /* MWStaticsViewController.h */,
+				52B29FDC1F1C9F5D009B13FE /* MWStaticsViewController.m */,
 				52375A821EF91D87006D9CF0 /* View */,
 			);
 			path = ViewController;
@@ -299,6 +309,9 @@
 				52F60FD01EFA1F7500319120 /* mLoginView.h */,
 				52F60FD11EFA1F7500319120 /* mLoginView.m */,
 				52F60FD31EFA1F8100319120 /* mLoginView.xib */,
+				5275ED981F1DA9A000A7A137 /* MWStaticsTableViewCell.h */,
+				5275ED991F1DA9A000A7A137 /* MWStaticsTableViewCell.m */,
+				5275ED9A1F1DA9A000A7A137 /* MWStaticsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -570,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				526F45AB1F0257C90013CA96 /* ConnectViewController.xib in Resources */,
+				5275ED9C1F1DA9A100A7A137 /* MWStaticsTableViewCell.xib in Resources */,
 				52F60FCC1EFA0EDA00319120 /* mShopCarRightView.xib in Resources */,
 				52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */,
 				5239D3611EF3B86C00BAB3F3 /* LaunchScreen.storyboard in Resources */,
@@ -665,12 +679,14 @@
 				5269DB701F0F28260060A2FA /* XYWIFIManager.m in Sources */,
 				5239D3561EF3B86C00BAB3F3 /* AppDelegate.m in Sources */,
 				529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */,
+				52B29FDD1F1C9F5D009B13FE /* MWStaticsViewController.m in Sources */,
 				5269DB6E1F0F28260060A2FA /* XPTscCommand.m in Sources */,
 				526F45AA1F0257C90013CA96 /* ConnectViewController.m in Sources */,
 				5239D3531EF3B86C00BAB3F3 /* main.m in Sources */,
 				526F45AD1F0257C90013CA96 /* UUIDSettingViewController.m in Sources */,
 				526F45A11F023F730013CA96 /* UIViewController+BackButtonHandler.m in Sources */,
 				5269DB771F0F28DF0060A2FA /* AsyncUdpSocket.m in Sources */,
+				5275ED9B1F1DA9A000A7A137 /* MWStaticsTableViewCell.m in Sources */,
 				529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */,
 				52F60FCF1EFA1E6B00319120 /* MWLoginViewController.m in Sources */,
 				529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */,
