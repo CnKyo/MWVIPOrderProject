@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.navigationItem.title = @"登录/换班";
     _mBgkImg = [UIImageView new];
     _mBgkImg.backgroundColor = M_CO;
     [self.view addSubview:_mBgkImg];

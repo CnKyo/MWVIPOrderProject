@@ -16,11 +16,18 @@
 #import "MWLoginViewController.h"
 #import "ZLSuperMarketShopCarView.h"
 #import "MWStaticsViewController.h"
+#import "MWPrintTaskViewController.h"
+#import "MWVIPFinderViewController.h"
+#import "SQMenuShowView.h"
+
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZLSuperMarketShopCarDelegate>
 
 @property (assign, nonatomic) NSIndexPath *selIndex;//单选，当前选中的行
 @property(strong,nonatomic)  UICollectionView *mCollectionView;
 @property(strong,nonatomic)  UITableView *mLeftTableView;
+
+@property (strong, nonatomic)  SQMenuShowView *showView;
+@property (assign, nonatomic)  BOOL  isShow;
 
 @end
 
@@ -34,27 +41,7 @@
     self.navigationItem.title = @"今日销售2000份营业额¥30000元";
     
     
-    UIButton *mLeftBtn = [[UIButton alloc]initWithFrame:CGRectMake(80,15,70,20)];
-    
-    [mLeftBtn setTitle:@"换班" forState:UIControlStateNormal];
-    [mLeftBtn addTarget:self action:@selector(mLeftAction)forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *mBackItem = [[UIBarButtonItem alloc]initWithCustomView:mLeftBtn];
-    self.navigationItem.leftBarButtonItem= mBackItem;
-    
-
-    UIButton *mRightBtn = [[UIButton alloc]initWithFrame:CGRectMake(DEVICE_Width-60,15,25,25)];
-    mRightBtn.titleLabel.textAlignment = NSTextAlignmentRight;
-    CGRect mR = mRightBtn.frame;
-   
-    mR.size.width = 100;
-    mRightBtn.frame = mR;
-    [mRightBtn setTitle:@"收银统计" forState:UIControlStateNormal];
-    [mRightBtn addTarget:self action:@selector(mRightAction:)forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *mRightBartem = [[UIBarButtonItem alloc]initWithCustomView:mRightBtn];
-    self.navigationItem.rightBarButtonItem= mRightBartem;
-    
-    
-    _mLeftTableView = [UITableView new];
+     _mLeftTableView = [UITableView new];
     _mLeftTableView.backgroundColor = M_CO;
     _mLeftTableView.delegate = self;
     _mLeftTableView.dataSource = self;
@@ -78,6 +65,7 @@
     
     mShopCarView = [ZLSuperMarketShopCarView shareView];
 //    mShopCarView.mNum.hidden = YES;
+    mShopCarView.delegate = self;
     mShopCarView.mNum.text = @"99";
     [self.view addSubview:mShopCarView];
     
@@ -102,16 +90,91 @@
         make.height.offset(60);
     }];
     
+    UIButton *mLeftBtn = [[UIButton alloc]initWithFrame:CGRectMake(80,15,70,20)];
+    
+    [mLeftBtn setTitle:@"换班" forState:UIControlStateNormal];
+    [mLeftBtn addTarget:self action:@selector(mLeftAction)forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *mBackItem = [[UIBarButtonItem alloc]initWithCustomView:mLeftBtn];
+    self.navigationItem.leftBarButtonItem= mBackItem;
+    
+    
+    //    UIButton *mRightBtn = [[UIButton alloc]initWithFrame:CGRectMake(DEVICE_Width-60,15,25,25)];
+    //    mRightBtn.titleLabel.textAlignment = NSTextAlignmentRight;
+    //    CGRect mR = mRightBtn.frame;
+    //
+    //    mR.size.width = 100;
+    //    mRightBtn.frame = mR;
+    //    [mRightBtn setTitle:@"更多操作" forState:UIControlStateNormal];
+    //    [mRightBtn addTarget:self action:@selector(show)forControlEvents:UIControlEventTouchUpInside];
+    //    UIBarButtonItem *mRightBartem = [[UIBarButtonItem alloc]initWithCustomView:mRightBtn];
+    //    self.navigationItem.rightBarButtonItem= mRightBartem;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"更多操作"
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self
+                                                                            action:@selector(show)];
+    
+    
+    __weak typeof(self) weakSelf = self;
+    [self.showView selectBlock:^(SQMenuShowView *view, NSInteger index) {
+        weakSelf.isShow = NO;
+        MLLog(@"点击第%ld个item",index+1);
+        if (index == 0) {
+            MWStaticsViewController *vc = [MWStaticsViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }else if(index == 1){
+            
+            MWPrintTaskViewController *vc = [MWPrintTaskViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }else{
+        
+            MWVIPFinderViewController *vc = [MWVIPFinderViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }];
+
+    
 }
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    _isShow = NO;
+    [self.showView dismissView];
+}
+
+- (SQMenuShowView *)showView{
+    
+    if (_showView) {
+        return _showView;
+    }
+    
+    _showView = [[SQMenuShowView alloc]initWithFrame:(CGRect){CGRectGetWidth(self.view.frame)-100-10,64+5,100,0}
+                                               items:@[@"收银统计",@"任务列表",@"会员查询"]
+                                           showPoint:(CGPoint){CGRectGetWidth(self.view.frame)-25,10}];
+    _showView.sq_backGroundColor = [UIColor whiteColor];
+    [self.view addSubview:_showView];
+    return _showView;
+}
+
+
+- (void)show{
+    _isShow = !_isShow;
+    
+    if (_isShow) {
+        [self.showView showView];
+        
+    }else{
+        [self.showView dismissView];
+    }
+    
+}
+
 #pragma mark---****----左边的按钮
 - (void)mLeftAction{
-
-}
-#pragma mark---****----右边的按钮
-- (void)mRightAction:(UIButton *)sender{
-    MWStaticsViewController *vc = [MWStaticsViewController new];
+    MWLoginViewController *vc = [MWLoginViewController new];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -174,8 +237,7 @@
     cell.backgroundColor = [UIColor whiteColor];
     cell.mName.textColor = M_CO;
     
-    MWShopCarViewController *vc = [MWShopCarViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 
@@ -224,8 +286,7 @@
 //        //显示提示框后执行的事件；
 //    }];
     
-    MWLoginViewController *vc = [MWLoginViewController new];
-    [self presentViewController:vc animated:YES completion:nil];
+
     
 }
 
@@ -246,6 +307,8 @@
  */
 - (void)ZLSuperMarketShopCarDidSelected{
     MLLog(@"购物车代理方法");
+    MWShopCarViewController *vc = [MWShopCarViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /**
@@ -253,6 +316,8 @@
  */
 - (void)ZLSuperMarketGoPayDidSelected{
     MLLog(@" 去结算代理方法");
+    MWShopCarViewController *vc = [MWShopCarViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 
 }
 @end

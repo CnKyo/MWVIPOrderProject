@@ -41,6 +41,15 @@
 		526F45AE1F0257C90013CA96 /* UUIDSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526F45A91F0257C90013CA96 /* UUIDSettingViewController.xib */; };
 		5275ED9B1F1DA9A000A7A137 /* MWStaticsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5275ED991F1DA9A000A7A137 /* MWStaticsTableViewCell.m */; };
 		5275ED9C1F1DA9A100A7A137 /* MWStaticsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5275ED9A1F1DA9A000A7A137 /* MWStaticsTableViewCell.xib */; };
+		5275EDA31F1DBDA600A7A137 /* SQMenuShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5275ED9F1F1DBDA600A7A137 /* SQMenuShowCell.m */; };
+		5275EDA41F1DBDA600A7A137 /* SQMenuShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5275EDA01F1DBDA600A7A137 /* SQMenuShowCell.xib */; };
+		5275EDA51F1DBDA600A7A137 /* SQMenuShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5275EDA21F1DBDA600A7A137 /* SQMenuShowView.m */; };
+		5275EDA81F1DF7F400A7A137 /* MWPrintTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5275EDA71F1DF7F400A7A137 /* MWPrintTaskViewController.m */; };
+		5275EDAC1F1DF87C00A7A137 /* MWPrintTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5275EDAA1F1DF87C00A7A137 /* MWPrintTaskCell.m */; };
+		5275EDAD1F1DF87C00A7A137 /* MWPrintTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5275EDAB1F1DF87C00A7A137 /* MWPrintTaskCell.xib */; };
+		5275EDB01F1E127200A7A137 /* MWVIPFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5275EDAF1F1E127200A7A137 /* MWVIPFinderViewController.m */; };
+		5275EDB41F1E12B500A7A137 /* MWVIPFinderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5275EDB21F1E12B500A7A137 /* MWVIPFinderCell.m */; };
+		5275EDB51F1E12B500A7A137 /* MWVIPFinderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5275EDB31F1E12B500A7A137 /* MWVIPFinderCell.xib */; };
 		52951CD51F049DF300EE5945 /* GPrinterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52951CD41F049DF300EE5945 /* GPrinterController.m */; };
 		529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25951F00A7AB005B6D75 /* HLPrinter.m */; };
 		529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F25981F00A7AB005B6D75 /* SEPrinterManager.m */; };
@@ -145,6 +154,21 @@
 		5275ED981F1DA9A000A7A137 /* MWStaticsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWStaticsTableViewCell.h; sourceTree = "<group>"; };
 		5275ED991F1DA9A000A7A137 /* MWStaticsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWStaticsTableViewCell.m; sourceTree = "<group>"; };
 		5275ED9A1F1DA9A000A7A137 /* MWStaticsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWStaticsTableViewCell.xib; sourceTree = "<group>"; };
+		5275ED9E1F1DBDA600A7A137 /* SQMenuShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQMenuShowCell.h; sourceTree = "<group>"; };
+		5275ED9F1F1DBDA600A7A137 /* SQMenuShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQMenuShowCell.m; sourceTree = "<group>"; };
+		5275EDA01F1DBDA600A7A137 /* SQMenuShowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQMenuShowCell.xib; sourceTree = "<group>"; };
+		5275EDA11F1DBDA600A7A137 /* SQMenuShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQMenuShowView.h; sourceTree = "<group>"; };
+		5275EDA21F1DBDA600A7A137 /* SQMenuShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQMenuShowView.m; sourceTree = "<group>"; };
+		5275EDA61F1DF7F400A7A137 /* MWPrintTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWPrintTaskViewController.h; sourceTree = "<group>"; };
+		5275EDA71F1DF7F400A7A137 /* MWPrintTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWPrintTaskViewController.m; sourceTree = "<group>"; };
+		5275EDA91F1DF87C00A7A137 /* MWPrintTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWPrintTaskCell.h; sourceTree = "<group>"; };
+		5275EDAA1F1DF87C00A7A137 /* MWPrintTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWPrintTaskCell.m; sourceTree = "<group>"; };
+		5275EDAB1F1DF87C00A7A137 /* MWPrintTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWPrintTaskCell.xib; sourceTree = "<group>"; };
+		5275EDAE1F1E127200A7A137 /* MWVIPFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWVIPFinderViewController.h; sourceTree = "<group>"; };
+		5275EDAF1F1E127200A7A137 /* MWVIPFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWVIPFinderViewController.m; sourceTree = "<group>"; };
+		5275EDB11F1E12B500A7A137 /* MWVIPFinderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWVIPFinderCell.h; sourceTree = "<group>"; };
+		5275EDB21F1E12B500A7A137 /* MWVIPFinderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWVIPFinderCell.m; sourceTree = "<group>"; };
+		5275EDB31F1E12B500A7A137 /* MWVIPFinderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWVIPFinderCell.xib; sourceTree = "<group>"; };
 		52951CD31F049DF300EE5945 /* GPrinterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPrinterController.h; sourceTree = "<group>"; };
 		52951CD41F049DF300EE5945 /* GPrinterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPrinterController.m; sourceTree = "<group>"; };
 		529F25941F00A7AB005B6D75 /* HLPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPrinter.h; sourceTree = "<group>"; };
@@ -287,6 +311,10 @@
 				52F60FCE1EFA1E6B00319120 /* MWLoginViewController.m */,
 				52B29FDB1F1C9F5D009B13FE /* MWStaticsViewController.h */,
 				52B29FDC1F1C9F5D009B13FE /* MWStaticsViewController.m */,
+				5275EDA61F1DF7F400A7A137 /* MWPrintTaskViewController.h */,
+				5275EDA71F1DF7F400A7A137 /* MWPrintTaskViewController.m */,
+				5275EDAE1F1E127200A7A137 /* MWVIPFinderViewController.h */,
+				5275EDAF1F1E127200A7A137 /* MWVIPFinderViewController.m */,
 				52375A821EF91D87006D9CF0 /* View */,
 			);
 			path = ViewController;
@@ -312,6 +340,12 @@
 				5275ED981F1DA9A000A7A137 /* MWStaticsTableViewCell.h */,
 				5275ED991F1DA9A000A7A137 /* MWStaticsTableViewCell.m */,
 				5275ED9A1F1DA9A000A7A137 /* MWStaticsTableViewCell.xib */,
+				5275EDA91F1DF87C00A7A137 /* MWPrintTaskCell.h */,
+				5275EDAA1F1DF87C00A7A137 /* MWPrintTaskCell.m */,
+				5275EDAB1F1DF87C00A7A137 /* MWPrintTaskCell.xib */,
+				5275EDB11F1E12B500A7A137 /* MWVIPFinderCell.h */,
+				5275EDB21F1E12B500A7A137 /* MWVIPFinderCell.m */,
+				5275EDB31F1E12B500A7A137 /* MWVIPFinderCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +375,7 @@
 		5239D3501EF3B86C00BAB3F3 /* MWVIPOrderProject */ = {
 			isa = PBXGroup;
 			children = (
+				5275ED9D1F1DBDA600A7A137 /* SQMenuShowView */,
 				5269DB711F0F28DF0060A2FA /* AsyncSocket */,
 				526F459E1F023F730013CA96 /* NavigationButtonHandle */,
 				529F25931F00A7AB005B6D75 /* BLEPrinter */,
@@ -428,6 +463,18 @@
 				526F45A01F023F730013CA96 /* UIViewController+BackButtonHandler.m */,
 			);
 			path = NavigationButtonHandle;
+			sourceTree = "<group>";
+		};
+		5275ED9D1F1DBDA600A7A137 /* SQMenuShowView */ = {
+			isa = PBXGroup;
+			children = (
+				5275ED9E1F1DBDA600A7A137 /* SQMenuShowCell.h */,
+				5275ED9F1F1DBDA600A7A137 /* SQMenuShowCell.m */,
+				5275EDA01F1DBDA600A7A137 /* SQMenuShowCell.xib */,
+				5275EDA11F1DBDA600A7A137 /* SQMenuShowView.h */,
+				5275EDA21F1DBDA600A7A137 /* SQMenuShowView.m */,
+			);
+			path = SQMenuShowView;
 			sourceTree = "<group>";
 		};
 		529F25931F00A7AB005B6D75 /* BLEPrinter */ = {
@@ -583,12 +630,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				526F45AB1F0257C90013CA96 /* ConnectViewController.xib in Resources */,
+				5275EDA41F1DBDA600A7A137 /* SQMenuShowCell.xib in Resources */,
 				5275ED9C1F1DA9A100A7A137 /* MWStaticsTableViewCell.xib in Resources */,
+				5275EDAD1F1DF87C00A7A137 /* MWPrintTaskCell.xib in Resources */,
 				52F60FCC1EFA0EDA00319120 /* mShopCarRightView.xib in Resources */,
 				52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */,
 				5239D3611EF3B86C00BAB3F3 /* LaunchScreen.storyboard in Resources */,
 				5239D35E1EF3B86C00BAB3F3 /* Assets.xcassets in Resources */,
 				52A120871F1777C600B1037D /* ZLSuperMarketShopCarView.xib in Resources */,
+				5275EDB51F1E12B500A7A137 /* MWVIPFinderCell.xib in Resources */,
 				526F45AE1F0257C90013CA96 /* UUIDSettingViewController.xib in Resources */,
 				52375A871EF91D9C006D9CF0 /* mLeftTableViewCell.xib in Resources */,
 				5239D35C1EF3B86C00BAB3F3 /* Main.storyboard in Resources */,
@@ -669,6 +719,7 @@
 				529F25A01F00A7AB005B6D75 /* UIWebView+UIImage.m in Sources */,
 				5223A94B1EFA6C9D003AD6B3 /* MWModel.m in Sources */,
 				52F60FCA1EFA0DEC00319120 /* mShopCarRightView.m in Sources */,
+				5275EDAC1F1DF87C00A7A137 /* MWPrintTaskCell.m in Sources */,
 				5239D3591EF3B86C00BAB3F3 /* ViewController.m in Sources */,
 				52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */,
 				5269DB6C1F0F28260060A2FA /* ImageTranster.m in Sources */,
@@ -678,14 +729,19 @@
 				52951CD51F049DF300EE5945 /* GPrinterController.m in Sources */,
 				5269DB701F0F28260060A2FA /* XYWIFIManager.m in Sources */,
 				5239D3561EF3B86C00BAB3F3 /* AppDelegate.m in Sources */,
+				5275EDA31F1DBDA600A7A137 /* SQMenuShowCell.m in Sources */,
 				529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */,
 				52B29FDD1F1C9F5D009B13FE /* MWStaticsViewController.m in Sources */,
 				5269DB6E1F0F28260060A2FA /* XPTscCommand.m in Sources */,
 				526F45AA1F0257C90013CA96 /* ConnectViewController.m in Sources */,
+				5275EDB41F1E12B500A7A137 /* MWVIPFinderCell.m in Sources */,
+				5275EDA81F1DF7F400A7A137 /* MWPrintTaskViewController.m in Sources */,
 				5239D3531EF3B86C00BAB3F3 /* main.m in Sources */,
 				526F45AD1F0257C90013CA96 /* UUIDSettingViewController.m in Sources */,
 				526F45A11F023F730013CA96 /* UIViewController+BackButtonHandler.m in Sources */,
 				5269DB771F0F28DF0060A2FA /* AsyncUdpSocket.m in Sources */,
+				5275EDA51F1DBDA600A7A137 /* SQMenuShowView.m in Sources */,
+				5275EDB01F1E127200A7A137 /* MWVIPFinderViewController.m in Sources */,
 				5275ED9B1F1DA9A000A7A137 /* MWStaticsTableViewCell.m in Sources */,
 				529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */,
 				52F60FCF1EFA1E6B00319120 /* MWLoginViewController.m in Sources */,
