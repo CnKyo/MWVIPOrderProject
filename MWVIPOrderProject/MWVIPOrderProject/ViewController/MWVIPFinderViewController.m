@@ -82,6 +82,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.mName.text = @"把一本好小说毁了是什么体验，「悟空传」请抢答";
+    cell.mScore.text = @"100";
 
     return cell;
     
