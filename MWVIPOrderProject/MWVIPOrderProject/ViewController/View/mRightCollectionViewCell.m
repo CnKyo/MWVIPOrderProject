@@ -43,6 +43,7 @@
         self.mPrice.textAlignment = NSTextAlignmentRight;
         [self addSubview:self.mPrice];
         
+        self.mSelectedBtn = [UIButton new];
         
         [self.mSalesNum mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.bottom.equalTo(self);

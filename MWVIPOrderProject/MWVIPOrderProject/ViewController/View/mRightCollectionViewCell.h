@@ -17,5 +17,6 @@
 @property(strong,nonatomic) UIImageView *mBgk;
 ///销量
 @property (strong, nonatomic)  UILabel *mSalesNum;
-
+///选择按钮
+@property (strong, nonatomic)  UIButton *mSelectedBtn;
 @end
