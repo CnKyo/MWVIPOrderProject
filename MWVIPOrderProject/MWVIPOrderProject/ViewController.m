@@ -18,6 +18,9 @@
 #import "MWStaticsViewController.h"
 #import "MWPrintTaskViewController.h"
 #import "MWVIPFinderViewController.h"
+#import "MWScoreConvertViewController.h"
+
+
 #import "SQMenuShowView.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZLSuperMarketShopCarDelegate,RightCollectionSelectedProductNumDelegate>
@@ -90,24 +93,13 @@
         make.height.offset(60);
     }];
     
-    UIButton *mLeftBtn = [[UIButton alloc]initWithFrame:CGRectMake(80,15,70,20)];
+    UIButton *mLeftBtn = [[UIButton alloc]initWithFrame:CGRectMake(80,15,100,20)];
     
-    [mLeftBtn setTitle:@"换班" forState:UIControlStateNormal];
+    [mLeftBtn setTitle:@"选择座号" forState:UIControlStateNormal];
     [mLeftBtn addTarget:self action:@selector(mLeftAction)forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *mBackItem = [[UIBarButtonItem alloc]initWithCustomView:mLeftBtn];
     self.navigationItem.leftBarButtonItem= mBackItem;
     
-    
-    //    UIButton *mRightBtn = [[UIButton alloc]initWithFrame:CGRectMake(DEVICE_Width-60,15,25,25)];
-    //    mRightBtn.titleLabel.textAlignment = NSTextAlignmentRight;
-    //    CGRect mR = mRightBtn.frame;
-    //
-    //    mR.size.width = 100;
-    //    mRightBtn.frame = mR;
-    //    [mRightBtn setTitle:@"更多操作" forState:UIControlStateNormal];
-    //    [mRightBtn addTarget:self action:@selector(show)forControlEvents:UIControlEventTouchUpInside];
-    //    UIBarButtonItem *mRightBartem = [[UIBarButtonItem alloc]initWithCustomView:mRightBtn];
-    //    self.navigationItem.rightBarButtonItem= mRightBartem;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"更多操作"
                                                                              style:UIBarButtonItemStylePlain
@@ -118,19 +110,35 @@
     __weak typeof(self) weakSelf = self;
     [self.showView selectBlock:^(SQMenuShowView *view, NSInteger index) {
         weakSelf.isShow = NO;
-        MLLog(@"点击第%ld个item",index+1);
+        ///1:"收银统计",2:"任务列表",3:"会员查询",4:"积分兑换",5:"分享有礼",6:"换班/登录"
         if (index == 0) {
             MWStaticsViewController *vc = [MWStaticsViewController new];
-            [self.navigationController pushViewController:vc animated:YES];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+            MLLog(@"点击第%ld个item",index+1);
             
         }else if(index == 1){
             
             MWPrintTaskViewController *vc = [MWPrintTaskViewController new];
-            [self.navigationController pushViewController:vc animated:YES];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+            MLLog(@"点击第%ld个item",index+1);
             
-        }else{
-        
+        }else if(index == 2){
+            
             MWVIPFinderViewController *vc = [MWVIPFinderViewController new];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+            MLLog(@"点击第%ld个item",index+1);
+            
+        }else if(index == 3){
+            
+            MWScoreConvertViewController *vc = [MWScoreConvertViewController new];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+            MLLog(@"3");
+        }else if(index == 4){
+   
+            MLLog(@"4");
+        }else{
+            MLLog(@"6");
+            MWLoginViewController *vc = [MWLoginViewController new];
             [self.navigationController pushViewController:vc animated:YES];
         }
     }];
@@ -149,7 +157,7 @@
     }
     
     _showView = [[SQMenuShowView alloc]initWithFrame:(CGRect){CGRectGetWidth(self.view.frame)-100-10,64+5,100,0}
-                                               items:@[@"收银统计",@"任务列表",@"会员查询"]
+                                               items:@[@"收银统计",@"任务列表",@"会员查询",@"积分兑换",@"分享有礼",@"换班/登录"]
                                            showPoint:(CGPoint){CGRectGetWidth(self.view.frame)-25,10}];
     _showView.sq_backGroundColor = [UIColor whiteColor];
     [self.view addSubview:_showView];
@@ -171,8 +179,7 @@
 
 #pragma mark---****----左边的按钮
 - (void)mLeftAction{
-    MWLoginViewController *vc = [MWLoginViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+    MLLog(@"选择座位 ");
 }
 
 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MWVIPFinderHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eu6-Li-zXy">
+                    <rect key="frame" x="50" y="15" width="300" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="Edl-50-zHO"/>
+                        <constraint firstAttribute="width" constant="300" id="Xdh-F3-vrj"/>
+                    </constraints>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机或扫描二维码查询" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="sXD-wr-ZEo">
+                    <rect key="frame" x="50.5" y="330" width="300" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="IQb-2f-dBm"/>
+                        <constraint firstAttribute="width" constant="300" id="ZTc-Fz-4HS"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                </textField>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1QY-HB-Py8">
+                    <rect key="frame" x="50" y="385" width="300" height="46"/>
+                    <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="FeZ-PG-gIr"/>
+                        <constraint firstAttribute="height" constant="46" id="xc7-6D-1Y7"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="查询">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="mBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="LYg-yQ-aqq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9V-ck-Zfh">
+                    <rect key="frame" x="50" y="445" width="300" height="46"/>
+                    <color key="backgroundColor" red="0.24732452630000001" green="0.56265074010000005" blue="0.83537203069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="mBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="AYj-Gi-ERV"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="J9V-ck-Zfh" firstAttribute="height" secondItem="1QY-HB-Py8" secondAttribute="height" id="30n-nu-E22"/>
+                <constraint firstItem="sXD-wr-ZEo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8gG-f7-SoQ"/>
+                <constraint firstItem="Eu6-Li-zXy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="B6X-10-N3B"/>
+                <constraint firstItem="1QY-HB-Py8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FCq-me-WIQ"/>
+                <constraint firstItem="Eu6-Li-zXy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="M7q-d1-bli"/>
+                <constraint firstItem="J9V-ck-Zfh" firstAttribute="top" secondItem="1QY-HB-Py8" secondAttribute="bottom" constant="14" id="h72-XX-PYa"/>
+                <constraint firstItem="1QY-HB-Py8" firstAttribute="top" secondItem="sXD-wr-ZEo" secondAttribute="bottom" constant="10" id="nEN-aO-oNT"/>
+                <constraint firstItem="sXD-wr-ZEo" firstAttribute="top" secondItem="Eu6-Li-zXy" secondAttribute="bottom" constant="15" id="wwV-Ro-GEl"/>
+                <constraint firstItem="J9V-ck-Zfh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yi7-Hd-sHe"/>
+                <constraint firstItem="J9V-ck-Zfh" firstAttribute="width" secondItem="1QY-HB-Py8" secondAttribute="width" id="z2H-jP-Nax"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="mBarCodeImg" destination="Eu6-Li-zXy" id="UtD-ka-vkw"/>
+                <outlet property="mCancelBtn" destination="J9V-ck-Zfh" id="DQB-vB-2p1"/>
+                <outlet property="mFindBtn" destination="1QY-HB-Py8" id="KQX-46-vhJ"/>
+                <outlet property="mPhoneTx" destination="sXD-wr-ZEo" id="HHP-y0-lA5"/>
+            </connections>
+            <point key="canvasLocation" x="31" y="-114"/>
+        </view>
+    </objects>
+</document>
