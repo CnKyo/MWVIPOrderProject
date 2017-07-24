@@ -134,7 +134,8 @@
             [weakSelf.navigationController pushViewController:vc animated:YES];
             MLLog(@"3");
         }else if(index == 4){
-   
+            MWLoginViewController *vc = [MWLoginViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
             MLLog(@"4");
         }else{
             MLLog(@"6");

@@ -17,7 +17,7 @@
     
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor blueColor];
+        self.backgroundColor = [UIColor colorWithRed:0.976470588235294 green:0.976470588235294 blue:0.976470588235294 alpha:1.00];
         self.mBgk = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, (DEVICE_Width - 80) / 3, (DEVICE_Width - 80) / 3)];
         [self.mBgk setUserInteractionEnabled:true];
         self.mBgk.backgroundColor = [UIColor redColor];
