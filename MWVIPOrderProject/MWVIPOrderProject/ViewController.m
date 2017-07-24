@@ -20,7 +20,7 @@
 #import "MWVIPFinderViewController.h"
 #import "SQMenuShowView.h"
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZLSuperMarketShopCarDelegate>
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZLSuperMarketShopCarDelegate,RightCollectionSelectedProductNumDelegate>
 
 @property (assign, nonatomic) NSIndexPath *selIndex;//单选，当前选中的行
 @property(strong,nonatomic)  UICollectionView *mCollectionView;
@@ -254,6 +254,7 @@
     cell.mName.text = @"365天黄金会员（0.1折）";
     cell.mPrice.text = @"25.0元";
     cell.mSalesNum.text = @"1000小了";
+    cell.delegate = self;
     return cell;
 }
 
@@ -290,9 +291,9 @@
     
 }
 
-#pragma mark - UICollectionViewDelegateFlowLayout
+#pragma mark - UICollectionViewDelegateFlowLayout调整大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((SCREEN_WIDTH - 80) / 3+10, (SCREEN_WIDTH - 80) / 3 + 65);
+    return CGSizeMake((SCREEN_WIDTH - 80) / 3+10, (SCREEN_WIDTH - 80) / 3 + 100);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -320,4 +321,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 
 }
+- (void)RightCollectionSelectedProductNum:(NSInteger)mNum{
+    MLLog(@"num是：%ld",mNum);
+}
+
 @end

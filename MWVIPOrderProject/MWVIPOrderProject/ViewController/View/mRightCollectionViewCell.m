@@ -43,20 +43,41 @@
         self.mPrice.textAlignment = NSTextAlignmentRight;
         [self addSubview:self.mPrice];
         
-        self.mSelectedBtn = [UIButton new];
+        self.mSelectedBtn = [PPNumberButton new];
+        // 初始化时隐藏减按钮
+        self.mSelectedBtn.decreaseHide = YES;
+        self.mSelectedBtn.increaseImage = [UIImage imageNamed:@"increase_meituan"];
+        self.mSelectedBtn.decreaseImage = [UIImage imageNamed:@"decrease_meituan"];
+        self.mSelectedBtn.currentNumber = -777;
+        __weak typeof(self) weakSelf = self;
+
+        self.mSelectedBtn.resultBlock = ^(NSInteger num ,BOOL increaseStatus){
+            if ([weakSelf.delegate respondsToSelector:@selector(RightCollectionSelectedProductNum:)]) {
+                [weakSelf.delegate RightCollectionSelectedProductNum:num];
+            }
+            
+        };
         
+        [self addSubview:self.mSelectedBtn];
+
         [self.mSalesNum mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.bottom.equalTo(self);
+            make.left.equalTo(self);
             make.top.equalTo(self.mName.mas_bottom);
             make.right.equalTo(self.mPrice.mas_left);
-            
+            make.bottom.equalTo(self.mSelectedBtn.mas_top);
+
 
         }];
         [self.mPrice mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.bottom.equalTo(self);
+            make.right.equalTo(self);
             make.top.equalTo(self.mName.mas_bottom);
             make.left.equalTo(self.mSalesNum.mas_right);
+            make.bottom.equalTo(self.mSelectedBtn.mas_top);
             
+        }];
+        [self.mSelectedBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(self);
+            make.top.equalTo(self.mPrice.mas_bottom);
         }];
         
         

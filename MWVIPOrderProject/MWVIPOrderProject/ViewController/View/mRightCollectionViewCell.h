@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "MWHeader.h"
+
+@protocol RightCollectionSelectedProductNumDelegate <NSObject>
+
+@optional
+
+- (void)RightCollectionSelectedProductNum:(NSInteger)mNum;
+
+@end
+
 @interface mRightCollectionViewCell : UICollectionViewCell
 ///名称
 @property (strong, nonatomic)  UILabel *mName;
@@ -18,5 +27,7 @@
 ///销量
 @property (strong, nonatomic)  UILabel *mSalesNum;
 ///选择按钮
-@property (strong, nonatomic)  UIButton *mSelectedBtn;
+@property (strong, nonatomic)  PPNumberButton *mSelectedBtn;
+
+@property (weak,nonatomic) id<RightCollectionSelectedProductNumDelegate>delegate;
 @end
