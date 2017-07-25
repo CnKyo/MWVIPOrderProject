@@ -42,7 +42,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"收银统计";
     
-    for (int i = 1; i < 12; i++) {
+    for (int i = 1; i < 13; i++) {
         
         NSMutableDictionary *mDic = [[NSMutableDictionary alloc]init];
         [mDic setObject:[NSString stringWithFormat:@"%d月份",i] forKey:@"name"];
