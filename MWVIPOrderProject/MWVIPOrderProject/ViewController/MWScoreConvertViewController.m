@@ -9,12 +9,19 @@
 #import "MWScoreConvertViewController.h"
 #import "MWHeader.h"
 #import "MWScoreConvertCell.h"
-@interface MWScoreConvertViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+
+#import "MWVIPFinderHeaderView.h"
+
+@interface MWScoreConvertViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,MWVIPFinderHeaderViewDelagate>
 @property(strong,nonatomic)  UICollectionView *mCollectionView;
 
 @end
 
 @implementation MWScoreConvertViewController
+{
+    UIView *mBgkPopView;
+    MWVIPFinderHeaderView *mPopView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,6 +42,9 @@
     
     self.mCollectionView.dataSource = self;
     self.mCollectionView.delegate = self;
+
+    [self initPopView];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,7 +106,8 @@
     //        //显示提示框后执行的事件；
     //    }];
     MLLog(@"点击了第%ld",indexPath.row);
-    
+    [self showPopView];
+
     
 }
 
@@ -112,5 +123,66 @@
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
 //    return CGSizeMake(300, 20);
 //}
+- (void)initPopView{
+    mBgkPopView = [UIView new];
+    mBgkPopView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    mBgkPopView.frame = CGRectMake(0, 64, DEVICE_Width, DEVICE_Height-64);
+    mBgkPopView.alpha = 0;
+    [self.view addSubview:mBgkPopView];
+    
+    mPopView = [MWVIPFinderHeaderView initView];
+    mPopView.frame = CGRectMake(DEVICE_Width/2-200, DEVICE_Height/2-300, 400, 500);
+    mPopView.layer.cornerRadius = 4;
+    mPopView.alpha = 0;
+    mPopView.delegate = self;
+    [mBgkPopView addSubview:mPopView];
+}
+- (void)showPopView{
+    [UIView animateWithDuration:0.5 animations:^{
+        mBgkPopView.alpha = 1;
+        mPopView.alpha = 1;
+    }];
+}
+- (void)dismissPopView{
+    [UIView animateWithDuration:0.5 animations:^{
+        mBgkPopView.alpha = 0;
+        mPopView.alpha = 0;
+    }];
+}
+
+/**
+ 输入框代理方法
+ 
+ @param mText 返回输入的内容
+ */
+- (void)MWVIPFinderHeaderViewWithPhoneTextDidEndEditing:(NSString *)mText{
+    
+}
+
+/**
+ 按钮点击代理方法
+ 
+ @param mTag 返回点击的tag
+ */
+- (void)MWVIPFinderHeaderViewWithBtnclicked:(NSInteger)mTag{
+    switch (mTag) {
+        case 1:
+        {
+        MLLog(@"确定");
+        [SVProgressHUD showSuccessWithStatus:@"兑换成功！"];
+        [self dismissPopView];
+        }
+            break;
+        case 2:
+        {
+        MLLog(@"取消");
+        [self dismissPopView];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 
 @end
