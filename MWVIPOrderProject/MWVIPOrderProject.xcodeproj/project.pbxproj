@@ -66,6 +66,12 @@
 		52A120861F1777C600B1037D /* ZLSuperMarketShopCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A120841F1777C600B1037D /* ZLSuperMarketShopCarView.m */; };
 		52A120871F1777C600B1037D /* ZLSuperMarketShopCarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A120851F1777C600B1037D /* ZLSuperMarketShopCarView.xib */; };
 		52B29FDD1F1C9F5D009B13FE /* MWStaticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B29FDC1F1C9F5D009B13FE /* MWStaticsViewController.m */; };
+		52EC425A1F2B3BC900E085C3 /* MWSelectDeskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC42591F2B3BC900E085C3 /* MWSelectDeskView.m */; };
+		52EC425C1F2B3BD100E085C3 /* MWSelectDeskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EC425B1F2B3BD100E085C3 /* MWSelectDeskView.xib */; };
+		52EC42621F2B409000E085C3 /* RadioCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC425E1F2B409000E085C3 /* RadioCollectionViewCell.m */; };
+		52EC42631F2B409000E085C3 /* RadioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EC425F1F2B409000E085C3 /* RadioCollectionViewCell.xib */; };
+		52EC42641F2B409000E085C3 /* singleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC42611F2B409000E085C3 /* singleModel.m */; };
+		52EC42661F2B435A00E085C3 /* dataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52EC42651F2B435A00E085C3 /* dataList.plist */; };
 		52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC11EFA044D00319120 /* MWShopCarViewController.m */; };
 		52F60FC61EFA057500319120 /* mShopCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F60FC41EFA057500319120 /* mShopCarTableViewCell.m */; };
 		52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F60FC51EFA057500319120 /* mShopCarTableViewCell.xib */; };
@@ -206,6 +212,15 @@
 		52A120851F1777C600B1037D /* ZLSuperMarketShopCarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLSuperMarketShopCarView.xib; sourceTree = "<group>"; };
 		52B29FDB1F1C9F5D009B13FE /* MWStaticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWStaticsViewController.h; sourceTree = "<group>"; };
 		52B29FDC1F1C9F5D009B13FE /* MWStaticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWStaticsViewController.m; sourceTree = "<group>"; };
+		52EC42581F2B3BC900E085C3 /* MWSelectDeskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWSelectDeskView.h; sourceTree = "<group>"; };
+		52EC42591F2B3BC900E085C3 /* MWSelectDeskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWSelectDeskView.m; sourceTree = "<group>"; };
+		52EC425B1F2B3BD100E085C3 /* MWSelectDeskView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWSelectDeskView.xib; sourceTree = "<group>"; };
+		52EC425D1F2B409000E085C3 /* RadioCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioCollectionViewCell.h; sourceTree = "<group>"; };
+		52EC425E1F2B409000E085C3 /* RadioCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioCollectionViewCell.m; sourceTree = "<group>"; };
+		52EC425F1F2B409000E085C3 /* RadioCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioCollectionViewCell.xib; sourceTree = "<group>"; };
+		52EC42601F2B409000E085C3 /* singleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = singleModel.h; sourceTree = "<group>"; };
+		52EC42611F2B409000E085C3 /* singleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = singleModel.m; sourceTree = "<group>"; };
+		52EC42651F2B435A00E085C3 /* dataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dataList.plist; sourceTree = "<group>"; };
 		52F60FC01EFA044D00319120 /* MWShopCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWShopCarViewController.h; sourceTree = "<group>"; };
 		52F60FC11EFA044D00319120 /* MWShopCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWShopCarViewController.m; sourceTree = "<group>"; };
 		52F60FC31EFA057500319120 /* mShopCarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mShopCarTableViewCell.h; sourceTree = "<group>"; };
@@ -533,6 +548,15 @@
 				52A120831F1777C600B1037D /* ZLSuperMarketShopCarView.h */,
 				52A120841F1777C600B1037D /* ZLSuperMarketShopCarView.m */,
 				52A120851F1777C600B1037D /* ZLSuperMarketShopCarView.xib */,
+				52EC42581F2B3BC900E085C3 /* MWSelectDeskView.h */,
+				52EC42591F2B3BC900E085C3 /* MWSelectDeskView.m */,
+				52EC425B1F2B3BD100E085C3 /* MWSelectDeskView.xib */,
+				52EC425D1F2B409000E085C3 /* RadioCollectionViewCell.h */,
+				52EC425E1F2B409000E085C3 /* RadioCollectionViewCell.m */,
+				52EC425F1F2B409000E085C3 /* RadioCollectionViewCell.xib */,
+				52EC42601F2B409000E085C3 /* singleModel.h */,
+				52EC42611F2B409000E085C3 /* singleModel.m */,
+				52EC42651F2B435A00E085C3 /* dataList.plist */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -672,10 +696,13 @@
 				528FAFCE1F2726CB009D803B /* MWStaticsSectionCell.xib in Resources */,
 				52F60FCC1EFA0EDA00319120 /* mShopCarRightView.xib in Resources */,
 				52F60FC71EFA057500319120 /* mShopCarTableViewCell.xib in Resources */,
+				52EC425C1F2B3BD100E085C3 /* MWSelectDeskView.xib in Resources */,
+				52EC42661F2B435A00E085C3 /* dataList.plist in Resources */,
 				5239D3611EF3B86C00BAB3F3 /* LaunchScreen.storyboard in Resources */,
 				5239D35E1EF3B86C00BAB3F3 /* Assets.xcassets in Resources */,
 				52A120871F1777C600B1037D /* ZLSuperMarketShopCarView.xib in Resources */,
 				5275EDB51F1E12B500A7A137 /* MWVIPFinderCell.xib in Resources */,
+				52EC42631F2B409000E085C3 /* RadioCollectionViewCell.xib in Resources */,
 				526F45AE1F0257C90013CA96 /* UUIDSettingViewController.xib in Resources */,
 				52375A871EF91D9C006D9CF0 /* mLeftTableViewCell.xib in Resources */,
 				5239D35C1EF3B86C00BAB3F3 /* Main.storyboard in Resources */,
@@ -762,6 +789,7 @@
 				524B37A71F25CA4C00AF979B /* MWVIPFinderHeaderView.m in Sources */,
 				528FAFCD1F2726CB009D803B /* MWStaticsSectionCell.m in Sources */,
 				5269DB6C1F0F28260060A2FA /* ImageTranster.m in Sources */,
+				52EC42621F2B409000E085C3 /* RadioCollectionViewCell.m in Sources */,
 				524B37AC1F25E06900AF979B /* MWScoreConvertViewController.m in Sources */,
 				52F60FD21EFA1F7500319120 /* mLoginView.m in Sources */,
 				5269DB6F1F0F28260060A2FA /* XYBLEManager.m in Sources */,
@@ -772,6 +800,7 @@
 				5275EDA31F1DBDA600A7A137 /* SQMenuShowCell.m in Sources */,
 				529F259F1F00A7AB005B6D75 /* UIImage+Bitmap.m in Sources */,
 				52B29FDD1F1C9F5D009B13FE /* MWStaticsViewController.m in Sources */,
+				52EC42641F2B409000E085C3 /* singleModel.m in Sources */,
 				5269DB6E1F0F28260060A2FA /* XPTscCommand.m in Sources */,
 				526F45AA1F0257C90013CA96 /* ConnectViewController.m in Sources */,
 				5275EDB41F1E12B500A7A137 /* MWVIPFinderCell.m in Sources */,
@@ -791,6 +820,7 @@
 				52375A801EF90B43006D9CF0 /* Util.m in Sources */,
 				526F45AC1F0257C90013CA96 /* ISSCButton.m in Sources */,
 				52F60FC21EFA044D00319120 /* MWShopCarViewController.m in Sources */,
+				52EC425A1F2B3BC900E085C3 /* MWSelectDeskView.m in Sources */,
 				528FAFC81F272252009D803B /* MWStaticsHeaderCell.m in Sources */,
 				52375A8A1EF922C4006D9CF0 /* mRightCollectionViewCell.m in Sources */,
 				5269DB761F0F28DF0060A2FA /* AsyncSocket.m in Sources */,

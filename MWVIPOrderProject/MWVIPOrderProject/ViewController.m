@@ -19,11 +19,12 @@
 #import "MWPrintTaskViewController.h"
 #import "MWVIPFinderViewController.h"
 #import "MWScoreConvertViewController.h"
-
+#import "MWSelectDeskView.h"
 
 #import "SQMenuShowView.h"
-
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZLSuperMarketShopCarDelegate,RightCollectionSelectedProductNumDelegate>
+#import "RadioCollectionViewCell.h"
+#import "singleModel.h"
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZLSuperMarketShopCarDelegate,RightCollectionSelectedProductNumDelegate,MWSelectDeskViewDelegate>
 
 @property (assign, nonatomic) NSIndexPath *selIndex;//单选，当前选中的行
 @property(strong,nonatomic)  UICollectionView *mCollectionView;
@@ -32,11 +33,16 @@
 @property (strong, nonatomic)  SQMenuShowView *showView;
 @property (assign, nonatomic)  BOOL  isShow;
 
+@property (nonatomic, strong) UICollectionView * collectionView;
+@property (nonatomic, strong) NSMutableArray * dataSource;
+
 @end
 
 @implementation ViewController
 {
     ZLSuperMarketShopCarView *mShopCarView;
+    
+    MWSelectDeskView *mDeskView;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -144,7 +150,8 @@
         }
     }];
 
-    
+ 
+    [self initDeskView];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     _isShow = NO;
@@ -181,8 +188,90 @@
 #pragma mark---****----左边的按钮
 - (void)mLeftAction{
     MLLog(@"选择座位 ");
+    [self showDeskView];
 }
 
+#pragma mark---****----初始化选桌座号view
+- (void)initDeskView{
+    mDeskView = [MWSelectDeskView initView];
+    mDeskView.frame = CGRectMake(0, DEVICE_Height, DEVICE_Width, 300);
+    
+    mDeskView.delegate = self;
+    [self.view addSubview:mDeskView];
+    
+    [self downLoad];
+    [self createUI];
+
+}
+- (void)showDeskView{
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect mRRR = mDeskView.frame;
+        mRRR.origin.y = DEVICE_Height-300;
+        mDeskView.frame = mRRR;
+    }];
+}
+- (void)dissmissDeskView{
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect mRRR = mDeskView.frame;
+        mRRR.origin.y = 300;
+        mDeskView.frame = mRRR;
+    }];
+}
+/**
+ 按钮代理方法
+ 
+ @param mTag 1:取消 2:确定
+ */
+- (void)MWSelectDeskViewBtnDidClicked:(NSInteger)mTag{
+    switch (mTag) {
+        case 1:
+        {
+        [self dissmissDeskView];
+        }
+            break;
+        case 2:
+        {
+        [self dissmissDeskView];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+- (void)downLoad
+{
+    NSString* plistfile1 = [[NSBundle mainBundle]pathForResource:@"dataList" ofType:@".plist"];
+    NSMutableArray * array = [[NSMutableArray alloc]initWithContentsOfFile:plistfile1];
+    //打印出字典里的数据
+    for (NSDictionary * dict in array) {
+        singleModel * model = [[singleModel alloc]init];
+        model.title = dict[@"title"];
+        model.selected = NO;
+        [self.dataSource addObject:model];
+    }
+    
+}
+
+- (void)createUI
+{
+    UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    
+    flowLayout.itemSize = CGSizeMake(DEVICE_Width/3.0-20, 36);
+    flowLayout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20);
+    flowLayout.minimumLineSpacing = 2;
+    flowLayout.minimumInteritemSpacing = 2;
+    
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_Width, mDeskView.mView.frame.size.height) collectionViewLayout:flowLayout];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    [mDeskView.mView addSubview:self.collectionView];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"RadioCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CellIde"];
+    [self.collectionView reloadData];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -251,19 +340,53 @@
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 26;
+    
+    if (collectionView == self.collectionView) {
+        return self.dataSource.count;
+
+    }else{
+        return 26;
+    }
+    
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    mRightCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    cell.mBgk.backgroundColor = M_CO;
-    cell.mName.text = @"365天黄金会员（0.1折）";
-    cell.mPrice.text = @"25.0元";
-    cell.mSalesNum.text = @"1000小了";
-    cell.delegate = self;
-    return cell;
+    if (collectionView == self.collectionView) {
+        RadioCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellIde" forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[RadioCollectionViewCell alloc] init];
+        }
+        singleModel * model = self.dataSource[indexPath.row];
+        if (model.selected) {
+            cell.contentView.layer.cornerRadius = 4;
+            cell.contentView.layer.borderColor = [UIColor colorWithRed:0.0784313725490196 green:0.133333333333333 blue:0.47843137254902 alpha:1.00].CGColor;
+            cell.contentView.layer.borderWidth = 1;
+            cell.mNum.textColor = [UIColor colorWithRed:0.211764705882353 green:0.231372549019608 blue:0.329411764705882 alpha:1.00];
+            
+        }else{
+            cell.contentView.layer.cornerRadius = 4;
+            cell.contentView.layer.borderColor = [UIColor colorWithRed:0.949019607843137 green:0.949019607843137 blue:0.949019607843137 alpha:1.00].CGColor;
+            cell.contentView.layer.borderWidth = 1;
+            cell.mNum.textColor = [UIColor colorWithRed:0.698039215686274 green:0.698039215686274 blue:0.698039215686274 alpha:1.00];
+            
+        }
+        cell.mImg.hidden = model.selected?NO:YES;
+        
+        [cell.mNum setText:[NSString stringWithFormat:@"  %@号桌",model.title]];
+        return cell;
+
+    }else{
+        mRightCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+        cell.mBgk.backgroundColor = M_CO;
+        cell.mName.text = @"365天黄金会员（0.1折）";
+        cell.mPrice.text = @"25.0元";
+        cell.mSalesNum.text = @"1000小了";
+        cell.delegate = self;
+        return cell;
+    }
+    
 }
 
 
@@ -295,17 +418,43 @@
 //        //显示提示框后执行的事件；
 //    }];
     
+    if (collectionView == self.collectionView) {
+        for (singleModel * signerModel in self.dataSource) {
+            signerModel.selected = NO;
+        }
+        singleModel * model = self.dataSource[indexPath.row];
+        model.selected = YES;
+        [self.collectionView reloadData];
 
+    }
     
+}
+- (NSMutableArray *)dataSource
+{
+    if (_dataSource == nil) {
+        _dataSource = [[NSMutableArray alloc] init];
+    }
+    return _dataSource;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout调整大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((SCREEN_WIDTH - 80) / 3+10, (SCREEN_WIDTH - 80) / 3 + 100);
+    if (collectionView == self.collectionView) {
+        return CGSizeMake(SCREEN_WIDTH/3.0-20, 36);
+    }else{
+        return CGSizeMake((SCREEN_WIDTH - 80) / 3+10, (SCREEN_WIDTH - 80) / 3 + 100);
+
+    }
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(10, 10, 10, 10);
+    if (collectionView == self.collectionView) {
+        return UIEdgeInsetsMake(0, 20, 0, 20);
+
+    }else{
+        return UIEdgeInsetsMake(10, 10, 10, 10);
+        
+    }
 }
 
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
