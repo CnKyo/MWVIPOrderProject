@@ -36,6 +36,8 @@
 @property (nonatomic, strong) UICollectionView * collectionView;
 @property (nonatomic, strong) NSMutableArray * dataSource;
 
+
+
 @end
 
 @implementation ViewController
@@ -194,7 +196,7 @@
 #pragma mark---****----初始化选桌座号view
 - (void)initDeskView{
     mDeskView = [MWSelectDeskView initView];
-    mDeskView.frame = CGRectMake(0, DEVICE_Height, DEVICE_Width, 300);
+    mDeskView.frame = CGRectMake(0, DEVICE_Height, DEVICE_Width, 350);
     
     mDeskView.delegate = self;
     [self.view addSubview:mDeskView];
@@ -207,14 +209,14 @@
     
     [UIView animateWithDuration:0.5 animations:^{
         CGRect mRRR = mDeskView.frame;
-        mRRR.origin.y = DEVICE_Height-300;
+        mRRR.origin.y = DEVICE_Height-350;
         mDeskView.frame = mRRR;
     }];
 }
 - (void)dissmissDeskView{
     [UIView animateWithDuration:0.5 animations:^{
         CGRect mRRR = mDeskView.frame;
-        mRRR.origin.y = 300;
+        mRRR.origin.y = DEVICE_Height;
         mDeskView.frame = mRRR;
     }];
 }
@@ -440,7 +442,7 @@
 #pragma mark - UICollectionViewDelegateFlowLayout调整大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == self.collectionView) {
-        return CGSizeMake(SCREEN_WIDTH/3.0-20, 36);
+        return CGSizeMake(SCREEN_WIDTH/4-30, 75);
     }else{
         return CGSizeMake((SCREEN_WIDTH - 80) / 3+10, (SCREEN_WIDTH - 80) / 3 + 100);
 
@@ -449,7 +451,7 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     if (collectionView == self.collectionView) {
-        return UIEdgeInsetsMake(0, 20, 0, 20);
+        return UIEdgeInsetsMake(10, 20, 10, 20);
 
     }else{
         return UIEdgeInsetsMake(10, 10, 10, 10);
