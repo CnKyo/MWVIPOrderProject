@@ -1281,6 +1281,7 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
     [self showLog:[NSString stringWithFormat:@"****** %@ started ******",NSStringFromSelector(_cmd)]];
 
     _topViewBeginRect = CGRectZero;
+    _kbSize = CGSizeZero;
 
     CFTimeInterval elapsedTime = CACurrentMediaTime() - startTime;
     [self showLog:[NSString stringWithFormat:@"****** %@ ended: %g seconds ******",NSStringFromSelector(_cmd),elapsedTime]];
@@ -2100,7 +2101,7 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
 
 #pragma mark previous/next/done functionality
 /**	previousAction. */
--(void)previousAction:(id)segmentedControl
+-(void)previousAction:(IQBarButtonItem*)barButton
 {
     //If user wants to play input Click sound. Then Play Input Click Sound.
     if (_shouldPlayInputClicks)
@@ -2123,7 +2124,7 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
 }
 
 /**	nextAction. */
--(void)nextAction:(id)segmentedControl
+-(void)nextAction:(IQBarButtonItem*)barButton
 {
     //If user wants to play input Click sound. Then Play Input Click Sound.
     if (_shouldPlayInputClicks)

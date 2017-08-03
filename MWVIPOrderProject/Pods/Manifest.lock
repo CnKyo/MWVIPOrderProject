@@ -14,14 +14,19 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AlipaySDK-2.0 (15.0.2):
+    - AlipaySDK-2.0/Core (= 15.0.2)
+  - AlipaySDK-2.0/Core (15.0.2)
   - BabyBluetooth (0.7.0)
+  - CustomIOSAlertView (0.9.5)
   - DACircularProgress (2.3.1)
   - DZNEmptyDataSet (1.8.1)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
   - HandyFrame (1.1.3)
-  - IQKeyboardManager (4.0.10)
+  - HcdGuideView (0.0.5)
+  - IQKeyboardManager (4.0.11)
   - JCore (1.1.5)
   - JPush (3.0.6):
     - JCore (~> 1.1.1)
@@ -32,6 +37,8 @@ PODS:
   - LPActionSheet (1.0)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
+  - MJRefresh (3.1.12)
+  - MOBFoundation (3.0.1)
   - PPNumberButton (0.7.0)
   - PYPhotoBrowser (1.2.5):
     - DACircularProgress
@@ -41,59 +48,81 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - ShareSDK3 (4.0.1):
+    - MOBFoundation
+    - ShareSDK3/ShareSDK (= 4.0.1)
+  - ShareSDK3/ShareSDK (4.0.1):
+    - MOBFoundation
   - SKTagView (0.9.2)
   - SVProgressHUD (2.1.2)
   - UITableView+FDTemplateLayoutCell (1.6)
+  - WebViewJavascriptBridge (5.2.0)
+  - WechatOpenSDK (1.7.9)
   - WPAttributedMarkup (1.0.0)
   - YYModel (1.0.4)
   - ZYCornerRadius (1.0.2)
 
 DEPENDENCIES:
   - AFNetworking
+  - AlipaySDK-2.0
   - BabyBluetooth (~> 0.7.0)
+  - CustomIOSAlertView
   - DZNEmptyDataSet
   - HandyFrame
+  - HcdGuideView
   - IQKeyboardManager
   - JPush
   - LKDBHelper
   - LPActionSheet
   - Masonry
+  - MJRefresh
   - PPNumberButton
   - PYPhotoBrowser (~> 1.2.3)
   - RSKImageCropper
   - SDWebImage (~> 3.8.2)
+  - ShareSDK3
   - SKTagView
   - SVProgressHUD
   - UITableView+FDTemplateLayoutCell
+  - WebViewJavascriptBridge (~> 5.0)
+  - WechatOpenSDK
   - WPAttributedMarkup
   - YYModel
   - ZYCornerRadius (~> 1.0.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AlipaySDK-2.0: 346e006fd2999d5ca5dd8869d03bc0a260fc48e0
   BabyBluetooth: d50758aecf24d4a0ab9271d69f0f116d6bee51c9
+  CustomIOSAlertView: cc4fa8e36219be3fd5ebcd40789f5b4aaae0f38e
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   HandyFrame: 5fef3c197c383332d7d5c838b3f7a85ce2f8f9cc
-  IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
+  HcdGuideView: 3ffaa22aebe7409bbd3fd6bcfcbe912d391a237a
+  IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
   JCore: 9bd9c770c877c583d98b90a68792b8361974c231
   JPush: c41be50eb1a574a66aeb68d237f00a4ec6ec3a82
   LKDBHelper: cf467ff69aaf1e13bd4964aca3a79881d54c6d14
   LPActionSheet: 49fb9201e73f24f41adeb2a76773307d37ab0416
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MOBFoundation: 08328ccde124b687ac5e4367c2ccfc5b4d0235b7
   PPNumberButton: a053cde152b0e683302ce41a4755bfa02e1b3a83
   PYPhotoBrowser: 832154ec5e61c2c321d9be0e69af1fda8731e5ac
   RSKImageCropper: 356e36fc58c57c371b5d8b23d603936d6a73df6c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  ShareSDK3: 6983a9b5209b63f2f4297fb0328d9a8dd6abd5f1
   SKTagView: 59cdadcd16e4a09300746ad1811a72371e1327f7
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  WebViewJavascriptBridge: a00b2d61252aec5207e3263d46fd0fd3cfaf7895
+  WechatOpenSDK: 1fe7e3b07db860d6a936c3ff4a5aba6b890958d9
   WPAttributedMarkup: eb50878af4ec647d8d2090f721a5cfe7d29c27fe
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 7127c0931eeaf67097278b6b4ea17cfc08c9efff
+PODFILE CHECKSUM: 887f81e345f2491fe3217c88afd3d7f4c26a2c98
 
 COCOAPODS: 1.2.1

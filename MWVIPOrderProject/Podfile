@@ -20,6 +20,13 @@ pod 'RSKImageCropper'
 pod 'BabyBluetooth','~> 0.7.0'
 pod 'PPNumberButton'
 pod 'LKDBHelper'
+pod 'MJRefresh'
+pod 'ShareSDK3'
+pod 'WechatOpenSDK'
+pod 'CustomIOSAlertView'
+pod 'AlipaySDK-2.0'
+pod 'HcdGuideView'
+pod 'WebViewJavascriptBridge','~> 5.0'
 
 end
 
