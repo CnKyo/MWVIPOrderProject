@@ -16,29 +16,24 @@
 
 @implementation MWPrintTaskViewController
 {
-    UITableView *mTableView;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"打印任务列表";
-    mTableView = [UITableView new];
-    mTableView.backgroundColor = [UIColor colorWithRed:0.964705882352941 green:0.964705882352941 blue:0.964705882352941 alpha:1.00];
-    mTableView.delegate = self;
-    mTableView.dataSource = self;
-    mTableView.separatorStyle = UITableViewCellSelectionStyleNone;
-    
-    [self.view addSubview:mTableView];
-    
+    [self addTableView];
     UINib   *nib = [UINib nibWithNibName:@"MWPrintTaskCell" bundle:nil];
-    [mTableView registerNib:nib forCellReuseIdentifier:@"cell"];
-    [mTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.bottom.equalTo(self.view);
-        
-    }];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"cell"];
 
+    [self addTableViewHeaderRefreshing];
+    [self addTableViewFootererRefreshing];
 }
-
+- (void)tableViewHeaderReloadData{
+    
+}
+- (void)tableViewFooterReloadData{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

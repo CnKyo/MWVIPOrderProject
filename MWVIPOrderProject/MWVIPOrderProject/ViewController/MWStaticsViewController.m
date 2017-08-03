@@ -57,36 +57,43 @@
     }
 
     
-    mTableView = [UITableView new];
-    mTableView.backgroundColor = [UIColor whiteColor];
-    mTableView.delegate = self;
-    mTableView.dataSource = self;
-    mTableView.separatorStyle = UITableViewCellSelectionStyleNone;
+//    mTableView = [UITableView new];
+//    mTableView.backgroundColor = [UIColor whiteColor];
+//    mTableView.delegate = self;
+//    mTableView.dataSource = self;
+//    mTableView.separatorStyle = UITableViewCellSelectionStyleNone;
+//
+//    [self.view addSubview:mTableView];
 
-    [self.view addSubview:mTableView];
+    [self addTableView];
     
     UINib   *nib = [UINib nibWithNibName:@"MWStaticsTableViewCell" bundle:nil];
-    [mTableView registerNib:nib forCellReuseIdentifier:@"cell"];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"cell"];
     
-    [mTableView registerNib:[UINib nibWithNibName:@"MWStaticsHeaderCell" bundle:nil] forCellReuseIdentifier:@"CustomCell"];
-    [mTableView registerNib:[UINib nibWithNibName:@"MWStaticsSectionCell" bundle:nil] forCellReuseIdentifier:@"sectionCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MWStaticsHeaderCell" bundle:nil] forCellReuseIdentifier:@"CustomCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MWStaticsSectionCell" bundle:nil] forCellReuseIdentifier:@"sectionCell"];
 
     
-    MWStaticsHeaderCell *cell = [mTableView dequeueReusableCellWithIdentifier:@"CustomCell"];
-    [mTableView dequeueReusableCellWithIdentifier:@"CustomCell"];
+    MWStaticsHeaderCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
+    [self.tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
 
-    mTableView.tableHeaderView = cell;
+    self.tableView.tableHeaderView = cell;
 
     
-    [mTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.bottom.equalTo(self.view);
+//    [mTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.top.bottom.equalTo(self.view);
+//
+//    }];
+    
+    [self addTableViewHeaderRefreshing];
+    [self addTableViewFootererRefreshing];
+}
+- (void)tableViewHeaderReloadData{
 
-    }];
-    
-    
+}
+- (void)tableViewFooterReloadData{
     
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

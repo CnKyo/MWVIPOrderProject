@@ -6,8 +6,8 @@
 //  Copyright © 2017年 mwi01. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WKBaseViewController.h"
 
-@interface MWStaticsViewController : UIViewController
+@interface MWStaticsViewController : WKBaseViewController
 
 @end

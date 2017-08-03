@@ -6,8 +6,7 @@
 //  Copyright © 2017年 mwi01. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface MWPrintTaskViewController : UIViewController
+#import "WKBaseViewController.h"
+@interface MWPrintTaskViewController : WKBaseViewController
 
 @end

@@ -17,7 +17,6 @@
 
 @implementation MWVIPFinderViewController
 {
-    UITableView *mTableView;
     UIView *mBgkPopView;
     MWVIPFinderHeaderView *mPopView;
 }
@@ -25,20 +24,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"会员列表";
-    mTableView = [UITableView new];
-    mTableView.backgroundColor = [UIColor colorWithRed:0.964705882352941 green:0.964705882352941 blue:0.964705882352941 alpha:1.00];
-    mTableView.delegate = self;
-    mTableView.dataSource = self;
-    mTableView.separatorStyle = UITableViewCellSelectionStyleNone;
-    
-    [self.view addSubview:mTableView];
+    [self addTableView];
     
     UINib   *nib = [UINib nibWithNibName:@"MWVIPFinderCell" bundle:nil];
-    [mTableView registerNib:nib forCellReuseIdentifier:@"cell"];
-    [mTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.bottom.equalTo(self.view);
-        
-    }];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"cell"];
+
 
     [self initPopView];
     
@@ -52,7 +42,16 @@
     [mRightBtn addTarget:self action:@selector(mRightAction)forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *mRightBartem = [[UIBarButtonItem alloc]initWithCustomView:mRightBtn];
     self.navigationItem.rightBarButtonItem= mRightBartem;
+    [self addTableViewHeaderRefreshing];
+    [self addTableViewFootererRefreshing];
 }
+- (void)tableViewHeaderReloadData{
+    
+}
+- (void)tableViewFooterReloadData{
+    
+}
+
 #pragma mark---****----右边的按钮
 - (void)mRightAction{
    
