@@ -27,6 +27,7 @@ pod 'CustomIOSAlertView'
 pod 'AlipaySDK-2.0'
 pod 'HcdGuideView'
 pod 'WebViewJavascriptBridge','~> 5.0'
+pod 'MBProgressHUD'
 
 end
 

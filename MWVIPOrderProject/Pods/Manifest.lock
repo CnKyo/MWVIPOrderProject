@@ -75,6 +75,7 @@ DEPENDENCIES:
   - LKDBHelper
   - LPActionSheet
   - Masonry
+  - MBProgressHUD
   - MJRefresh
   - PPNumberButton
   - PYPhotoBrowser (~> 1.2.3)
@@ -123,6 +124,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 887f81e345f2491fe3217c88afd3d7f4c26a2c98
+PODFILE CHECKSUM: 3f260f6950162850be85cc19e22906999486040b
 
 COCOAPODS: 1.2.1

@@ -26,6 +26,7 @@
 		524B37A91F25CA5D00AF979B /* MWVIPFinderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 524B37A81F25CA5D00AF979B /* MWVIPFinderHeaderView.xib */; };
 		524B37AC1F25E06900AF979B /* MWScoreConvertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 524B37AB1F25E06900AF979B /* MWScoreConvertViewController.m */; };
 		524B37AF1F25E2F200AF979B /* MWScoreConvertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 524B37AE1F25E2F200AF979B /* MWScoreConvertCell.m */; };
+		524EEF5E1F32C78E00FA70D5 /* WKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 524EEF5D1F32C78E00FA70D5 /* WKBaseViewController.m */; };
 		5263AA0D1EFA7D1C003311D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA0C1EFA7D1C003311D8 /* SystemConfiguration.framework */; };
 		5263AA0F1EFA7D22003311D8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA0E1EFA7D22003311D8 /* CFNetwork.framework */; };
 		5263AA111EFA7D29003311D8 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5263AA101EFA7D29003311D8 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -142,6 +143,8 @@
 		524B37AB1F25E06900AF979B /* MWScoreConvertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWScoreConvertViewController.m; sourceTree = "<group>"; };
 		524B37AD1F25E2F200AF979B /* MWScoreConvertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWScoreConvertCell.h; sourceTree = "<group>"; };
 		524B37AE1F25E2F200AF979B /* MWScoreConvertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWScoreConvertCell.m; sourceTree = "<group>"; };
+		524EEF5C1F32C78E00FA70D5 /* WKBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKBaseViewController.h; sourceTree = "<group>"; };
+		524EEF5D1F32C78E00FA70D5 /* WKBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKBaseViewController.m; sourceTree = "<group>"; };
 		5263AA0C1EFA7D1C003311D8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5263AA0E1EFA7D22003311D8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5263AA101EFA7D29003311D8 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -433,6 +436,7 @@
 				5223A9481EFA6C8A003AD6B3 /* MWModel */,
 				52375A7D1EF90B43006D9CF0 /* MWTool */,
 				52375A7B1EF909F8006D9CF0 /* MWHeader */,
+				524EEF5B1F32C78E00FA70D5 /* MWBaseViewController */,
 				5239D3541EF3B86C00BAB3F3 /* AppDelegate.h */,
 				5239D3551EF3B86C00BAB3F3 /* AppDelegate.m */,
 				5239D3571EF3B86C00BAB3F3 /* ViewController.h */,
@@ -472,6 +476,15 @@
 				5239D3781EF3B86C00BAB3F3 /* Info.plist */,
 			);
 			path = MWVIPOrderProjectUITests;
+			sourceTree = "<group>";
+		};
+		524EEF5B1F32C78E00FA70D5 /* MWBaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				524EEF5C1F32C78E00FA70D5 /* WKBaseViewController.h */,
+				524EEF5D1F32C78E00FA70D5 /* WKBaseViewController.m */,
+			);
+			path = MWBaseViewController;
 			sourceTree = "<group>";
 		};
 		5263AA121EFA7D50003311D8 /* XPrinterSDK */ = {
@@ -815,6 +828,7 @@
 				5275ED9B1F1DA9A000A7A137 /* MWStaticsTableViewCell.m in Sources */,
 				529F259D1F00A7AB005B6D75 /* HLPrinter.m in Sources */,
 				52F60FCF1EFA1E6B00319120 /* MWLoginViewController.m in Sources */,
+				524EEF5E1F32C78E00FA70D5 /* WKBaseViewController.m in Sources */,
 				529F259E1F00A7AB005B6D75 /* SEPrinterManager.m in Sources */,
 				5269DB6B1F0F28260060A2FA /* BLEManager.m in Sources */,
 				52375A801EF90B43006D9CF0 /* Util.m in Sources */,
