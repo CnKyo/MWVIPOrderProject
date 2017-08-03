@@ -154,6 +154,33 @@
 
  
     [self initDeskView];
+    
+    [self leftTableHeaderRefresh];
+    [self leftTableFooterRefresh];
+}
+- (void)leftTableHeaderRefresh{
+    __weak __typeof(self) weakSelf = self;
+    
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    _mLeftTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf reloadLeftTableData];
+    }];
+    
+    // 马上进入刷新状态
+    [_mLeftTableView.mj_header beginRefreshing];
+}
+- (void)leftTableFooterRefresh{
+    __weak __typeof(self) weakSelf = self;
+    
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    _mLeftTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf reloadLeftTableData];
+    }];
+    [_mLeftTableView.mj_footer beginRefreshing];
+}
+- (void)reloadLeftTableData{
+    [_mLeftTableView.mj_header endRefreshing];
+    [_mLeftTableView.mj_footer endRefreshing];
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     _isShow = NO;
