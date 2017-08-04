@@ -24,7 +24,11 @@
 #import "SQMenuShowView.h"
 #import "RadioCollectionViewCell.h"
 #import "singleModel.h"
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZLSuperMarketShopCarDelegate,RightCollectionSelectedProductNumDelegate,MWSelectDeskViewDelegate>
+
+#import "DOPNavbarMenu.h"
+
+
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZLSuperMarketShopCarDelegate,RightCollectionSelectedProductNumDelegate,MWSelectDeskViewDelegate,UITextViewDelegate, DOPNavbarMenuDelegate>
 
 @property (assign, nonatomic) NSIndexPath *selIndex;//单选，当前选中的行
 @property(strong,nonatomic)  UICollectionView *mCollectionView;
@@ -36,7 +40,8 @@
 @property (nonatomic, strong) UICollectionView * collectionView;
 @property (nonatomic, strong) NSMutableArray * dataSource;
 
-
+@property (assign, nonatomic) NSInteger numberOfItemsInRow;
+@property (strong, nonatomic) DOPNavbarMenu *menu;
 
 @end
 
@@ -47,11 +52,104 @@
     MWSelectDeskView *mDeskView;
     
 }
+- (DOPNavbarMenu *)menu {
+    if (_menu == nil) {
+        DOPNavbarMenuItem *item1 = [DOPNavbarMenuItem ItemWithTitle:@"收银统计" icon:[UIImage imageNamed:@"cash_statics"]];
+        DOPNavbarMenuItem *item2 = [DOPNavbarMenuItem ItemWithTitle:@"任务列表" icon:[UIImage imageNamed:@"print_task"]];
+        DOPNavbarMenuItem *item3 = [DOPNavbarMenuItem ItemWithTitle:@"会员查询" icon:[UIImage imageNamed:@"find_vip"]];
+        DOPNavbarMenuItem *item4 = [DOPNavbarMenuItem ItemWithTitle:@"积分兑换" icon:[UIImage imageNamed:@"score_find"]];
+        DOPNavbarMenuItem *item5 = [DOPNavbarMenuItem ItemWithTitle:@"分享有礼" icon:[UIImage imageNamed:@"share_gift"]];
+        DOPNavbarMenuItem *item6 = [DOPNavbarMenuItem ItemWithTitle:@"换班/登录" icon:[UIImage imageNamed:@"change_login"]];
+
+        _menu = [[DOPNavbarMenu alloc] initWithItems:@[item1,item2,item3,item4,item5,item6] width:self.view.dop_width maximumNumberInRow:_numberOfItemsInRow];
+        _menu.backgroundColor = M_CO;
+        _menu.separatarColor = [UIColor whiteColor];
+        _menu.delegate = self;
+    }
+    return _menu;
+}
+- (void)openMenu:(id)sender {
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    if (self.menu.isOpen) {
+        [self.menu dismissWithAnimation:YES];
+    } else {
+        [self.menu showInNavigationController:self.navigationController];
+    }
+}
+
+- (void)didShowMenu:(DOPNavbarMenu *)menu {
+    [self.navigationItem.rightBarButtonItem setTitle:@"收起"];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+}
+
+- (void)didDismissMenu:(DOPNavbarMenu *)menu {
+    [self.navigationItem.rightBarButtonItem setTitle:@"更多操作"];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+}
+
+- (void)didSelectedMenu:(DOPNavbarMenu *)menu atIndex:(NSInteger)index {
+//    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"you selected" message:[NSString stringWithFormat:@"number %@", @(index+1)] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//    [av show];
+    ///1:"收银统计",2:"任务列表",3:"会员查询",4:"积分兑换",5:"分享有礼",6:"换班/登录"
+    if (index == 0) {
+        MWStaticsViewController *vc = [MWStaticsViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+        MLLog(@"点击第%ld个item",index+1);
+        
+    }else if(index == 1){
+        
+        MWPrintTaskViewController *vc = [MWPrintTaskViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+        MLLog(@"点击第%ld个item",index+1);
+        
+    }else if(index == 2){
+        
+        MWVIPFinderViewController *vc = [MWVIPFinderViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+        MLLog(@"点击第%ld个item",index+1);
+        
+    }else if(index == 3){
+        
+        MWScoreConvertViewController *vc = [MWScoreConvertViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+        MLLog(@"3");
+    }else if(index == 4){
+        MWLoginViewController *vc = [MWLoginViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+        MLLog(@"4");
+    }else{
+        MLLog(@"6");
+        MWLoginViewController *vc = [MWLoginViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
+}
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    self.numberOfItemsInRow = [textView.text integerValue];
+    self.menu = nil;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    self.menu = nil;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.menu) {
+        [self.menu dismissWithAnimation:NO];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.title = @"今日销售2000份营业额¥30000元";
-    
+    self.numberOfItemsInRow = 3;
+
      _mLeftTableView = [UITableView new];
     _mLeftTableView.backgroundColor = M_CO;
     _mLeftTableView.delegate = self;
@@ -99,10 +197,12 @@
     self.navigationItem.leftBarButtonItem= mBackItem;
     
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"更多操作"
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(show)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"更多操作"
+//                                                                             style:UIBarButtonItemStylePlain
+//                                                                            target:self
+//                                                                            action:@selector(show)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"更多操作" style:UIBarButtonItemStylePlain target:self action:@selector(openMenu:)];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     
     
     __weak typeof(self) weakSelf = self;
