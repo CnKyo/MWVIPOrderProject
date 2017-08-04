@@ -45,12 +45,12 @@
     ZLSuperMarketShopCarView *mShopCarView;
     
     MWSelectDeskView *mDeskView;
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.title = @"今日销售2000份营业额¥30000元";
-    
     
      _mLeftTableView = [UITableView new];
     _mLeftTableView.backgroundColor = M_CO;
@@ -61,10 +61,7 @@
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
         self.mCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake((DEVICE_Width/3), 64, DEVICE_Width-(DEVICE_Width/3), DEVICE_Height-64-60) collectionViewLayout:flowLayout];
-//    self.mCollectionView = [UICollectionView new];
-//    [self.mCollectionView setCollectionViewLayout:flowLayout];
-    //    self.mCollectionView = [[UICollectionView alloc] init];
-    //    self.mCollectionView.collectionViewLayout = flowLayout;
+
     [self.mCollectionView registerClass:[mRightCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
     self.mCollectionView.backgroundColor = [UIColor clearColor];
@@ -75,7 +72,6 @@
 
     
     mShopCarView = [ZLSuperMarketShopCarView shareView];
-//    mShopCarView.mNum.hidden = YES;
     mShopCarView.delegate = self;
     mShopCarView.mNum.text = @"99";
     [self.view addSubview:mShopCarView];
@@ -88,12 +84,6 @@
         make.bottom.equalTo(mShopCarView.mas_top).offset(0);
         make.width.offset(DEVICE_Width/3);
     }];
-    
-//    [self.mCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.top.bottom.equalTo(self.view);
-//        
-//        make.left.equalTo(_mLeftTableView.mas_right);
-//    }];
     
     [mShopCarView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_mLeftTableView.mas_bottom).offset(0);
@@ -159,6 +149,7 @@
     [self leftTableFooterRefresh];
 }
 - (void)leftTableHeaderRefresh{
+
     __weak __typeof(self) weakSelf = self;
     
     // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
@@ -170,17 +161,22 @@
     [_mLeftTableView.mj_header beginRefreshing];
 }
 - (void)leftTableFooterRefresh{
+  
     __weak __typeof(self) weakSelf = self;
     
     // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
     _mLeftTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [weakSelf reloadLeftTableData];
+        [weakSelf reloadMoreData];
     }];
-    [_mLeftTableView.mj_footer beginRefreshing];
 }
 - (void)reloadLeftTableData{
+
     [_mLeftTableView.mj_header endRefreshing];
+
+}
+- (void)reloadMoreData{
     [_mLeftTableView.mj_footer endRefreshing];
+
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     _isShow = NO;

@@ -67,6 +67,8 @@
 		52A120861F1777C600B1037D /* ZLSuperMarketShopCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A120841F1777C600B1037D /* ZLSuperMarketShopCarView.m */; };
 		52A120871F1777C600B1037D /* ZLSuperMarketShopCarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A120851F1777C600B1037D /* ZLSuperMarketShopCarView.xib */; };
 		52B29FDD1F1C9F5D009B13FE /* MWStaticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B29FDC1F1C9F5D009B13FE /* MWStaticsViewController.m */; };
+		52C8D10A1F3421A700507409 /* DOPNavbarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8D1071F3421A700507409 /* DOPNavbarMenu.m */; };
+		52C8D10B1F3421A700507409 /* UIView+DOPExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C8D1091F3421A700507409 /* UIView+DOPExtension.m */; };
 		52EC425A1F2B3BC900E085C3 /* MWSelectDeskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC42591F2B3BC900E085C3 /* MWSelectDeskView.m */; };
 		52EC425C1F2B3BD100E085C3 /* MWSelectDeskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EC425B1F2B3BD100E085C3 /* MWSelectDeskView.xib */; };
 		52EC42621F2B409000E085C3 /* RadioCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52EC425E1F2B409000E085C3 /* RadioCollectionViewCell.m */; };
@@ -215,6 +217,10 @@
 		52A120851F1777C600B1037D /* ZLSuperMarketShopCarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLSuperMarketShopCarView.xib; sourceTree = "<group>"; };
 		52B29FDB1F1C9F5D009B13FE /* MWStaticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWStaticsViewController.h; sourceTree = "<group>"; };
 		52B29FDC1F1C9F5D009B13FE /* MWStaticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWStaticsViewController.m; sourceTree = "<group>"; };
+		52C8D1061F3421A700507409 /* DOPNavbarMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPNavbarMenu.h; sourceTree = "<group>"; };
+		52C8D1071F3421A700507409 /* DOPNavbarMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPNavbarMenu.m; sourceTree = "<group>"; };
+		52C8D1081F3421A700507409 /* UIView+DOPExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DOPExtension.h"; sourceTree = "<group>"; };
+		52C8D1091F3421A700507409 /* UIView+DOPExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DOPExtension.m"; sourceTree = "<group>"; };
 		52EC42581F2B3BC900E085C3 /* MWSelectDeskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWSelectDeskView.h; sourceTree = "<group>"; };
 		52EC42591F2B3BC900E085C3 /* MWSelectDeskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWSelectDeskView.m; sourceTree = "<group>"; };
 		52EC425B1F2B3BD100E085C3 /* MWSelectDeskView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWSelectDeskView.xib; sourceTree = "<group>"; };
@@ -427,6 +433,7 @@
 		5239D3501EF3B86C00BAB3F3 /* MWVIPOrderProject */ = {
 			isa = PBXGroup;
 			children = (
+				52C8D1051F3421A700507409 /* DOPNavbarMenu */,
 				5275ED9D1F1DBDA600A7A137 /* SQMenuShowView */,
 				5269DB711F0F28DF0060A2FA /* AsyncSocket */,
 				526F459E1F023F730013CA96 /* NavigationButtonHandle */,
@@ -572,6 +579,17 @@
 				52EC42651F2B435A00E085C3 /* dataList.plist */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		52C8D1051F3421A700507409 /* DOPNavbarMenu */ = {
+			isa = PBXGroup;
+			children = (
+				52C8D1061F3421A700507409 /* DOPNavbarMenu.h */,
+				52C8D1071F3421A700507409 /* DOPNavbarMenu.m */,
+				52C8D1081F3421A700507409 /* UIView+DOPExtension.h */,
+				52C8D1091F3421A700507409 /* UIView+DOPExtension.m */,
+			);
+			path = DOPNavbarMenu;
 			sourceTree = "<group>";
 		};
 		546F5E7CB87651464E45B9EA /* Pods */ = {
@@ -802,6 +820,7 @@
 				524B37A71F25CA4C00AF979B /* MWVIPFinderHeaderView.m in Sources */,
 				528FAFCD1F2726CB009D803B /* MWStaticsSectionCell.m in Sources */,
 				5269DB6C1F0F28260060A2FA /* ImageTranster.m in Sources */,
+				52C8D10B1F3421A700507409 /* UIView+DOPExtension.m in Sources */,
 				52EC42621F2B409000E085C3 /* RadioCollectionViewCell.m in Sources */,
 				524B37AC1F25E06900AF979B /* MWScoreConvertViewController.m in Sources */,
 				52F60FD21EFA1F7500319120 /* mLoginView.m in Sources */,
@@ -820,6 +839,7 @@
 				5275EDA81F1DF7F400A7A137 /* MWPrintTaskViewController.m in Sources */,
 				5239D3531EF3B86C00BAB3F3 /* main.m in Sources */,
 				526F45AD1F0257C90013CA96 /* UUIDSettingViewController.m in Sources */,
+				52C8D10A1F3421A700507409 /* DOPNavbarMenu.m in Sources */,
 				526F45A11F023F730013CA96 /* UIViewController+BackButtonHandler.m in Sources */,
 				524B37AF1F25E2F200AF979B /* MWScoreConvertCell.m in Sources */,
 				5269DB771F0F28DF0060A2FA /* AsyncUdpSocket.m in Sources */,

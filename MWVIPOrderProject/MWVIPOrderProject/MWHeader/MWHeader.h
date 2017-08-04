@@ -193,6 +193,12 @@ typedef NS_ENUM(NSInteger,MWPrintType){
 
 };
 
+typedef NS_ENUM(NSInteger,MWRefreshType){
+    MWHeaderRefresh = 1,///下拉刷新
+    MWFooterRefresh = 2,///上拉刷新
+
+};
+
 //-----------------------
 //自定义的写在下面，通用的写在上面
 //-----------------------
