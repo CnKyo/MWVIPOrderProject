@@ -88,8 +88,7 @@
 }
 
 - (void)didSelectedMenu:(DOPNavbarMenu *)menu atIndex:(NSInteger)index {
-//    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"you selected" message:[NSString stringWithFormat:@"number %@", @(index+1)] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//    [av show];
+
     ///1:"收银统计",2:"任务列表",3:"会员查询",4:"积分兑换",5:"分享有礼",6:"换班/登录"
     if (index == 0) {
         MWStaticsViewController *vc = [MWStaticsViewController new];
@@ -233,12 +232,12 @@
             MLLog(@"3");
         }else if(index == 4){
             MWLoginViewController *vc = [MWLoginViewController new];
-            [self.navigationController pushViewController:vc animated:YES];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
             MLLog(@"4");
         }else{
             MLLog(@"6");
             MWLoginViewController *vc = [MWLoginViewController new];
-            [self.navigationController pushViewController:vc animated:YES];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
         }
     }];
 
