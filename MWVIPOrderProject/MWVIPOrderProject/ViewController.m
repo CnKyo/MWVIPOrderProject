@@ -147,6 +147,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.title = @"今日销售2000份营业额¥30000元";
+
+    
     self.numberOfItemsInRow = 3;
 
      _mLeftTableView = [UITableView new];

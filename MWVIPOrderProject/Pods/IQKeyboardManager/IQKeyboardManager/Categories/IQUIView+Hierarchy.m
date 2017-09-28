@@ -56,7 +56,7 @@
 
 -(UIViewController *)topMostController
 {
-    NSMutableArray *controllersHierarchy = [[NSMutableArray alloc] init];
+    NSMutableArray<UIViewController*> *controllersHierarchy = [[NSMutableArray alloc] init];
     
     UIViewController *topController = self.window.rootViewController;
     
@@ -71,13 +71,13 @@
         [controllersHierarchy addObject:topController];
     }
     
-    UIResponder *matchController = [self viewController];
+    UIViewController *matchController = [self viewController];
     
     while (matchController != nil && [controllersHierarchy containsObject:matchController] == NO)
     {
         do
         {
-            matchController = [matchController nextResponder];
+            matchController = (UIViewController*)[matchController nextResponder];
             
         } while (matchController != nil && [matchController isKindOfClass:[UIViewController class]] == NO);
     }
@@ -147,7 +147,7 @@
     NSArray *siblings = self.superview.subviews;
     
     //Array of (UITextField/UITextView's).
-    NSMutableArray *tempTextFields = [[NSMutableArray alloc] init];
+    NSMutableArray<UIView*> *tempTextFields = [[NSMutableArray alloc] init];
     
     for (UIView *textField in siblings)
         if ([textField _IQcanBecomeFirstResponder])
@@ -158,7 +158,7 @@
 
 - (NSArray*)deepResponderViews
 {
-    NSMutableArray *textFields = [[NSMutableArray alloc] init];
+    NSMutableArray<UIView*> *textFields = [[NSMutableArray alloc] init];
     
     for (UIView *textField in self.subviews)
     {

@@ -65,6 +65,8 @@ static CGFloat titleFontSize = 15.0;
     [_background addGestureRecognizer:gr];
     _textColor = [UIColor whiteColor];
     _separatarColor = [UIColor colorWithWhite:0.0 alpha:0.8];
+    self.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.layer.borderWidth = 1;
     return self;
 }
 
@@ -84,7 +86,7 @@ static CGFloat titleFontSize = 15.0;
         UIImageView *icon = [[UIImageView alloc] initWithImage:obj.icon];
         icon.center = CGPointMake(buttonWidth/2, buttonHeight/2-15);
         [button addSubview:icon];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, buttonHeight-35, buttonWidth, 20)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, buttonHeight-30, buttonWidth, 20)];
         label.text = obj.title;
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = self.textColor;

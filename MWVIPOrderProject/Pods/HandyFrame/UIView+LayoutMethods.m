@@ -7,6 +7,12 @@
 //
 
 #import "UIView+LayoutMethods.h"
+#import <objc/runtime.h>
+
+static void *kUIViewLayoutMethodPropertyBottomGap = &kUIViewLayoutMethodPropertyBottomGap;
+static void *kUIViewLayoutMethodPropertyTopGap = &kUIViewLayoutMethodPropertyTopGap;
+static void *kUIViewLayoutMethodPropertyLeftGap = &kUIViewLayoutMethodPropertyLeftGap;
+static void *kUIViewLayoutMethodPropertyRightGap = &kUIViewLayoutMethodPropertyRightGap;
 
 @implementation UIView (LayoutMethods)
 
@@ -294,9 +300,9 @@
 - (void)bottomInContainer:(CGFloat)bottom shouldResize:(BOOL)shouldResize
 {
     if (shouldResize) {
-        self.ct_height = self.superview.ct_height - bottom - self.ct_y;
+        self.ct_height = self.superview.ct_height - bottom - self.ct_y - self.safeAreaBottomGap;
     } else {
-        self.ct_y = self.superview.ct_height - self.ct_height - bottom;
+        self.ct_y = self.superview.ct_height - self.ct_height - bottom - self.safeAreaBottomGap;
     }
 }
 
@@ -429,6 +435,63 @@
     }
     
     return topSuperView;
+}
+
+// iPhoneX adapt
+- (CGFloat)safeAreaBottomGap
+{
+    NSNumber *gap = objc_getAssociatedObject(self, kUIViewLayoutMethodPropertyBottomGap);
+    if (gap == nil) {
+        if (@available(iOS 11, *)) {
+            gap = @((self.superview.ct_height - self.superview.safeAreaLayoutGuide.layoutFrame.origin.y - self.superview.safeAreaLayoutGuide.layoutFrame.size.height));
+        } else {
+            gap = @(0);
+        }
+        objc_setAssociatedObject(self, kUIViewLayoutMethodPropertyBottomGap, gap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return gap.floatValue;
+}
+
+- (CGFloat)safeAreaTopGap
+{
+    NSNumber *gap = objc_getAssociatedObject(self, kUIViewLayoutMethodPropertyTopGap);
+    if (gap == nil) {
+        if (@available(iOS 11, *)) {
+            gap = @(self.superview.safeAreaLayoutGuide.layoutFrame.origin.y);
+        } else {
+            gap = @(0);
+        }
+        objc_setAssociatedObject(self, kUIViewLayoutMethodPropertyTopGap, gap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return gap.floatValue;
+}
+
+- (CGFloat)safeAreaLeftGap
+{
+    NSNumber *gap = objc_getAssociatedObject(self, kUIViewLayoutMethodPropertyLeftGap);
+    if (gap == nil) {
+        if (@available(iOS 11, *)) {
+            gap = @(self.superview.safeAreaLayoutGuide.layoutFrame.origin.x);
+        } else {
+            gap = @(0);
+        }
+        objc_setAssociatedObject(self, kUIViewLayoutMethodPropertyLeftGap, gap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return gap.floatValue;
+}
+
+- (CGFloat)safeAreaRightGap
+{
+    NSNumber *gap = objc_getAssociatedObject(self, kUIViewLayoutMethodPropertyRightGap);
+    if (gap == nil) {
+        if (@available(iOS 11, *)) {
+            gap = @(self.superview.safeAreaLayoutGuide.layoutFrame.origin.x);
+        } else {
+            gap = @(0);
+        }
+        objc_setAssociatedObject(self, kUIViewLayoutMethodPropertyRightGap, gap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return gap.floatValue;
 }
 
 @end
