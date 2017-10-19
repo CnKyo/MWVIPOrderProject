@@ -340,7 +340,7 @@
 - (HLPrinter *)getPrinter
 {
     HLPrinter *printer = [[HLPrinter alloc] init];
-    NSString *title = @"测试电商";
+    NSString *title = @"测试信息";
     //    NSString *str1 = @"测试电商服务中心(销售单)";
     [printer appendText:title alignment:HLTextAlignmentCenter fontSize:HLFontSizeTitleBig];
     //    [printer appendText:str1 alignment:HLTextAlignmentCenter];
@@ -349,14 +349,14 @@
     
     [printer appendTitle:@"时间:" value:@"2016-04-27 10:01:50" valueOffset:150];
     [printer appendTitle:@"订单:" value:@"4000020160427100150" valueOffset:150];
-    [printer appendText:@"地址:深圳市南山区学府路东深大店" alignment:HLTextAlignmentLeft];
+    [printer appendText:@"地址:重庆市渝北区光电园麒麟C座13-6" alignment:HLTextAlignmentLeft];
     
     [printer appendSeperatorLine];
-    [printer appendLeftText:@"商品" middleText:@"数量" rightText:@"单价" isTitle:YES];
+    [printer appendLeftText:@"菜品" middleText:@"数量" rightText:@"单价" isTitle:YES];
     CGFloat total = 0.0;
-    NSDictionary *dict1 = @{@"name":@"铅笔测试一下哈哈",@"amount":@"5",@"price":@"2.0"};
-    NSDictionary *dict2 = @{@"name":@"abcdefghijfdf",@"amount":@"1",@"price":@"1.0"};
-    NSDictionary *dict3 = @{@"name":@"abcde笔记本啊啊",@"amount":@"3",@"price":@"3.0"};
+    NSDictionary *dict1 = @{@"name":@"牛肉面",@"amount":@"1",@"price":@"22.0"};
+    NSDictionary *dict2 = @{@"name":@"炸酱面",@"amount":@"1",@"price":@"20.0"};
+    NSDictionary *dict3 = @{@"name":@"麻辣小面",@"amount":@"2",@"price":@"15.0"};
     NSArray *goodsArray = @[dict1, dict2, dict3];
     for (NSDictionary *dict in goodsArray) {
         [printer appendLeftText:dict[@"name"] middleText:dict[@"amount"] rightText:dict[@"price"] isTitle:NO];
@@ -372,7 +372,7 @@
     
     [printer appendSeperatorLine];
     
-    [printer appendText:@"位图方式二维码" alignment:HLTextAlignmentCenter];
+    [printer appendText:@"支付二维码" alignment:HLTextAlignmentCenter];
     [printer appendQRCodeWithInfo:@"www.baidu.com"];
 //    [printer appendSeperatorLine];
 //    [printer appendSeperatorLine];
