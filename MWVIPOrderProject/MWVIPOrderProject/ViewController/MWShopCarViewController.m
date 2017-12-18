@@ -89,7 +89,8 @@
                     [SVProgressHUD showErrorWithStatus:@"连接失败"];
                 } else {
                     [SVProgressHUD showSuccessWithStatus:@"连接成功"];
-                    
+                    [self hiddenView];
+
                 }
                 [self performSelector:@selector(XPSVPDissmiss) withObject:self afterDelay:1.0];
             }];
@@ -274,7 +275,6 @@
         {
         mPtype = MWPrintTypeWithWechatPay;
         [self initBlueToothe];
-        [self hiddenView];
  
         }
             break;
@@ -282,7 +282,7 @@
         {
         mPtype = MWPrintTypeWithCashPay;
         [self initBlueToothe];
-        [self hiddenView];
+//        [self hiddenView];
         }
             break;
         case 2:
@@ -309,7 +309,7 @@
         {
         mPtype = MWPrintTypeWithScorePay;
         [self initBlueToothe];
-        [self hiddenView];
+//        [self hiddenView];
         }
             break;
         case 4:

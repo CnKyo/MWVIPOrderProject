@@ -506,9 +506,9 @@
     }else{
         mRightCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
         cell.mBgk.backgroundColor = M_CO;
-        cell.mName.text = @"365天黄金会员（0.1折）";
+        cell.mName.text = @"牛肉面）";
         cell.mPrice.text = @"25.0元";
-        cell.mSalesNum.text = @"1000小了";
+        cell.mSalesNum.text = @"100销量";
         cell.delegate = self;
         return cell;
     }
